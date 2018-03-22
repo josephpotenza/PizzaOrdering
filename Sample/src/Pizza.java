@@ -1,8 +1,4 @@
 public class Pizza {
-    system.out.println("Hello");
-    int x;
-    if(xx == 10){
-        System.out.println("ssda");
-        System.out.println("ssda");
+   // this is a class pizza. no data yet.
     }
 }

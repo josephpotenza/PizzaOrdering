@@ -3,5 +3,6 @@ public class Pizza {
     int x;
     if(xx == 10){
         System.out.println("ssda");
+        System.out.println("ssda");
     }
 }

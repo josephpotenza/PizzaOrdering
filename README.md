@@ -1,3 +1,4 @@
 # PizzaOrdering
 
-This is a pizza ordering system.
+This is a pizza ordering system for CSC 430.
+

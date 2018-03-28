@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PizzaGuiFX">
+    <children>
+        <Label layoutX="419.0" layoutY="321.0" text="Email:" />
+        <Label layoutX="419.0" layoutY="384.0" text="Password:" />
+        <TextField fx:id="loginEmail" layoutX="500.0" layoutY="316.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="393.0" />
+      <TextField fx:id="loginPassword" layoutX="500.0" layoutY="379.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="393.0" />
+      <Button fx:id="loginButton" layoutX="500.0" layoutY="444.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="187.0" text="Login" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="393.0" />
+      <Label fx:id="label" layoutX="576.0" layoutY="506.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
+    </children>
+</AnchorPane>

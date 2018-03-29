@@ -15,13 +15,13 @@
             <Image url="@Images/pope_pizza.jpg" />
          </image>
       </ImageView>
-        <Label layoutX="342.0" layoutY="305.0" text="Email:" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="595.0">
+        <Label layoutX="285.0" layoutY="309.0" text="Email:" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="624.0">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font size="36.0" />
          </font></Label>
-        <Label layoutX="314.0" layoutY="368.0" text="Password:" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="595.0">
+        <Label layoutX="285.0" layoutY="372.0" text="Password:" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="624.0">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font size="36.0" />
          </font></Label>
         <TextField fx:id="loginEmail" layoutX="500.0" layoutY="316.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="393.0">
          <font>

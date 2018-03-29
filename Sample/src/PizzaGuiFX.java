@@ -1,38 +1,41 @@
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-public class PizzaGuiFX extends Application{
+public class PizzaGuiFX{
 
-    public static void main(String[] args) {
-        launch(args);
+    @FXML
+    private ImageView pope;
+
+    @FXML
+    private TextField loginEmail;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private PasswordField loginPassword;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    void submitLogin(ActionEvent event) {
+
+        label.setText(loginEmail.getText() + " " + loginPassword.getText());
+
     }
 
-    /*
-    //Example Button
-
-    Button button = new button();
-    button.setText("I am a Button");
-
-    button.setOnAction(e -> {
-        System.out.println("InnerClass Event Handler));
-        System.out.println("InnerClass Event Handler with 2 lines));
-    }
-     */
-
-
-    Stage stage;
-    Scene login, loginFail, menu;
-
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("PizzaGUI");
-    }
 
 }

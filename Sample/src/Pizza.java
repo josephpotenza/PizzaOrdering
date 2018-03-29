@@ -22,5 +22,3 @@ public class Pizza extends Application{
         launch(args);
     }
 }
-
-//hello world Christian Posada

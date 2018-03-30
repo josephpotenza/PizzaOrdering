@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customers` (
-  `customerID` int(11) NOT NULL,
+  `customerID` int(11) NOT NULL AUTO_INCREMENT,
   `LastName` varchar(255) NOT NULL,
   `FirstName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `customers` (
   `address` varchar(255) DEFAULT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`customerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +42,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'Potenza','Joseph','josephpotenza@live.com','joepot95','917-957-8698','4029-4450-6695-5804','65 tarlee place','2018-03-30 00:57:27'),(2,'Potenza','Terri','tpotz@live.com','disney','917-402-5576','4029-4450-6695-5804','65 tarlee place','2018-03-30 01:03:52');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,9 +57,9 @@ CREATE TABLE `menu` (
   `menuID` int(11) NOT NULL AUTO_INCREMENT,
   `typeID` int(11) DEFAULT NULL,
   `itemName` varchar(255) DEFAULT NULL,
-  `price per item` varchar(255) DEFAULT NULL,
+  `price` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`menuID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +68,6 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,1,'Pizza','15.00'),(2,2,'Soda','2.00'),(3,3,'add Pepperoni','1.99'),(4,3,'add Mushrooms','0.99'),(5,4,'Cheesy Bread','6.00'),(6,5,'Chicken Parm Sub','11.00'),(7,5,'Sausage Roll','9.00');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,9 +81,12 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
   `customerID` int(11) NOT NULL,
-  PRIMARY KEY (`orderID`),
-  KEY `fk_customer` (`customerID`),
-  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerID`) REFERENCES `customers` (`customerID`) ON UPDATE CASCADE
+  `menuID` int(11) NOT NULL,
+  PRIMARY KEY (`orderID`,`customerID`,`menuID`),
+  KEY `customerID` (`customerID`),
+  KEY `menuID` (`menuID`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerID`) REFERENCES `customers` (`customerID`) ON UPDATE CASCADE,
+  CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`menuID`) REFERENCES `menu` (`menuID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-29 15:31:18
+-- Dump completed on 2018-03-29 21:55:51

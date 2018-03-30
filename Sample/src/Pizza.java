@@ -3,8 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.sql.*;
-import java.sql.DriverManager;
 
 public class Pizza extends Application{
 
@@ -19,7 +17,6 @@ public class Pizza extends Application{
             e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args){
         launch(args);

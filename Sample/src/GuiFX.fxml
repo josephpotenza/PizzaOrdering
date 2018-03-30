@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
@@ -8,34 +9,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PizzaGuiFX">
+
+<AnchorPane fx:id="stage" prefHeight="778.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PizzaGuiFX">
     <children>
-      <ImageView fx:id="pope" fitHeight="720.0" fitWidth="1080.0" opacity="0.74" pickOnBounds="true">
-         <image>
-            <Image url="@Images/pope_pizza.jpg" />
-         </image>
-      </ImageView>
-        <Label layoutX="329.0" layoutY="309.0" text="Email:" AnchorPane.leftAnchor="329.0" AnchorPane.rightAnchor="580.0">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font></Label>
-        <Label layoutX="285.0" layoutY="372.0" text="Password:" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="624.0">
-         <font>
-            <Font name="System Bold" size="36.0" />
-         </font></Label>
-        <TextField fx:id="loginEmail" layoutX="540.0" layoutY="316.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0">
-         <font>
-            <Font size="18.0" />
-         </font></TextField>
-      <Button fx:id="loginButton" layoutX="540.0" layoutY="445.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="187.0" text="Login" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0">
+      <VBox layoutX="628.0" layoutY="339.0" prefHeight="100.0" prefWidth="300.0" spacing="15.0" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="628.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="339.0">
+         <children>
+              <TextField fx:id="loginEmail">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="loginPassword">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </PasswordField>
+         </children>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="342.0" layoutY="336.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="613.0" AnchorPane.topAnchor="339.0">
+         <children>
+              <Label text="Email:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+              <Label text="Password:">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="loginButton" layoutX="447.0" layoutY="472.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="187.0" text="Login" AnchorPane.leftAnchor="447.0" AnchorPane.rightAnchor="446.0">
          <font>
             <Font size="24.0" />
-         </font></Button>
-      <Label fx:id="label" layoutX="576.0" layoutY="506.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="400.0" />
-      <PasswordField fx:id="loginPassword" layoutX="540.0" layoutY="379.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0">
-         <font>
-            <Font size="18.0" />
          </font>
-      </PasswordField>
+      </Button>
     </children>
 </AnchorPane>

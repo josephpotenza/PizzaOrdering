@@ -44,7 +44,10 @@ public class Pizza extends Application{
                 int id_col = rs.getInt("customerID");
                 String first_name = rs.getString("FirstName");
                 String last_name = rs.getString("LastName");
+                String phone = rs.getString( "phone");
+                String email = rs.getString( "email");
                 System.out.println("Customer ID: " + id_col + " Name: " + first_name + " " +last_name);
+                System.out.println("Email: " + email + " Phone: "+ phone);
             }
         }
         catch (SQLException err) {

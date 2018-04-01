@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="stage" prefHeight="680.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPaneController">
+    <children>
+      <Pane layoutY="-2.0" prefHeight="328.0" prefWidth="462.0" style="-fx-background-color: #a70000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label layoutX="49.0" layoutY="60.0" prefHeight="53.0" prefWidth="89.0" text="Email:" textFill="WHITE" AnchorPane.leftAnchor="49.0" AnchorPane.topAnchor="55.0">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></Label>
+        <Label layoutX="20.0" layoutY="132.0" prefHeight="45.0" prefWidth="148.0" text="Password:" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="127.0">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></Label>
+        <TextField fx:id="loginEmail" layoutX="168.0" layoutY="67.0" prefHeight="39.0" prefWidth="265.0" AnchorPane.bottomAnchor="705.0" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="67.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextField>
+        <PasswordField fx:id="loginPassword" layoutX="168.0" layoutY="135.0" prefHeight="39.0" prefWidth="265.0" AnchorPane.bottomAnchor="637.0" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="135.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </PasswordField>
+        <Button fx:id="loginButton" layoutX="169.0" layoutY="196.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="39.0" prefWidth="264.0" text="Login" AnchorPane.leftAnchor="169.0" AnchorPane.topAnchor="196.0">
+            <font>
+                <Font size="18.0" />
+            </font></Button>
+        <Label fx:id="signupButton" layoutX="169.0" layoutY="255.0" onMouseClicked="#switchToSignUpScene" text="Sign Up" textFill="WHITE" underline="true" AnchorPane.leftAnchor="169.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="SignInGuest" layoutX="292.0" layoutY="255.0" onMouseClicked="#switchToGuestLogin" text="Sign in as Guest" textFill="WHITE" underline="true" AnchorPane.leftAnchor="292.0">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+      <ImageView fitHeight="485.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@Images/cokeAd.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" layoutX="462.0" layoutY="406.0" rotate="90.0" scaleX="4.0" scaleY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="403.5" AnchorPane.topAnchor="404.5" />
+      <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="3.0" startX="-100.0" stroke="WHITE" />
+    </children>
+</AnchorPane>

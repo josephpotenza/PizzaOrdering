@@ -9,44 +9,39 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane fx:id="stage" prefHeight="778.0" prefWidth="1255.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PizzaGuiFX">
+<AnchorPane fx:id="stage" prefHeight="680.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PizzaGuiFX">
     <children>
-      <VBox layoutX="628.0" layoutY="339.0" prefHeight="100.0" prefWidth="300.0" spacing="15.0" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="628.0" AnchorPane.rightAnchor="327.0" AnchorPane.topAnchor="339.0">
-         <children>
-              <TextField fx:id="loginEmail">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="loginPassword">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </PasswordField>
-         </children>
-         <padding>
-            <Insets top="5.0" />
-         </padding>
-      </VBox>
-      <VBox layoutX="342.0" layoutY="336.0" prefHeight="100.0" prefWidth="300.0" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="613.0" AnchorPane.topAnchor="339.0">
-         <children>
-              <Label text="Email:">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-              <Label text="Password:">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-      <Button fx:id="loginButton" layoutX="447.0" layoutY="472.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="187.0" text="Login" AnchorPane.leftAnchor="447.0" AnchorPane.rightAnchor="446.0">
+        <Label layoutX="330.0" layoutY="309.0" prefHeight="53.0" prefWidth="89.0" text="Email:" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="738.0">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+        <Label layoutX="300.0" layoutY="376.0" prefHeight="45.0" prefWidth="148.0" text="Password:" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="709.0">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font></Label>
+        <TextField fx:id="loginEmail" layoutX="540.0" layoutY="316.0" AnchorPane.bottomAnchor="456.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="316.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <PasswordField fx:id="loginPassword" layoutX="540.0" layoutY="379.0" AnchorPane.bottomAnchor="393.0" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0" AnchorPane.topAnchor="379.0">
+         <font>
+            <Font size="18.0" />
          </font>
-      </Button>
+      </PasswordField>
+      <Button fx:id="loginButton" layoutX="540.0" layoutY="445.0" mnemonicParsing="false" onAction="#submitLogin" prefHeight="39.0" prefWidth="264.0" text="Login" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="353.0">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <VBox layoutX="59.0" layoutY="54.0" prefHeight="200.0" prefWidth="100.0" />
+      <Label fx:id="signupButton" layoutX="540.0" layoutY="513.0" onMouseClicked="#switchToSignUpScene" text="Sign Up" textFill="#1722f8" underline="true" AnchorPane.leftAnchor="540.0" AnchorPane.rightAnchor="548.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="664.0" layoutY="513.0" text="Sign in as Guest" textFill="#1722f8" underline="true" AnchorPane.leftAnchor="664.0" AnchorPane.rightAnchor="353.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

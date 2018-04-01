@@ -26,7 +26,7 @@
                   <Insets right="35.0" top="30.0" />
                </padding>
             </VBox>
-            <VBox prefHeight="328.0" prefWidth="183.0" spacing="26.0">
+            <VBox prefHeight="258.0" prefWidth="183.0" spacing="26.0">
                <children>
                   <Label text="First Name:" textFill="WHITE">
                      <font>
@@ -53,6 +53,11 @@
                   <Insets left="35.0" top="27.0" />
                </padding>
             </VBox>
+            <Label fx:id="goBackButton" layoutX="56.0" layoutY="274.0" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children></Pane>
         <ImageView fitHeight="485.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
             <image>

@@ -1,10 +1,12 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -19,6 +21,7 @@ public class Pizza extends Application{
 
     public void start(Stage primaryStage){
         try{
+            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);

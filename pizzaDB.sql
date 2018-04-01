@@ -33,7 +33,7 @@ CREATE TABLE `customers` (
   `address` varchar(255) DEFAULT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`customerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Potenza','Joseph','josephpotenza@live.com','joepot95','917-957-8698','4029-4450-6695-5804','65 tarlee place','2018-03-30 00:57:27'),(2,'Potenza','Terri','tpotz@live.com','disney','917-402-5576','4029-4450-6695-5804','65 tarlee place','2018-03-30 01:03:52');
+INSERT INTO `customers` VALUES (1,'Potenza','Joseph','josephpotenza@live.com','joepot95','917-957-8698','4029-4450-6695-5804','65 tarlee place','2018-03-30 00:57:27'),(3,'Russo','Victor','russovictor96@gmail.com','temp1','347-988-5284','1111-1111-1111-1111','NULL','2018-03-30 02:42:19'),(4,'Galindo','Miguel','miguelgalindo1214@gmail.com','temp2','347-937-4065','2222-2222-2222-2222','NULL','2018-03-30 02:43:48'),(5,'Posada','Christian','christian10305@gmail.com','temp3','646-659-5092','3333-3333-3333-3333','NULL','2018-03-30 02:45:58');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-29 21:55:51
+-- Dump completed on 2018-03-30 12:05:57

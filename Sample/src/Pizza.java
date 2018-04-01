@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -19,9 +19,10 @@ public class Pizza extends Application{
 
     public void start(Stage primaryStage){
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("/GuiFX.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setTitle("The Best Project");
             primaryStage.show();
         }
         catch(Exception e){
@@ -29,7 +30,7 @@ public class Pizza extends Application{
         }
 
         primaryStage.setMaximized(true);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
     }
 
 
@@ -40,9 +41,9 @@ public class Pizza extends Application{
         // this is a working extraction method to pull info from customers table
         // your welcome -Joe :)
         try {
-            String host = "jdbc:mysql://localhost:3306/pizzaOrdering";
+            String host = "jdbc:mysql://18.221.69.113:3306/pizzaOrdering";
             String uName = "root";
-            String uPass = "joepot95";
+            String uPass = "csc430db";
             Connection con = DriverManager.getConnection(host, uName, uPass);
             Statement stmt = con.createStatement( );
             String SQL = "SELECT * FROM customers";
@@ -64,6 +65,6 @@ public class Pizza extends Application{
         }
 
 
-        }
     }
+}
 

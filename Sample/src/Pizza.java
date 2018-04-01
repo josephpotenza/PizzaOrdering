@@ -22,6 +22,7 @@ public class Pizza extends Application{
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setTitle("The Best Project");
             primaryStage.show();
         }
         catch(Exception e){

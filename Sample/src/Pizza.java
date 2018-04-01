@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 public class Pizza extends Application{
 
@@ -37,7 +38,20 @@ public class Pizza extends Application{
 
     public static void main(String[] args){
         launch(args);
-
+        /*Scanner read = new Scanner(System.in);
+        System.out.print("First Name:");
+        String fn;
+        fn = read.next();
+        System.out.print("Last Name:");
+        String ln;
+        ln = read.next();
+        System.out.print("Phone #");
+        String pn;
+        pn = read.next();
+        System.out.print("Email");
+        String em;
+        em = read.next();
+*/
         // this is a working extraction method to pull info from customers table
         // your welcome -Joe :)
         try {
@@ -46,6 +60,9 @@ public class Pizza extends Application{
             String uPass = "csc430db";
             Connection con = DriverManager.getConnection(host, uName, uPass);
             Statement stmt = con.createStatement( );
+            // this is a working insertion method to insert user input to db.
+          //  String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('"+ln+"','"+fn+"','"+pn+"','"+em+"')";
+            //stmt.executeUpdate(SQL);
             String SQL = "SELECT * FROM customers";
             ResultSet rs = stmt.executeQuery(SQL);
 

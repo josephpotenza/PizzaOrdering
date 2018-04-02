@@ -25,7 +25,7 @@ public class LoginPaneController {
 
     @FXML
     void submitLogin(ActionEvent event) {
-
+        //if login checks, go to ordering pane.
     }
 
 

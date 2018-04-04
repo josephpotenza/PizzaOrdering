@@ -24,7 +24,7 @@ public class Pizza extends Application{
         try{
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
             primaryStage.setScene(scene);
             primaryStage.setTitle("The Best Project");
             primaryStage.show();
@@ -33,8 +33,7 @@ public class Pizza extends Application{
             e.printStackTrace();
         }
 
-        primaryStage.setMaximized(true);
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
     }
 
 

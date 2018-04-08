@@ -46,19 +46,30 @@ public class Pizza {//extends Application{
             choice = reader.nextInt();
             if (choice == 1) {
                 Customer customer = new Customer();
-                customer.login();
+                if (customer.login()) {
+                    if (customer.getValidation().equals("true")) {
+                        System.out.println("Login Successful!");
+                        //then show menu
 
-            }else{
+                    }
+                } else {
+                    System.out.println("invalid login. Would you like to create an account? press 3");
+                    choice = reader.nextInt();
+                    if (choice == 3) {
+                        customer.createAccount();
+                    }
+                }
+
+
+            }
+            if (choice == 2){
                 Customer customer = new Customer();
                 customer.createAccount();
+                //show menu
             }
-
-
-        }while (choice != 3) ;
-
-
+        }while (choice != 4) ;
+        }
     }
-}
 
 
 

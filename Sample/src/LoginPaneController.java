@@ -14,6 +14,10 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class LoginPaneController {
 
     @FXML
@@ -37,38 +41,50 @@ public class LoginPaneController {
 
     @FXML
     void submitLogin(ActionEvent event) {
-        //if login successful go to orderingPane
-        //else update failedLoginLabel
-        failedLoginLabel.setText("No User Found.");
-    }
-
-
-    @FXML
-    void switchToSignUpScene(MouseEvent event) {
+        boolean valid = false;
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignUpPane.fxml"));
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, 1600, 900);
-            stage.setScene(scene);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+            String email = loginEmail.getText(); // capture user login and email
+            String pass = loginPassword.getText();
+            String SQL = "SELECT * FROM customers WHERE email = '" + email + "'" + "and password = '" + pass + "'";
+            ResultSet result = Database.getResult(SQL);
+            while (result.next()) {
+                valid = true; // if valid login store user first / last name
+                String firstName = result.getString("FirstName");
+                String lastName = result.getString("LastName");
+                System.out.println("Welcome:" + " " + firstName + " " + lastName);
+            } if (valid !=true) // if invalid login return error
+                System.out.println("No user found");
 
-
-    @FXML
-    void switchToGuestLogin(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignInAsGuest.fxml"));
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, 1600, 900);
-            stage.setScene(scene);
-        }
-        catch(Exception e){
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
 
-}
+            @FXML
+            void switchToSignUpScene (MouseEvent event){
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("SignUpPane.fxml"));
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    Scene scene = new Scene(root, 1600, 900);
+                    stage.setScene(scene);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            @FXML
+            void switchToGuestLogin (MouseEvent event){
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("SignInAsGuest.fxml"));
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    Scene scene = new Scene(root, 1600, 900);
+                    stage.setScene(scene);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+        }

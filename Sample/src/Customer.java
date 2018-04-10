@@ -24,47 +24,6 @@ public class Customer {
 
     }
 
-
-
-
-    public boolean login (){
-        boolean validLogin = false;
-        valid = "false";
-        try {
-            System.out.println("Enter First Name: ");
-            firstName = read.next();
-            System.out.println("Enter Password:");
-            pass = read.next();
-
-
-            String SQL =  "SELECT * FROM customers WHERE FirstName = '" + firstName + "'" + "and password = '" + pass + "'";
-            ResultSet result= Database.getResult(SQL);
-            while(result.next()){
-                validLogin = true;
-                valid = "true";
-                firstName = result.getString("FirstName");
-                lastName = result.getString("LastName");
-
-
-                System.out.println("customer name:" + firstName + lastName);
-
-
-
-
-            }
-
-
-        }catch (Exception ex) {
-            ex.printStackTrace();
-
-        }
-
-
-
-        return validLogin;
-    }
-
-
     public String getValid() {
         return valid;
     }

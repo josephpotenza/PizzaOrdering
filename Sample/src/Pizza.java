@@ -20,17 +20,17 @@ import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
-public class Pizza extends Application{
+public class Pizza extends Application {
     static Scanner reader;
-    public void start(Stage primaryStage){
-        try{
+
+    public void start(Stage primaryStage) {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
-            Scene scene = new Scene(root, 1600,900);
+            Scene scene = new Scene(root, 1600, 900);
             primaryStage.setScene(scene);
             primaryStage.setTitle("The Best Project");
             primaryStage.show();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -40,7 +40,7 @@ public class Pizza extends Application{
 
     public static void main(String[] args) {
         launch(args);
-        reader = new Scanner(System.in);
+        /*reader = new Scanner(System.in);
         int choice = 0;
         do {
             System.out.println("1. Customer 2. createAccount");
@@ -69,8 +69,9 @@ public class Pizza extends Application{
                 //show menu
             }
         }while (choice != 4) ;
-        }
+        }*/
     }
+}
 
 
 

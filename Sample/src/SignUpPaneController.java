@@ -65,7 +65,6 @@ public class SignUpPaneController extends Pizza {
 
     @FXML
     void backToLoginPane(MouseEvent event) {
-        startUI();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("LoginPane.fxml"));
             Stage stage = (Stage) emailInput.getScene().getWindow();

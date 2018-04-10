@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class SignInAsGuestController {
+public class SignInAsGuestController extends Pizza{
     @FXML
     private AnchorPane stage;
 

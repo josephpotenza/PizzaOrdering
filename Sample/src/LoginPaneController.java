@@ -14,7 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class LoginPaneController {
+public class LoginPaneController extends Pizza {
 
     @FXML
     private TextField loginEmail;
@@ -53,6 +53,9 @@ public class LoginPaneController {
             }
         }
         */
+
+
+       //welcomeSound.play();
     }
 
 

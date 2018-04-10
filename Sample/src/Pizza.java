@@ -18,9 +18,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Pizza {//extends Application{
+public class Pizza extends Application{
     static Scanner reader;
-    /*public void start(Stage primaryStage){
+    public void start(Stage primaryStage){
         try{
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
@@ -35,11 +35,12 @@ public class Pizza {//extends Application{
 
         primaryStage.setMaximized(true);
         primaryStage.setResizable(true);
-    }*/
+    }
 
 
     public static void main(String[] args) {
-        reader = new Scanner(System.in);
+        launch(args);
+        /*reader = new Scanner(System.in);
         int choice = 0;
         do {
             System.out.println("1. Customer 2. createAccount");
@@ -56,7 +57,7 @@ public class Pizza {//extends Application{
 
         }while (choice != 3) ;
 
-
+        */
     }
 }
 

@@ -12,6 +12,11 @@
 
 <AnchorPane fx:id="stage" prefHeight="811.0" prefWidth="1116.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPaneController">
     <children>
+        <ImageView fitHeight="717.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <image>
+                <Image url="@Images/cokeAd.jpg" />
+            </image>
+        </ImageView>
         <Pane layoutY="-6.0" prefHeight="329.0" prefWidth="462.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="488.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-6.0">
             <children>
                 <VBox layoutX="187.0" layoutY="-1.0" prefHeight="268.0" prefWidth="275.0" spacing="35.0">
@@ -64,11 +69,6 @@
             </Label>
             </children>
         </Pane>
-        <ImageView fitHeight="717.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-            <image>
-                <Image url="@Images/cokeAd.jpg" />
-            </image>
-        </ImageView>
         <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
         <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="3.0" startX="-100.0" stroke="WHITE" />
     </children>

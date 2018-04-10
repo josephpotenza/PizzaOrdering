@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -21,7 +22,18 @@ import java.util.Scanner;
 import static javafx.application.Application.launch;
 
 public class Pizza extends Application {
-    static Scanner reader;
+
+    public void switchUI(String fileName, Label locator){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fileName));
+            Stage stage = (Stage) locator.getScene().getWindow();
+            Scene scene = new Scene(root, 1600,900);
+            stage.setScene(scene);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void start(Stage primaryStage) {
         try {
@@ -30,10 +42,10 @@ public class Pizza extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("The Best Project");
             primaryStage.show();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
-
         primaryStage.setResizable(false);
     }
 

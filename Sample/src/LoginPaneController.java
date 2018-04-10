@@ -40,6 +40,19 @@ public class LoginPaneController {
         //if login successful go to orderingPane
         //else update failedLoginLabel
         failedLoginLabel.setText("No User Found.");
+       /*
+       if(successful){
+            try {   //switch to orderingPane
+                Parent root = FXMLLoader.load(getClass().getResource("OrderingPane.fxml"));
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                Scene scene = new Scene(root, 1600, 900);
+                stage.setScene(scene);
+            }
+            catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        */
     }
 
 

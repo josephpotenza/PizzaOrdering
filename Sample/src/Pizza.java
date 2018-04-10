@@ -22,7 +22,11 @@ import static javafx.application.Application.launch;
 
 public class Pizza extends Application{
     static Scanner reader;
+    protected void startUI(){
+        System.out.println("UI");
+    }
     public void start(Stage primaryStage){
+
         try{
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root, 1600,900);
@@ -35,6 +39,8 @@ public class Pizza extends Application{
         }
 
         primaryStage.setResizable(false);
+
+
     }
 
 

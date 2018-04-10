@@ -19,7 +19,7 @@
                         <TextField fx:id="firstNameInput" alignment="TOP_LEFT" />
                         <TextField fx:id="lastNameInput" />
                         <TextField fx:id="emailInput" />
-                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signUpNewCustomer" prefHeight="31.0" prefWidth="240.0" text="Sign In!" />
+                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInAsGuest" prefHeight="31.0" prefWidth="240.0" text="Sign In!" />
                     </children>
                     <padding>
                         <Insets right="35.0" top="57.0" />

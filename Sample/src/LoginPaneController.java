@@ -4,21 +4,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginPaneController {
+public class LoginPaneController extends Pizza {
 
     @FXML
     private TextField loginEmail;
@@ -49,11 +49,22 @@ public class LoginPaneController {
             ResultSet result = Database.getResult(SQL);
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
-                String firstName = result.getString("FirstName");
-                String lastName = result.getString("LastName");
-                System.out.println("Welcome:" + " " + firstName + " " + lastName);
-            } if (valid !=true) // if invalid login return error
-                System.out.println("No user found");
+            }
+            if (valid != true) { // if invalid login return error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Email or Password, Try Again.");
+
+                alert.showAndWait();
+            }
+            else{
+                switchUI("OrderingPane.fxml", signupButton);
+                String mediaFile = "Sample/src/Sounds/WelcomeSound.mp3";
+                Media media = new Media(new File(mediaFile).toURI().toString());
+                MediaPlayer welcomeSound = new MediaPlayer(media);
+                welcomeSound.setVolume(welcomeSound.getVolume()+ 50000);
+                welcomeSound.play();
+        }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -61,30 +72,16 @@ public class LoginPaneController {
     }
 
 
-            @FXML
-            void switchToSignUpScene (MouseEvent event){
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("SignUpPane.fxml"));
-                    Stage stage = (Stage) loginButton.getScene().getWindow();
-                    Scene scene = new Scene(root, 1600, 900);
-                    stage.setScene(scene);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+    @FXML
+    void switchToSignUpScene(MouseEvent event) {
+        switchUI("SignUpPane.fxml", signupButton);
+    }
 
 
-            @FXML
-            void switchToGuestLogin (MouseEvent event){
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("SignInAsGuest.fxml"));
-                    Stage stage = (Stage) loginButton.getScene().getWindow();
-                    Scene scene = new Scene(root, 1600, 900);
-                    stage.setScene(scene);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+    @FXML
+    void switchToGuestLogin(MouseEvent event) {
+        switchUI("SignInAsGuest.fxml", signupButton);
 
 
-        }
+    }
+}

@@ -49,13 +49,9 @@ public class SignInAsGuestController extends Pizza{
         else{
             try {
                 temp.statement.executeUpdate(SQL);
-                Parent root = FXMLLoader.load(getClass().getResource("OrderingPane.fxml"));
-                Stage stage = (Stage) emailInput.getScene().getWindow();
-                Scene scene = new Scene(root, 1600,900);
-                stage.setScene(scene);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+                switchUI("OrderingPane.fxml", goBackButton);
+            }
+            catch (SQLException e) {
                 e.printStackTrace();
             }
         }
@@ -63,15 +59,6 @@ public class SignInAsGuestController extends Pizza{
 
     @FXML
     void backToLoginPane(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("LoginPane.fxml"));
-            Stage stage = (Stage) emailInput.getScene().getWindow();
-            Scene scene = new Scene(root, 1600,900);
-            stage.setScene(scene);
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        switchUI("LoginPane.fxml", goBackButton);
     }
 }

@@ -59,10 +59,9 @@ public class LoginPaneController extends Pizza {
             }
             else{
                 switchUI("OrderingPane.fxml", signupButton);
-                String mediaFile = "Sample/src/Sounds/WelcomeSound.mp3";
+                String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());
                 MediaPlayer welcomeSound = new MediaPlayer(media);
-                welcomeSound.setVolume(welcomeSound.getVolume()+ 50000);
                 welcomeSound.play();
         }
 

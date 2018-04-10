@@ -56,9 +56,14 @@
                   <Insets left="25.0" top="27.0" />
                </padding>
             </VBox>
-            <Label fx:id="goBackButton" layoutX="56.0" layoutY="274.0" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
+            <Label fx:id="goBackButton" layoutX="29.0" layoutY="284.0" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
                <font>
                   <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="successLabel" layoutX="67.0" layoutY="254.0" textFill="#f8ff00">
+               <font>
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>

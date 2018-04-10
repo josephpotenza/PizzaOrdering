@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-public class SignUpPaneController {
+public class SignUpPaneController extends Pizza {
 
     @FXML
     private AnchorPane stage;
@@ -65,6 +65,7 @@ public class SignUpPaneController {
 
     @FXML
     void backToLoginPane(MouseEvent event) {
+        startUI();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("LoginPane.fxml"));
             Stage stage = (Stage) emailInput.getScene().getWindow();

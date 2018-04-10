@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class Pizza {//extends Application{
     static Scanner reader;
-    /*public void start(Stage primaryStage){
+    public void start(Stage primaryStage){
         try{
             Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
@@ -35,7 +35,7 @@ public class Pizza {//extends Application{
 
         primaryStage.setMaximized(true);
         primaryStage.setResizable(true);
-    }*/
+    }
 
 
     public static void main(String[] args) {

@@ -40,7 +40,7 @@ public class Pizza extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root, 1600, 900);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("The Best Project");
+            primaryStage.setTitle("Victor is gay");
             primaryStage.show();
         }
         catch (Exception e) {

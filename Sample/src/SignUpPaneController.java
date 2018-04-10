@@ -43,7 +43,7 @@ public class SignUpPaneController {
         Database temp = new Database();
         temp.connect();
 
-        String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')";
+        String SQL = "Insert INTO customers(LastName, FirstName, password, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')";
         try {
             temp.statement.executeUpdate(SQL);
         } catch (SQLException e) {

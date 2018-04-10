@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class SignUpPaneController {
 
     @FXML
@@ -38,6 +40,16 @@ public class SignUpPaneController {
 
     @FXML
     void signUpNewCustomer(ActionEvent event) {
+        Database temp = new Database();
+        temp.connect();
+
+        String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')";
+        try {
+            temp.statement.executeUpdate(SQL);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

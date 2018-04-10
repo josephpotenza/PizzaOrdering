@@ -11,7 +11,7 @@ public class Database {
     static boolean connected = false;
 
 
-    private static void connect() {
+    public static void connect() {
         try {
 
             String host = "jdbc:mysql://18.221.69.113:3306/pizzaOrdering";
@@ -22,7 +22,7 @@ public class Database {
             connected = true;
             // this is a working insertion method to insert user input to db.
             //String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('" + ln + "','" + fn + "','" + pn + "','" + em + "')";
-           // stmt.executeUpdate(SQL);
+            //stmt.executeUpdate(SQL);
            // String SQL = "SELECT * FROM customers";
              //ResultSet rs = statement.executeQuery(SQL);
 

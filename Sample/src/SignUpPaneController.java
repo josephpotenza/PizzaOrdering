@@ -41,11 +41,11 @@ public class SignUpPaneController extends Pizza {
     @FXML
     void signUpNewCustomer(ActionEvent event) {
         Database temp = new Database();
-        temp.connect();
+        temp.connect(); // instantiate db and connect
 
-        String SQL = "Insert INTO customers(LastName, FirstName, password, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')";
-        if(lastNameInput.getText().trim().isEmpty() || firstNameInput.getText().trim().isEmpty() || passwordInput.getText().trim().isEmpty() || emailInput.getText().trim().isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+        String SQL = "Insert INTO customers(LastName, FirstName, password, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')"; //insert info on signup into db
+        if(lastNameInput.getText().trim().isEmpty() || firstNameInput.getText().trim().isEmpty() || passwordInput.getText().trim().isEmpty() || emailInput.getText().trim().isEmpty()){ // check for blank fields in sign up
+            Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
             alert.setTitle("Error");
             alert.setContentText("Missing Required Fields.");
 

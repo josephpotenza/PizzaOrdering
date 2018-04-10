@@ -1,22 +1,29 @@
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
 public class Pizza extends Application {
-
-    //to do
-    //Media welcomeFile = new Media("C:\\Users\\Victor\\IdeaProjects\\PizzaOrdering\\Sample\\src\\Sounds\\WelcomeSound.mp3");
-    //public MediaPlayer welcomeSound = new MediaPlayer(welcomeFile);
+    static Scanner reader;
 
     public void start(Stage primaryStage) {
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
             Scene scene = new Scene(root, 1600, 900);
@@ -28,15 +35,14 @@ public class Pizza extends Application {
         }
 
         primaryStage.setResizable(false);
-
-
     }
 
 
     public static void main(String[] args) {
         launch(args);
+        /*reader = new Scanner(System.in);
         int choice = 0;
-        /*do {
+        do {
             System.out.println("1. Customer 2. createAccount");
             choice = reader.nextInt();
             if (choice == 1) {
@@ -63,8 +69,7 @@ public class Pizza extends Application {
                 //show menu
             }
         }while (choice != 4) ;
-        }
-        */
+        }*/
     }
 }
 

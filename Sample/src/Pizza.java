@@ -18,13 +18,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import static javafx.application.Application.launch;
+
 public class Pizza extends Application{
     static Scanner reader;
     public void start(Stage primaryStage){
         try{
-            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1600,900);
             primaryStage.setScene(scene);
             primaryStage.setTitle("The Best Project");
             primaryStage.show();
@@ -33,33 +34,43 @@ public class Pizza extends Application{
             e.printStackTrace();
         }
 
-        primaryStage.setMaximized(true);
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
     }
 
 
     public static void main(String[] args) {
         launch(args);
-        /*reader = new Scanner(System.in);
+        reader = new Scanner(System.in);
         int choice = 0;
         do {
             System.out.println("1. Customer 2. createAccount");
             choice = reader.nextInt();
             if (choice == 1) {
                 Customer customer = new Customer();
-                customer.login();
+                if (customer.login()) {
+                    if (customer.getValidation().equals("true")) {
+                        System.out.println("Login Successful!");
+                        //then show menu
 
-            }else{
+                    }
+                } else {
+                    System.out.println("invalid login. Would you like to create an account? press 3");
+                    choice = reader.nextInt();
+                    if (choice == 3) {
+                        customer.createAccount();
+                    }
+                }
+
+
+            }
+            if (choice == 2){
                 Customer customer = new Customer();
                 customer.createAccount();
+                //show menu
             }
-
-
-        }while (choice != 3) ;
-
-        */
+        }while (choice != 4) ;
+        }
     }
-}
 
 
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="stage" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignInAsGuest">
+    <children>
+        <Pane layoutY="-2.0" prefHeight="326.0" prefWidth="462.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="574.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <VBox layoutX="187.0" layoutY="-1.0" prefHeight="268.0" prefWidth="275.0" spacing="35.0">
+                    <children>
+                        <TextField fx:id="firstNameInput" alignment="TOP_LEFT" />
+                        <TextField fx:id="lastNameInput" />
+                        <TextField fx:id="emailInput" />
+                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signUpNewCustomer" prefHeight="31.0" prefWidth="240.0" text="Sign In!" />
+                    </children>
+                    <padding>
+                        <Insets right="35.0" top="57.0" />
+                    </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                </VBox>
+                <VBox prefHeight="258.0" prefWidth="183.0" spacing="26.0">
+                    <children>
+                        <Label text="First Name:" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Last Name:" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <Label text="Email:" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                      <Label fx:id="goBackButton" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
+                          <font>
+                              <Font size="20.0" />
+                          </font>
+                      </Label>
+                    </children>
+                    <padding>
+                        <Insets left="35.0" top="47.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </Pane>
+        <ImageView fitHeight="582.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="323.0">
+            <image>
+                <Image url="@Images/cokeAd.jpg" />
+            </image>
+        </ImageView>
+        <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
+        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="WHITE" />
+    </children>
+</AnchorPane>

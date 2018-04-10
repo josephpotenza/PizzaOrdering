@@ -45,11 +45,10 @@ public class LoginPaneController {
 
     @FXML
     void switchToSignUpScene(MouseEvent event) {
-        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("SignUpPane.fxml"));
             Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, screenSize.getWidth(), screenSize.getHeight());
+            Scene scene = new Scene(root, 1600, 900);
             stage.setScene(scene);
         }
         catch(Exception e){
@@ -60,7 +59,15 @@ public class LoginPaneController {
 
     @FXML
     void switchToGuestLogin(MouseEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("SignInAsGuest.fxml"));
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            Scene scene = new Scene(root, 1600, 900);
+            stage.setScene(scene);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 

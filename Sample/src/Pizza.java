@@ -18,13 +18,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Pizza {//extends Application{
+import static javafx.application.Application.launch;
+
+public class Pizza extends Application{
     static Scanner reader;
     public void start(Stage primaryStage){
         try{
-            Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
             Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1600,900);
             primaryStage.setScene(scene);
             primaryStage.setTitle("The Best Project");
             primaryStage.show();
@@ -33,12 +34,12 @@ public class Pizza {//extends Application{
             e.printStackTrace();
         }
 
-        primaryStage.setMaximized(true);
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
     }
 
 
     public static void main(String[] args) {
+        launch(args);
         reader = new Scanner(System.in);
         int choice = 0;
         do {

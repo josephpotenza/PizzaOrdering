@@ -87,6 +87,19 @@ public class Customer {
         }
 
     }
+    public boolean validPass(String pass){
+        while(pass.length() <= 6){
+            return false;
+        }
+        return true;
+    }
+    public boolean validName(String name){
+
+        while (name.matches(".*\\d+.*")){
+            return false;
+        }
+        return true;
+    }
     public void validCreditCard(String cc){
 
         int[] ints = new int[cc.length()];

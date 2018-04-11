@@ -73,7 +73,7 @@ public class LoginPaneController extends Pizza {
 
     @FXML
     void switchToSignUpScene(MouseEvent event) {
-        switchUI("SignUpPane.fxml", signupButton);
+        switchUI("SignUpPane.fxml", failedLoginLabel);
     }
 
 

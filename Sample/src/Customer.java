@@ -68,14 +68,13 @@ public class Customer {
 
     }
 
-    public void validEmail( String email){
+    public boolean validEmail( String email){
 
         //checks to see if email has @, .com , and no spaces in the email.
         while (!email.contains("@") || !email.contains(".com") || email.contains(" ")) {
-            System.out.print("not valid email. Retype email:");
-            email = read.next();
+            return false;
         }
-
+        return true;
 
     }
 

@@ -54,6 +54,11 @@ public class LoginPaneController extends Pizza {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setContentText("Invalid Email or Password, Try Again.");
+                String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+                Media media = new Media(new File(mediaFile).toURI().toString());
+                MediaPlayer errorSound = new MediaPlayer(media);
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
 
                 alert.showAndWait();
             }
@@ -68,6 +73,7 @@ public class LoginPaneController extends Pizza {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
 

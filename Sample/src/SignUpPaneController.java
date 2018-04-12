@@ -53,7 +53,7 @@ public class SignUpPaneController extends Pizza {
             alert.showAndWait();
         }
         else{
-            if(customer.validEmail(emailInput.getText())) {//add other tests example password more than 6 char etc. use OR || statement
+            if(customer.validEmail(emailInput.getText()) && customer.validName(firstNameInput.getText()) && customer.validName(lastNameInput.getText()) && customer.validPass(passwordInput.getText())) {//add other tests example password more than 6 char etc. use OR || statement
                 try {
                     temp.statement.executeUpdate(SQL);
                     successLabel.setText("Success!");
@@ -62,8 +62,14 @@ public class SignUpPaneController extends Pizza {
                     e.printStackTrace();
                 }
             }
-            else
-                System.out.println("False");
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
+
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Field.");
+
+                alert.showAndWait();
+            }
         }
 
     }

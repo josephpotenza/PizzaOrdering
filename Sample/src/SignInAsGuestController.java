@@ -47,12 +47,20 @@ public class SignInAsGuestController extends Pizza{
             alert.showAndWait();
         }
         else{
-            try {
-                temp.statement.executeUpdate(SQL);
-                switchUI("OrderingPane.fxml", goBackButton);
-            }
-            catch (SQLException e) {
-                e.printStackTrace();
+            if(customer.validName(firstNameInput.getText()) && customer.validName(lastNameInput.getText()) && customer.validName(firstNameInput.getText()) && customer.validEmail(emailInput.getText())) {
+                try {
+                    temp.statement.executeUpdate(SQL);
+                    switchUI("OrderingPane.fxml", goBackButton);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
+
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Field.");
+
+                alert.showAndWait();
             }
         }
     }

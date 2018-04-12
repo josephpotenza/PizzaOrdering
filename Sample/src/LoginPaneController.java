@@ -1,17 +1,12 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
 
 import java.io.File;
@@ -38,6 +33,16 @@ public class LoginPaneController extends Pizza {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private ChoiceBox choiceBox;
+
+    ObservableList<String> numberList = FXCollections.observableArrayList("1","2" ,"3","4", "5");
+
+    @FXML
+    private void initialize(){
+        choiceBox.setItems(numberList);
+        choiceBox.setValue("1");
+    }
 
     @FXML
     void submitLogin(ActionEvent event) {

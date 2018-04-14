@@ -88,7 +88,7 @@ public class Customer {
 
     }
     public boolean validPass(String pass){
-        while(pass.length() <= 6){
+        while(pass.length() < 6){
             return false;
         }
         return true;

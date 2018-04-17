@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class OrderingPaneController {
@@ -37,7 +38,7 @@ public class OrderingPaneController {
     private AnchorPane sandwichesPane;
 
     @FXML
-    void switchToPizzaPane(ActionEvent event) {
+    void switchToPizzaPane(MouseEvent event) {
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
@@ -45,7 +46,7 @@ public class OrderingPaneController {
     }
 
     @FXML
-    void switchToSandwichesPane(ActionEvent event) {
+    void switchToSandwichesPane(MouseEvent event) {
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         pizzaPane.setVisible(false);
@@ -53,7 +54,7 @@ public class OrderingPaneController {
     }
 
     @FXML
-    void switchToAppetizersPane(ActionEvent event) {
+    void switchToAppetizersPane(MouseEvent event) {
         drinksPane.setVisible(false);
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
@@ -61,7 +62,7 @@ public class OrderingPaneController {
     }
 
     @FXML
-    void switchToDrinksPane(ActionEvent event) {
+    void switchToDrinksPane(MouseEvent event) {
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);

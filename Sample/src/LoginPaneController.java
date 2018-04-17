@@ -1,8 +1,11 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -31,6 +34,22 @@ public class LoginPaneController extends Pizza {
     private Button loginButton;
 
 
+
+    @FXML
+    private void initialize(){
+        loginPassword.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    submitLogin();
+                }
+            }
+        });
+    }
+
     /*                     working example of choiceBox
     @FXML
     private ChoiceBox choiceBox;
@@ -47,7 +66,7 @@ public class LoginPaneController extends Pizza {
     */
 
     @FXML
-    void submitLogin(ActionEvent event) {
+    void submitLogin() {
         boolean valid = false;
         try {
             String email = loginEmail.getText(); // capture user login and email

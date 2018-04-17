@@ -7,9 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.sql.SQLException;
 
 public class SignUpPaneController extends Pizza {
@@ -49,6 +52,11 @@ public class SignUpPaneController extends Pizza {
             Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
             alert.setTitle("Error");
             alert.setContentText("Missing Required Fields.");
+            String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+            Media media = new Media(new File(mediaFile).toURI().toString());
+            MediaPlayer errorSound = new MediaPlayer(media);
+            errorSound.setVolume(errorSound.getVolume()+ 50000);
+            errorSound.play();
 
             alert.showAndWait();
         }
@@ -66,7 +74,12 @@ public class SignUpPaneController extends Pizza {
                 Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
 
                 alert.setTitle("Error");
-                alert.setContentText("Invalid Field.");
+                alert.setContentText("Invalid Field.");String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+                Media media = new Media(new File(mediaFile).toURI().toString());
+                MediaPlayer errorSound = new MediaPlayer(media);
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
+
 
                 alert.showAndWait();
             }

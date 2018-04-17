@@ -28,13 +28,13 @@ public class LoginPaneController extends Pizza {
     private Label failedLoginLabel;
 
     @FXML
-    private AnchorPane stage;
-
-    @FXML
     private Button loginButton;
 
+
+    /*                     working example of choiceBox
     @FXML
     private ChoiceBox choiceBox;
+
 
     ObservableList<String> numberList = FXCollections.observableArrayList("1","2" ,"3","4", "5");
 
@@ -42,7 +42,9 @@ public class LoginPaneController extends Pizza {
     private void initialize(){
         choiceBox.setItems(numberList);
         choiceBox.setValue("1");
+        label.setText(choiceBox.getValue().toString());
     }
+    */
 
     @FXML
     void submitLogin(ActionEvent event) {
@@ -94,4 +96,6 @@ public class LoginPaneController extends Pizza {
 
 
     }
+
+
 }

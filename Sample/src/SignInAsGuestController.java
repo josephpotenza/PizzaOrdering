@@ -59,6 +59,8 @@ public class SignInAsGuestController extends Pizza{
 
                 alert.setTitle("Error");
                 alert.setContentText("Invalid Field.");
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
 
                 alert.showAndWait();
             }

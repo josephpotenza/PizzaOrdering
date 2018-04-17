@@ -75,8 +75,6 @@ public class SignUpPaneController extends Pizza {
 
                 alert.setTitle("Error");
                 alert.setContentText("Invalid Field.");String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
-                Media media = new Media(new File(mediaFile).toURI().toString());
-                MediaPlayer errorSound = new MediaPlayer(media);
                 errorSound.setVolume(errorSound.getVolume()+ 50000);
                 errorSound.play();
 

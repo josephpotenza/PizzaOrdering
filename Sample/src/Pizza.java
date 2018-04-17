@@ -8,8 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -37,6 +41,9 @@ public class Pizza extends Application {
 
 
     Customer customer = new Customer();
+    String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+    Media media = new Media(new File(mediaFile).toURI().toString());
+    MediaPlayer errorSound = new MediaPlayer(media);
 
     public void start(Stage primaryStage) {
         try {

@@ -39,7 +39,7 @@ public class Pizza extends Application {
         }
     }
 
-
+    Cart test = new Cart();
     Customer customer = new Customer();
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());

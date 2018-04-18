@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderingPaneController">
    <children>
       <AnchorPane layoutY="6.0" prefHeight="427.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -40,7 +39,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Line endX="100.0" layoutX="308.0" layoutY="248.0" rotate="90.0" scaleX="5.0" scaleY="5.0" startX="-100.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="450.0" />
+      <Line endX="100.0" layoutX="308.0" layoutY="248.0" rotate="90.0" scaleX="4.5" scaleY="5.0" startX="-100.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="450.0" />
       <CheckBox fx:id="pickupCheckBox" layoutX="24.0" layoutY="459.0" mnemonicParsing="false" onAction="#pickupSelected" text="Pickup">
          <font>
             <Font size="24.0" />
@@ -51,7 +50,7 @@
             <Font size="24.0" />
          </font>
       </CheckBox>
-      <Line endX="100.0" layoutX="800.0" layoutY="301.0" rotate="90.0" scaleX="5.0" scaleY="5.0" startX="-100.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="450.0" />
+      <Line endX="100.0" layoutX="800.0" layoutY="301.0" pickOnBounds="true" rotate="90.0" scaleX="4.5" scaleY="5.0" startX="-100.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="450.0" />
       <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sandwichesPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="appetizersPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />

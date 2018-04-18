@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class OrderingPaneController {
+public class OrderingPaneController extends Pizza{
 
     @FXML
     private Label pizzaCategory;
@@ -46,9 +46,28 @@ public class OrderingPaneController {
     private Button cheesePizzaButton;
 
     @FXML
+    private Button addToCartButton;
+
+    @FXML
+    private VBox quantityVBox;
+
+    @FXML
+    private VBox orderVBox;
+
+    @FXML
+    private VBox priceVBox;
+
+    @FXML
     private void initialize(){
+
         toppingsPane.setVisible(false);
+        drinksPane.setVisible(false);
+        appetizersPane.setVisible(false);
+        sandwichesPane.setVisible(false);
+        pizzaPane.setVisible(true);
         switchToPizzaPane();
+        cart.getMenu();
+
     }
 
     @FXML
@@ -107,8 +126,25 @@ public class OrderingPaneController {
     @FXML
     void orderCheesePizza(){
         switchToToppingsPane();
-
+        Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
+        cart.orders.add(order);
     }
 
+    @FXML
+    void addToCart(){
+
+        Order order = new Order();
+
+
+        //Working Test
+       /*
+        Label order1 = new Label();
+        order1.setText(cart.menu[0].getOrderName());
+        Label order1Price = new Label();
+        order1Price.setText(Double.toString(cart.menu[0].getOrderPrice()));
+        orderVBox.getChildren().add(order1);
+        priceVBox.getChildren().add(order1Price);
+        */
+    }
 
 }

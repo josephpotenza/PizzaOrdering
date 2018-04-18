@@ -51,7 +51,7 @@
          </font>
       </CheckBox>
       <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="cheesePizzaButton" layoutX="83.0" layoutY="160.0" mnemonicParsing="false" onAction="#orderCheesePizza" text="Cheese Pizza" />
          </children>
@@ -86,12 +86,12 @@
                   <Insets top="50.0" />
                </padding>
             </VBox>
-            <VBox layoutX="81.0" layoutY="127.0" prefHeight="580.0" prefWidth="179.0" spacing="35.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="70.0">
+            <VBox fx:id="orderVBox" layoutX="81.0" layoutY="127.0" prefHeight="580.0" prefWidth="179.0" spacing="35.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="70.0">
                <padding>
                   <Insets top="50.0" />
                </padding>
             </VBox>
-            <VBox layoutX="260.0" layoutY="127.0" prefHeight="580.0" prefWidth="64.0" spacing="35.0" AnchorPane.rightAnchor="0.0">
+            <VBox fx:id="priceVBox" layoutX="260.0" layoutY="127.0" prefHeight="580.0" prefWidth="64.0" spacing="35.0" AnchorPane.rightAnchor="0.0">
                <padding>
                   <Insets top="50.0" />
                </padding>
@@ -100,6 +100,6 @@
       </AnchorPane>
       <Line endX="100.0" layoutX="308.0" layoutY="248.0" rotate="90.0" scaleX="5.0" scaleY="5.0" startX="-100.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="450.0" />
       <Line endX="100.0" layoutX="800.0" layoutY="301.0" rotate="90.0" scaleX="5.0" scaleY="5.0" startX="-100.0" AnchorPane.rightAnchor="230.0" AnchorPane.topAnchor="450.0" />
-      <Button layoutX="861.0" layoutY="482.0" mnemonicParsing="false" text="Add To Cart" />
+      <Button fx:id="addToCartButton" layoutX="861.0" layoutY="482.0" mnemonicParsing="false" onAction="#addToCart" text="Add To Cart" />
    </children>
 </AnchorPane>

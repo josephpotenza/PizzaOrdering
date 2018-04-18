@@ -6,6 +6,12 @@ public class Order {
     public Order() {
     }
 
+    public Order(int _quantity, String _orderName, double _orderPrice){
+        quantity = _quantity;
+        orderName = _orderName;
+        orderPrice = _orderPrice;
+    }
+
     public int getQuantity() {
         return quantity;
     }

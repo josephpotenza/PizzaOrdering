@@ -5,12 +5,12 @@ import java.sql.SQLException;
 public class Cart extends Order {
    public int numOrders;
     public ArrayList<Order> orders = new ArrayList<Order>();
-    public String menu[] = new String[30];
+    public Order menu[] = new Order[30];
 
 
     public Cart() {
         for(int i = 0; i < 30; i++)
-                menu[i] = new String();
+                menu[i] = new Order();
 
 
     }
@@ -20,7 +20,8 @@ public class Cart extends Order {
             ResultSet result = Database.getResult(SQL);
             int temp = 0;
             while (result.next()) {
-                menu[temp] = result.getString("itemName");
+                menu[temp].setOrderName(result.getString("itemName"));
+                menu[temp].setOrderPrice(result.getDouble("price"));
                 temp++;
             }
         }
@@ -28,6 +29,11 @@ public class Cart extends Order {
             System.out.println(err.getMessage());
 
         }
+       }
+
+
+       public void addToCart(Order order){
+            orders.add(order);
        }
 
     }

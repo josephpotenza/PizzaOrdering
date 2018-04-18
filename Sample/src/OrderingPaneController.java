@@ -1,9 +1,11 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class OrderingPaneController {
 
@@ -38,7 +40,19 @@ public class OrderingPaneController {
     private AnchorPane sandwichesPane;
 
     @FXML
-    void switchToPizzaPane(MouseEvent event) {
+    private AnchorPane toppingsPane;
+
+    @FXML
+    private Button cheesePizzaButton;
+
+    @FXML
+    private void initialize(){
+        toppingsPane.setVisible(false);
+        switchToPizzaPane();
+    }
+
+    @FXML
+    void switchToPizzaPane() {
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
@@ -70,6 +84,15 @@ public class OrderingPaneController {
     }
 
     @FXML
+    void switchToToppingsPane(){
+        pizzaPane.setVisible(false);
+        sandwichesPane.setVisible(false);
+        appetizersPane.setVisible(false);
+        drinksPane.setVisible(false);
+        toppingsPane.setVisible(true);
+    }
+
+    @FXML
     void pickupSelected(ActionEvent event) {
         if(deliveryCheckBox.isSelected())
             deliveryCheckBox.setSelected(false);
@@ -80,5 +103,12 @@ public class OrderingPaneController {
         if(pickupCheckBox.isSelected())
             pickupCheckBox.setSelected(false);
     }
+
+    @FXML
+    void orderCheesePizza(){
+        switchToToppingsPane();
+
+    }
+
 
 }

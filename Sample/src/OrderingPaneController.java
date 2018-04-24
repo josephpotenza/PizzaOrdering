@@ -1,8 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -58,6 +56,19 @@ public class OrderingPaneController extends Pizza{
     private VBox priceVBox;
 
     @FXML
+    private TableView<Order> shoppingCart;
+
+    @FXML
+    private TableColumn<Order, String> nameColumn;
+
+    @FXML
+    private TableColumn<Order, Integer> quantColumn;
+
+    @FXML
+    private TableColumn<Order, Double> priceColumn;
+
+
+    @FXML
     private void initialize(){
 
         toppingsPane.setVisible(false);
@@ -67,6 +78,7 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(true);
         switchToPizzaPane();
         cart.getMenu();
+        nameColumn.
 
     }
 
@@ -133,7 +145,8 @@ public class OrderingPaneController extends Pizza{
     @FXML
     void addToCart(){
 
-        Order order = new Order();
+        Order order = new Order(4, "Pizza", 12.00);
+        cart.addToCart(order);
 
 
         //Working Test

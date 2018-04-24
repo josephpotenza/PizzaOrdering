@@ -35,7 +35,9 @@ public class Cart extends Order {
        public void addToCart(Order order){
             orders.add(order);
        }
-
+        public Order getOrder(){
+            return orders.get(0);
+        }
     }
 
 

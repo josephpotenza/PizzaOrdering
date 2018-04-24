@@ -66,27 +66,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="7.0" layoutY="100.0" text="Quantity" textFill="WHITE" underline="true" AnchorPane.rightAnchor="249.0">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font></Label>
-            <Line endX="100.0" layoutX="101.0" layoutY="89.0" scaleX="2.0" scaleY="3.0" startX="-100.0" stroke="WHITE" AnchorPane.rightAnchor="30.0" />
-            <Label layoutX="141.0" layoutY="100.0" text="Order" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="263.0" layoutY="100.0" text="Price" textFill="WHITE" underline="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
             <VBox fx:id="quantityVBox" layoutY="127.0" prefHeight="580.0" prefWidth="85.0" spacing="35.0" AnchorPane.leftAnchor="0.0">
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="orderVBox" layoutX="81.0" layoutY="127.0" prefHeight="580.0" prefWidth="179.0" spacing="35.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="70.0">
                <padding>
                   <Insets top="50.0" />
                </padding>
@@ -96,6 +76,13 @@
                   <Insets top="50.0" />
                </padding>
             </VBox>
+            <TableView fx:id="shoppingCart" layoutY="67.0" prefHeight="833.0" prefWidth="334.0">
+              <columns>
+                <TableColumn prefWidth="92.0" text="Item Name" />
+                <TableColumn prefWidth="109.0" text="Quantity" />
+                  <TableColumn prefWidth="101.0" text="Price" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
       <Line endX="100.0" layoutX="308.0" layoutY="248.0" rotate="90.0" scaleX="5.0" scaleY="5.0" startX="-100.0" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="450.0" />

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -50,13 +51,47 @@
             <Font size="24.0" />
          </font>
       </CheckBox>
-      <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="addToCartButton" layoutX="646.0" layoutY="589.0" mnemonicParsing="false" onAction="#addToCart" text="Add To Cart" />
          </children></AnchorPane>
-      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="cheesePizzaButton" layoutX="83.0" layoutY="160.0" mnemonicParsing="false" onAction="#orderCheesePizza" text="Cheese Pizza" />
+            <Button fx:id="cheesePizzaButton" layoutX="107.0" layoutY="285.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="33.0" layoutY="39.0" pickOnBounds="true" AnchorPane.leftAnchor="33.0" />
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="328.0" layoutY="39.0" pickOnBounds="true" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" />
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="632.0" layoutY="39.0" pickOnBounds="true" AnchorPane.rightAnchor="33.0" />
+            <Button layoutX="404.0" layoutY="285.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="701.0" layoutY="285.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="33.0" layoutY="435.0" pickOnBounds="true" AnchorPane.leftAnchor="33.0" />
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="330.0" layoutY="435.0" pickOnBounds="true" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="330.0" />
+            <ImageView fitHeight="230.0" fitWidth="282.0" layoutX="627.0" layoutY="435.0" pickOnBounds="true" AnchorPane.rightAnchor="33.0" />
+            <Button layoutX="701.0" layoutY="683.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="404.0" layoutY="683.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="107.0" layoutY="683.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="35.0" prefWidth="134.0" text="Cheese Pizza">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="sandwichesPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />

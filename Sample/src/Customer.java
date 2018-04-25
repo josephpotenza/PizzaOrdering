@@ -24,6 +24,54 @@ public class Customer {
 
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
+    }
+
     public String getValid() {
         return valid;
     }
@@ -31,7 +79,6 @@ public class Customer {
     public void setValid(String valid) {
         this.valid = valid;
     }
-
 
 
     public void createAccount(){
@@ -56,10 +103,6 @@ public class Customer {
         System.out.print("Enter credit card number");
         creditCard = read.next();
         validCreditCard(creditCard);
-
-
-
-
 
 
      //String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('"+firstName+"','"+lastName+"','"+phone+"','"+email+"')";
@@ -87,12 +130,14 @@ public class Customer {
         }
 
     }
+
     public boolean validPass(String pass){
         while(pass.length() < 6){
             return false;
         }
         return true;
     }
+
     public boolean validName(String name){
 
         while (name.matches(".*\\d+.*")){
@@ -100,6 +145,7 @@ public class Customer {
         }
         return true;
     }
+
     public void validCreditCard(String cc){
 
         int[] ints = new int[cc.length()];
@@ -136,15 +182,8 @@ public class Customer {
     }
 
 
-
-
-    public String getValidation(){
-
-
-        return valid;
+    public void getCustomerInfo(String firstName_){
+        //access database and save all information that exist for customer with name firstName_
     }
-
-
-
 
 }

@@ -200,9 +200,6 @@ public class OrderingPaneController extends Pizza{
     @FXML
     void addToCart(){
 
-        Order order = new Order(4, "Pizza", 12.00);
-        cart.addToCart(order);
-
         shoppingCart.setItems(getOrders());
 
 

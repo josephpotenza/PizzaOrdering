@@ -101,7 +101,7 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     private void initialize(){
-        // initialize visible panels 
+        // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);

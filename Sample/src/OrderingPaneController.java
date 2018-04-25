@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -78,7 +79,18 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(true);
         switchToPizzaPane();
         cart.getMenu();
-        nameColumn.
+
+        Order order = new Order(2, "Pizza", 12.00);
+        cart.addToCart(order);
+
+        quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
+
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("orderPrice"));
+
+        shoppingCart.setItems(getOrders());
+
 
     }
 
@@ -147,6 +159,8 @@ public class OrderingPaneController extends Pizza{
 
         Order order = new Order(4, "Pizza", 12.00);
         cart.addToCart(order);
+
+        shoppingCart.setItems(getOrders());
 
 
         //Working Test

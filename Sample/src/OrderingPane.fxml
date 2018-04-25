@@ -64,26 +64,16 @@
       <AnchorPane fx:id="drinksPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutX="1272.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="44.0" layoutY="25.0" text="Shopping Cart" textFill="WHITE" underline="true">
+            <Label layoutX="46.0" layoutY="14.0" text="Shopping Cart" textFill="WHITE" underline="true">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <VBox fx:id="quantityVBox" layoutY="127.0" prefHeight="580.0" prefWidth="85.0" spacing="35.0" AnchorPane.leftAnchor="0.0">
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
-            </VBox>
-            <VBox fx:id="priceVBox" layoutX="260.0" layoutY="127.0" prefHeight="580.0" prefWidth="64.0" spacing="35.0" AnchorPane.rightAnchor="0.0">
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
-            </VBox>
-            <TableView fx:id="shoppingCart" layoutY="67.0" prefHeight="833.0" prefWidth="334.0">
+            <TableView fx:id="shoppingCart" layoutY="87.0" prefHeight="813.0" prefWidth="334.0">
               <columns>
-                <TableColumn prefWidth="92.0" text="Item Name" />
-                <TableColumn prefWidth="109.0" text="Quantity" />
-                  <TableColumn prefWidth="101.0" text="Price" />
+                <TableColumn fx:id="quantColumn" prefWidth="91.0" text="Quantity" />
+                <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Item Name" />
+                  <TableColumn fx:id="priceColumn" prefWidth="64.0" text="Price" />
               </columns>
             </TableView>
          </children>

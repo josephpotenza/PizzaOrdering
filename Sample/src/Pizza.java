@@ -1,5 +1,7 @@
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -37,6 +39,15 @@ public class Pizza extends Application {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    public ObservableList<Order> getOrders(){
+        ObservableList<Order> orders = FXCollections.observableArrayList();
+        for(int i = 0; i < cart.numOrders; i++){
+            orders.add(cart.getOrder(i));
+        }
+        return orders;
     }
 
     Cart cart = new Cart();

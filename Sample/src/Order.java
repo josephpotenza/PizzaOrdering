@@ -1,5 +1,5 @@
 public class Order {
-    int quantity;
+    Integer quantity;
     String orderName;
     double orderPrice;
 
@@ -12,11 +12,11 @@ public class Order {
         orderPrice = _orderPrice;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

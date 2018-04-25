@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 public class Cart extends Order {
    public int numOrders;
-    public ArrayList<Order> orders = new ArrayList<Order>();
+    public ArrayList<Order> orders = new ArrayList<>();
     public Order menu[] = new Order[30];
 
 
@@ -34,9 +34,10 @@ public class Cart extends Order {
 
        public void addToCart(Order order){
             orders.add(order);
+            numOrders++;
        }
-        public Order getOrder(){
-            return orders.get(0);
+        public Order getOrder(int index){
+            return orders.get(index);
         }
     }
 

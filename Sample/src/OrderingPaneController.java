@@ -80,9 +80,6 @@ public class OrderingPaneController extends Pizza{
         switchToPizzaPane();
         cart.getMenu();
 
-        Order order = new Order(2, "Pizza", 12.00);
-        cart.addToCart(order);
-
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
@@ -156,9 +153,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void addToCart(){
-
-        Order order = new Order(4, "Pizza", 12.00);
-        cart.addToCart(order);
 
         shoppingCart.setItems(getOrders());
 

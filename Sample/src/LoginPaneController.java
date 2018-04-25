@@ -85,12 +85,13 @@ public class LoginPaneController extends Pizza {
 
                 alert.showAndWait();
             }
-            else{
+            else{   //if login worked
                 switchUI("OrderingPane.fxml", signupButton);
                 String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());
                 MediaPlayer welcomeSound = new MediaPlayer(media);
                 welcomeSound.play();
+
         }
 
         } catch (SQLException e) {

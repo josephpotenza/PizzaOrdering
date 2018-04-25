@@ -1,14 +1,21 @@
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -20,27 +27,53 @@ import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
-public class Pizza extends Application{
-    static Scanner reader;
-    public void start(Stage primaryStage){
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
+public class Pizza extends Application {
+
+    public void switchUI(String fileName, Label locator){
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fileName));
+            Stage stage = (Stage) locator.getScene().getWindow();
             Scene scene = new Scene(root, 1600,900);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("The Best Project");
-            primaryStage.show();
+            stage.setScene(scene);
         }
         catch(Exception e){
             e.printStackTrace();
         }
+    }
 
+
+    public ObservableList<Order> getOrders(){
+        ObservableList<Order> orders = FXCollections.observableArrayList();
+        for(int i = 0; i < cart.numOrders; i++){
+            orders.add(cart.getOrder(i));
+        }
+        return orders;
+    }
+
+    Cart cart = new Cart();
+    Customer customer = new Customer();
+    String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+    Media media = new Media(new File(mediaFile).toURI().toString());
+    MediaPlayer errorSound = new MediaPlayer(media);
+
+    public void start(Stage primaryStage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/LoginPane.fxml"));
+            Scene scene = new Scene(root, 1600, 900);
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Pizza Ordering");
+            primaryStage.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         primaryStage.setResizable(false);
     }
 
 
     public static void main(String[] args) {
         launch(args);
-        reader = new Scanner(System.in);
+        /*reader = new Scanner(System.in);
         int choice = 0;
         do {
             System.out.println("1. Customer 2. createAccount");
@@ -69,8 +102,9 @@ public class Pizza extends Application{
                 //show menu
             }
         }while (choice != 4) ;
-        }
+        }*/
     }
+}
 
 
 

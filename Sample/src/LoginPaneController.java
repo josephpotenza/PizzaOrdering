@@ -1,20 +1,23 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-public class LoginPaneController {
+
+import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class LoginPaneController extends Pizza {
 
     @FXML
     private TextField loginEmail;
@@ -29,45 +32,86 @@ public class LoginPaneController {
     private Label failedLoginLabel;
 
     @FXML
-    private AnchorPane stage;
-
-    @FXML
     private Button loginButton;
 
 
     @FXML
-    void submitLogin(ActionEvent event) {
-        //if login successful go to orderingPane
-        //else update failedLoginLabel
-        failedLoginLabel.setText("No User Found.");
+    private void initialize(){
+        loginPassword.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    submitLogin();
+                }
+            }
+        });
+    }
+
+    /*                     working example of choiceBox
+    @FXML
+    private ChoiceBox choiceBox;
+
+
+    ObservableList<String> numberList = FXCollections.observableArrayList("1","2" ,"3","4", "5");
+
+    @FXML
+    private void initialize(){
+        choiceBox.setItems(numberList);
+        choiceBox.setValue("1");
+        label.setText(choiceBox.getValue().toString());
+    }
+    */
+
+    @FXML
+    void submitLogin() {
+        boolean valid = false;
+        try {
+            String email = loginEmail.getText(); // capture user login and email
+            String pass = loginPassword.getText();
+            String SQL = "SELECT * FROM customers WHERE email = '" + email + "'" + "and password = '" + pass + "'";
+            ResultSet result = Database.getResult(SQL);
+            while (result.next()) {
+                valid = true; // if valid login store user first / last name
+            }
+            if (valid != true) { // if invalid login return error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Email or Password, Try Again.");
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
+
+                alert.showAndWait();
+            }
+            else{   //if login worked
+                switchUI("OrderingPane.fxml", signupButton);
+                String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
+                Media media = new Media(new File(mediaFile).toURI().toString());
+                MediaPlayer welcomeSound = new MediaPlayer(media);
+                welcomeSound.play();
+
+        }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
 
     @FXML
     void switchToSignUpScene(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignUpPane.fxml"));
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, 1600, 900);
-            stage.setScene(scene);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        switchUI("SignUpPane.fxml", failedLoginLabel);
     }
 
 
     @FXML
     void switchToGuestLogin(MouseEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("SignInAsGuest.fxml"));
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            Scene scene = new Scene(root, 1600, 900);
-            stage.setScene(scene);
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        switchUI("SignInAsGuest.fxml", signupButton);
+
+
     }
 
 

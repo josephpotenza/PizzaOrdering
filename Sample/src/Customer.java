@@ -24,46 +24,53 @@ public class Customer {
 
     }
 
-
-
-
-    public boolean login (){
-        boolean validLogin = false;
-        valid = "false";
-        try {
-            System.out.println("Enter First Name: ");
-            firstName = read.next();
-            System.out.println("Enter Password:");
-            pass = read.next();
-
-
-            String SQL =  "SELECT * FROM customers WHERE FirstName = '" + firstName + "'" + "and password = '" + pass + "'";
-            ResultSet result= Database.getResult(SQL);
-            while(result.next()){
-                validLogin = true;
-                valid = "true";
-                firstName = result.getString("FirstName");
-                lastName = result.getString("LastName");
-
-
-                System.out.println("customer name:" + firstName + lastName);
-
-
-
-
-            }
-
-
-        }catch (Exception ex) {
-            ex.printStackTrace();
-
-        }
-
-
-
-        return validLogin;
+    public String getFirstName() {
+        return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
+    }
 
     public String getValid() {
         return valid;
@@ -72,7 +79,6 @@ public class Customer {
     public void setValid(String valid) {
         this.valid = valid;
     }
-
 
 
     public void createAccount(){
@@ -99,24 +105,19 @@ public class Customer {
         validCreditCard(creditCard);
 
 
-
-
-
-
      //String SQL = "Insert INTO customers(LastName, FirstName, phone, email) VALUES ('"+firstName+"','"+lastName+"','"+phone+"','"+email+"')";
         //Database.executeQuery(SQL);
 
 
     }
 
-    public void validEmail( String email){
+    public boolean validEmail( String email){
 
         //checks to see if email has @, .com , and no spaces in the email.
         while (!email.contains("@") || !email.contains(".com") || email.contains(" ")) {
-            System.out.print("not valid email. Retype email:");
-            email = read.next();
+            return false;
         }
-
+        return true;
 
     }
 
@@ -129,6 +130,22 @@ public class Customer {
         }
 
     }
+
+    public boolean validPass(String pass){
+        while(pass.length() < 6){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validName(String name){
+
+        while (name.matches(".*\\d+.*")){
+            return false;
+        }
+        return true;
+    }
+
     public void validCreditCard(String cc){
 
         int[] ints = new int[cc.length()];
@@ -165,15 +182,8 @@ public class Customer {
     }
 
 
-
-
-    public String getValidation(){
-
-
-        return valid;
+    public void getCustomerInfo(String firstName_){
+        //access database and save all information that exist for customer with name firstName_
     }
-
-
-
 
 }

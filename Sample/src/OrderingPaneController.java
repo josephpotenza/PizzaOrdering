@@ -194,12 +194,12 @@ public class OrderingPaneController extends Pizza{
     void orderCheesePizza(){
         switchToToppingsPane();
         Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
-        cart.orders.add(order);
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
     }
 
     @FXML
     void addToCart(){
-
         shoppingCart.setItems(getOrders());
 
 

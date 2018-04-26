@@ -12,6 +12,7 @@ public class Customer {
     private String pass;
     private String creditCard;
     private String valid ="";
+    private String address;
     //private String validCC ="";
 
     private boolean login = false;
@@ -70,6 +71,14 @@ public class Customer {
 
     public void setCreditCard(String creditCard) {
         this.creditCard = creditCard;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getValid() {

@@ -188,6 +188,7 @@ public class OrderingPaneController extends Pizza{
                 pickupPhoneTextField.setText(customer.getPhone());
             }
         }
+
     @FXML
     void deliverySelected(ActionEvent event){
             pickupPane.setVisible(false);

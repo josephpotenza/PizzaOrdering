@@ -136,6 +136,7 @@ public class OrderingPaneController extends Pizza{
             String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
             deliveryCCnumTextField.setText("****-****-****-" + substr);
         }
+        System.out.println(customer.getCreditCard());
     }
 
     @FXML

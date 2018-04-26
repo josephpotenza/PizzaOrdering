@@ -1,6 +1,9 @@
 
 import java.sql.ResultSet;
 import java.util.Scanner;
+import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class Customer {
@@ -12,6 +15,7 @@ public class Customer {
     private String pass;
     private String creditCard;
     private String valid ="";
+    private String address;
     //private String validCC ="";
 
     private boolean login = false;
@@ -80,6 +84,13 @@ public class Customer {
         this.valid = valid;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public void createAccount(){
 
@@ -184,6 +195,27 @@ public class Customer {
 
     public void getCustomerInfo(String firstName_){
         //access database and save all information that exist for customer with name firstName_
+        try{
+                String SQL =  "SELECT * FROM customers WHERE firstName = '" + firstName_ + "'";
+                ResultSet result = Database.getResult(SQL);
+                while (result.next()) {
+                phone = result.getString("phone");
+                email = result.getString("email");
+                creditCard = result.getString("creditCard");
+                address = result.getString("address");
+
+
+                }
+
+
+
+
+
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+
+        }
     }
 
 }

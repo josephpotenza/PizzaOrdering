@@ -1,9 +1,13 @@
+import com.sun.tools.corba.se.idl.constExpr.Or;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 public class Cart extends Order {
    public int numOrders;
+   public double costPerOrder = 0;
+   private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public Order menu[] = new Order[30];
 
@@ -37,8 +41,21 @@ public class Cart extends Order {
             numOrders++;
        }
         public Order getOrder(int index){
-            return orders.get(index);
+
+        return orders.get(index);
         }
+
+
+        //check if order name exist in orders array
+        // if true quantity++, else do nothing
+        public void orderExist(Order order){
+            if(orders.contains(order)){
+                quantity++;
+            }
+        }
+
+
+
     }
 
 

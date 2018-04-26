@@ -80,6 +80,7 @@ public class OrderingPaneController extends Pizza{
         switchToPizzaPane();
         cart.getMenu();
 
+
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
@@ -158,7 +159,7 @@ public class OrderingPaneController extends Pizza{
 
 
         //Working Test
-       /*
+        /*
         Label order1 = new Label();
         order1.setText(cart.menu[0].getOrderName());
         Label order1Price = new Label();

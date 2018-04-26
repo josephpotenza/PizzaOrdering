@@ -200,7 +200,6 @@ public class Customer {
                 ResultSet result = Database.getResult(SQL);
                 while (result.next()) {
                 phone = result.getString("phone");
-                email = result.getString("email");
                 creditCard = result.getString("creditCard");
                 address = result.getString("address");
 

@@ -102,6 +102,7 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private void initialize(){
         // initialize visible panels
+
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
@@ -136,6 +137,7 @@ public class OrderingPaneController extends Pizza{
             String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
             deliveryCCnumTextField.setText("****-****-****-" + substr);
         }
+        deliveryCCnumTextField.setText(customer.getCreditCard());
     }
 
     @FXML

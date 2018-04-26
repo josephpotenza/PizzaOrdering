@@ -44,7 +44,7 @@ public class Cart extends Order {
         public void calcTotalPrice(){
             totalPrice = 0;
             for(int i = 0; i < numOrders; i++){
-                totalPrice = totalPrice + orders.get(i).getOrderPrice();
+                totalPrice = totalPrice + orders.get(i).getOrderPrice()*orders.get(i).getQuantity();
             }
         }
 

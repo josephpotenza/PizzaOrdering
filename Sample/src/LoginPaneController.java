@@ -19,6 +19,7 @@ import java.sql.SQLException;
 
 public class LoginPaneController extends Pizza {
 
+
     @FXML
     private TextField loginEmail;
 
@@ -65,6 +66,8 @@ public class LoginPaneController extends Pizza {
     }
     */
 
+
+
     @FXML
     void submitLogin() {
         boolean valid = false;
@@ -75,6 +78,11 @@ public class LoginPaneController extends Pizza {
             ResultSet result = Database.getResult(SQL);
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
+                customer.setFirstName(result.getString("firstName"));
+                customer.setLastName(result.getString("lastName"));
+                customer.setEmail(email);
+                //customer.getCustomerInfo(customer.getFirstName());
+
             }
             if (valid != true) { // if invalid login return error
                 Alert alert = new Alert(Alert.AlertType.ERROR);

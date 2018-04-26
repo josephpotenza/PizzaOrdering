@@ -3,6 +3,8 @@ public class Order {
     String orderName;
     double orderPrice;
 
+
+
     public Order() {
     }
 
@@ -35,4 +37,7 @@ public class Order {
     public void setOrderPrice(double orderPrice) {
         this.orderPrice = orderPrice;
     }
+
+
+
 }

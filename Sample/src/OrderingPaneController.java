@@ -45,18 +45,6 @@ public class OrderingPaneController extends Pizza{
     private Button cheesePizzaButton;
 
     @FXML
-    private Button addToCartButton;
-
-    @FXML
-    private VBox quantityVBox;
-
-    @FXML
-    private VBox orderVBox;
-
-    @FXML
-    private VBox priceVBox;
-
-    @FXML
     private TableView<Order> shoppingCart;
 
     @FXML
@@ -157,15 +145,6 @@ public class OrderingPaneController extends Pizza{
         shoppingCart.setItems(getOrders());
 
 
-        //Working Test
-       /*
-        Label order1 = new Label();
-        order1.setText(cart.menu[0].getOrderName());
-        Label order1Price = new Label();
-        order1Price.setText(Double.toString(cart.menu[0].getOrderPrice()));
-        orderVBox.getChildren().add(order1);
-        priceVBox.getChildren().add(order1Price);
-        */
     }
 
 }

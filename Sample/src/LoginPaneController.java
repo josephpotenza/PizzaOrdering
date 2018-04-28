@@ -17,8 +17,8 @@ import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginPaneController extends Pizza {
-
+public class LoginPaneController extends Pizza
+{
 
     @FXML
     private TextField loginEmail;
@@ -80,8 +80,8 @@ public class LoginPaneController extends Pizza {
                 valid = true; // if valid login store user first / last name
                 customer.setFirstName(result.getString("firstName"));
                 customer.setLastName(result.getString("lastName"));
-                customer.setEmail(email);
-                //customer.getCustomerInfo(customer.getFirstName());
+                customer.setType("customer");
+                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
 
             }
             if (valid != true) { // if invalid login return error
@@ -94,6 +94,8 @@ public class LoginPaneController extends Pizza {
                 alert.showAndWait();
             }
             else{   //if login worked
+                //setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
+                System.out.println("fromLogin " + customer);
                 switchUI("OrderingPane.fxml", signupButton);
                 String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());
@@ -104,6 +106,13 @@ public class LoginPaneController extends Pizza {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Could not connect to Database, Please check internet connection");
+            errorSound.setVolume(errorSound.getVolume()+ 50000);
+            errorSound.play();
+
+            alert.showAndWait();
         }
 
     }

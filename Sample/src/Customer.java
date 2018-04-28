@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class Customer {
+public class Customer{
 
+    private String type;     //either "guest" or "customer"
     private String firstName;
     private String lastName;
     private String phone;
@@ -26,6 +27,42 @@ public class Customer {
 
     public Customer() {
 
+    }
+
+    public Customer(String type, String firstName, String lastName, String phone, String email, String pass, String creditCard, String address) {
+        this.type = type;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+        this.pass = pass;
+        this.creditCard = creditCard;
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "type='" + type + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
+                ", creditCard='" + creditCard + '\'' +
+                ", valid='" + valid + '\'' +
+                ", address='" + address + '\'' +
+                ", login=" + login +
+                ", read=" + read +
+                '}';
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getFirstName() {
@@ -193,23 +230,21 @@ public class Customer {
 
     }
 
-
-    public void getCustomerInfo(String firstName_){
+    public void getCustomerInfo(String email){
         //access database and save all information that exist for customer with name firstName_
         try{
-                String SQL =  "SELECT * FROM customers WHERE firstName = '" + firstName_ + "'";
-                ResultSet result = Database.getResult(SQL);
-                while (result.next()) {
+            String SQL =  "SELECT * FROM customers WHERE email = '" + email + "'";
+            ResultSet result = Database.getResult(SQL);
+            while (result.next()) {
+                //this.email = email;
                 phone = result.getString("phone");
                 creditCard = result.getString("creditCard");
                 address = result.getString("address");
+                // firstName = result.getString("firstName");
+                //lastName = result.getString("lastName");
 
 
-                }
-
-
-
-
+            }
 
         }
         catch(SQLException e){

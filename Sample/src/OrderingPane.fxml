@@ -40,11 +40,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="addToCartButton" layoutX="646.0" layoutY="589.0" mnemonicParsing="false" onAction="#addToCart" text="Add To Cart" />
-            <AnchorPane layoutX="27.0" layoutY="403.0" prefHeight="402.0" prefWidth="334.0" visible="false" />
-         </children></AnchorPane>
+      <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="cheesePizzaButton" layoutX="83.0" layoutY="160.0" mnemonicParsing="false" onAction="#orderCheesePizza" text="Cheese Pizza" />

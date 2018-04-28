@@ -2,6 +2,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+
 public class Cart extends Order {
    public int numOrders;
    public double costPerOrder = 0;
@@ -16,7 +18,8 @@ public class Cart extends Order {
 
 
     }
-   public void getMenu(){
+
+    public void getMenu(){
         try {
             String SQL = "SELECT * FROM menu";
             ResultSet result = Database.getResult(SQL);

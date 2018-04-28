@@ -60,9 +60,6 @@ public class OrderingPaneController extends Pizza{
     private AnchorPane deliveryPane;
 
     @FXML
-    private Button addToCartButton;
-
-    @FXML
     private AnchorPane pizzaPane;
 
     @FXML
@@ -102,6 +99,9 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private void initialize(){
         // initialize visible panels
+        customer = getCustomer();
+        System.out.println("fromOrder " + customer);
+        System.out.println(getCustomerFirstName());
 
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
@@ -137,7 +137,7 @@ public class OrderingPaneController extends Pizza{
             String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
             deliveryCCnumTextField.setText("****-****-****-" + substr);
         }
-        deliveryCCnumTextField.setText(customer.getCreditCard());
+
     }
 
     @FXML
@@ -186,9 +186,13 @@ public class OrderingPaneController extends Pizza{
             deliveryPane.setVisible(false);
             pickupPane.setVisible(true);
             deliveryCheckBox.setSelected(false);
+            customer = getCustomer();
             if(customer.getPhone() != null){
                 pickupPhoneTextField.setText(customer.getPhone());
+
             }
+            System.out.println("From Pickup" + customer);
+
         }
     @FXML
     void deliverySelected(ActionEvent event){
@@ -201,6 +205,7 @@ public class OrderingPaneController extends Pizza{
             if(customer.getAddress() != null){
                 deliveryAddressTextField.setText(customer.getAddress());
             }
+            System.out.println(customer.getAddress());
         }
 
 
@@ -212,20 +217,5 @@ public class OrderingPaneController extends Pizza{
         shoppingCart.setItems(getOrders());
     }
 
-    @FXML
-    void addToCart(){
-        shoppingCart.setItems(getOrders());
-
-
-        //Working Test
-       /*
-        Label order1 = new Label();
-        order1.setText(cart.menu[0].getOrderName());
-        Label order1Price = new Label();
-        order1Price.setText(Double.toString(cart.menu[0].getOrderPrice()));
-        orderVBox.getChildren().add(order1);
-        priceVBox.getChildren().add(order1Price);
-        */
-    }
 
 }

@@ -49,6 +49,10 @@ public class SignInAsGuestController extends Pizza{
         else{
             if(customer.validName(firstNameInput.getText()) && customer.validName(lastNameInput.getText()) && customer.validName(firstNameInput.getText()) && customer.validEmail(emailInput.getText())) {
                 try {
+                    customer.setFirstName(firstNameInput.getText());
+                    customer.setLastName(lastNameInput.getText());
+                    customer.setEmail(emailInput.getText());
+                    customer.setType("guest");
                     temp.statement.executeUpdate(SQL);
                     switchUI("OrderingPane.fxml", goBackButton);
                 } catch (SQLException e) {

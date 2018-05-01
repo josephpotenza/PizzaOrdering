@@ -18,18 +18,16 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
-public class Pizza extends Application {
+public class Pizza extends Application{
 
     public void switchUI(String fileName, Label locator){
         try {
@@ -53,13 +51,32 @@ public class Pizza extends Application {
     }
 
     Cart cart = new Cart();
-    Customer customer = new Customer();
-    Properties prop = new Properties();
-    prop.load("")
+
+    public Customer customer = new Customer();
 
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);
+
+    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone){
+        customer.setFirstName(firstN);
+        customer.setLastName(lastN);
+        customer.setEmail(email);
+        customer.setPass(pass);
+        customer.setAddress(address);
+        customer.setCreditCard(creditCard);
+        customer.setPhone(phone);
+        System.out.println("from Pizza setCustomer" + customer);
+    }
+
+    public Customer getCustomer() {
+        System.out.println("from Pizza getCustomer " + customer);
+        return customer;
+    }
+
+    public String getCustomerFirstName(){
+        return customer.getFirstName();
+    }
 
     public void start(Stage primaryStage) {
         try {
@@ -68,6 +85,7 @@ public class Pizza extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("Pizza Ordering");
             primaryStage.show();
+            System.out.println("from Pizza" + this.customer);
         }
         catch (Exception e) {
             e.printStackTrace();

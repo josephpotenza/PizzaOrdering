@@ -64,6 +64,11 @@ public class SignUpPaneController extends Pizza {
             if(customer.validEmail(emailInput.getText()) && customer.validName(firstNameInput.getText()) && customer.validName(lastNameInput.getText()) && customer.validPass(passwordInput.getText())) {//add other tests example password more than 6 char etc. use OR || statement
                 try {
                     temp.statement.executeUpdate(SQL);
+                    customer.setFirstName(firstNameInput.getText());
+                    customer.setLastName(lastNameInput.getText());
+                    customer.setEmail(emailInput.getText());
+                    customer.setPass(passwordInput.getText());
+                    customer.setType("customer");
                     successLabel.setText("Success!");
                     goBackButton.setText("Go Back To Login.");
                 } catch (SQLException e) {

@@ -43,9 +43,6 @@ public class SignUpPaneController extends Pizza {
 
     @FXML
     void signUpNewCustomer(ActionEvent event) {
-        Database temp = new Database();
-        temp.connect(); // instantiate db and connect
-
         String SQL = "Insert INTO customers(LastName, FirstName, password, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + passwordInput.getText() + "','" + emailInput.getText() + "')"; //insert info on signup into db
 
         if(lastNameInput.getText().trim().isEmpty() || firstNameInput.getText().trim().isEmpty() || passwordInput.getText().trim().isEmpty() || emailInput.getText().trim().isEmpty()){ // check for blank fields in sign up
@@ -63,7 +60,7 @@ public class SignUpPaneController extends Pizza {
         else{
             if(customer.validEmail(emailInput.getText()) && customer.validName(firstNameInput.getText()) && customer.validName(lastNameInput.getText()) && customer.validPass(passwordInput.getText())) {//add other tests example password more than 6 char etc. use OR || statement
                 try {
-                    temp.statement.executeUpdate(SQL);
+                    db.statement.executeUpdate(SQL);
                     customer.setFirstName(firstNameInput.getText());
                     customer.setLastName(lastNameInput.getText());
                     customer.setEmail(emailInput.getText());

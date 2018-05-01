@@ -51,8 +51,9 @@ public class Pizza extends Application{
     }
 
     Cart cart = new Cart();
+    Database db = new Database();
 
-    public Customer customer = new Customer();
+    public static Customer customer = new Customer();
 
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
@@ -67,16 +68,15 @@ public class Pizza extends Application{
         customer.setCreditCard(creditCard);
         customer.setPhone(phone);
         System.out.println("from Pizza setCustomer" + customer);
+        getCustomer(customer);
     }
 
-    public Customer getCustomer() {
-        System.out.println("from Pizza getCustomer " + customer);
-        return customer;
+    public Customer getCustomer(Customer c) {
+        System.out.println("from Pizza getCustomer " + c);
+        customer = c;
+        return c;
     }
 
-    public String getCustomerFirstName(){
-        return customer.getFirstName();
-    }
 
     public void start(Stage primaryStage) {
         try {

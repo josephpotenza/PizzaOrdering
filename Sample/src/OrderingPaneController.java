@@ -95,13 +95,18 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private Button cheesePizzaButton;
 
+    @FXML
+    private Label totalLabel;
+
+    @FXML
+    private AnchorPane afterCheckOutPane;
+
 
     @FXML
     private void initialize(){
         // initialize visible panels
-        customer = getCustomer();
+        //customer = getCustomer(c);
         System.out.println("fromOrder " + customer);
-        System.out.println(getCustomerFirstName());
 
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
@@ -186,7 +191,7 @@ public class OrderingPaneController extends Pizza{
             deliveryPane.setVisible(false);
             pickupPane.setVisible(true);
             deliveryCheckBox.setSelected(false);
-            customer = getCustomer();
+           // customer = getCustomer();
             if(customer.getPhone() != null){
                 pickupPhoneTextField.setText(customer.getPhone());
 
@@ -206,8 +211,14 @@ public class OrderingPaneController extends Pizza{
                 deliveryAddressTextField.setText(customer.getAddress());
             }
             System.out.println(customer.getAddress());
-        }
+    }
 
+
+    @FXML
+    void checkoutButton(ActionEvent event) {
+        if(cart.getNumOrders()>0)
+            afterCheckOutPane.setVisible(true);
+    }
 
     @FXML
     void orderCheesePizza(){
@@ -215,6 +226,52 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderThinCrust(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[3].getOrderName(), cart.menu[3].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderDeepDish(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[4].getOrderName(), cart.menu[4].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderWhitePizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[2].getOrderName(), cart.menu[2].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderSicilianPizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[5].getOrderName(), cart.menu[5].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderVodkaPizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[1].getOrderName(), cart.menu[1].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
     }
 
 

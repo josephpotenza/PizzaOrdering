@@ -96,6 +96,7 @@ public class LoginPaneController extends Pizza
             else{   //if login worked
                 //setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
                 System.out.println("fromLogin " + customer);
+                //String SQL1 = "INSERT INTO orders(menuID, ) VALUES ( "
                 switchUI("OrderingPane.fxml", signupButton);
                 String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());

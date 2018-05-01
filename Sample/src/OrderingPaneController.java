@@ -95,13 +95,22 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private Button cheesePizzaButton;
 
+    @FXML
+    public void initializeCustomer(Customer c){
+        System.out.println("*************" + c.getFirstName());
+    }
+
 
     @FXML
-    private void initialize(){
+    private void initialize(){    // access publicly in pizza.java & should accept a parameter Customer
         // initialize visible panels
+
+        System.out.println("@@@@@@@@@@@@@@@@@" + this.customer.getFirstName());
+
         customer = getCustomer();
         System.out.println("fromOrder " + customer);
-        System.out.println(getCustomerFirstName());
+        System.out.println(this.customer.getFirstName());
+        System.out.println("-------------------------------------------");
 
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);

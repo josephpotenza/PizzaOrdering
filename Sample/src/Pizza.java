@@ -27,7 +27,11 @@ import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
+
+
 public class Pizza extends Application{
+
+    public fetchCustomer fetchCustomer;
 
     public void switchUI(String fileName, Label locator){
         try {
@@ -59,19 +63,29 @@ public class Pizza extends Application{
     MediaPlayer errorSound = new MediaPlayer(media);
 
     public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone){
-        customer.setFirstName(firstN);
-        customer.setLastName(lastN);
-        customer.setEmail(email);
-        customer.setPass(pass);
-        customer.setAddress(address);
-        customer.setCreditCard(creditCard);
-        customer.setPhone(phone);
-        System.out.println("from Pizza setCustomer" + customer);
+        this.customer.setFirstName(firstN);
+        this.customer.setLastName(lastN);
+        this.customer.setEmail(email);
+        this.customer.setPass(pass);
+        this.customer.setAddress(address);
+        this.customer.setCreditCard(creditCard);
+        this.customer.setPhone(phone);
+        System.out.println("from Pizza setCustomer" + this.customer);
+        getCustomer(this.customer);
     }
 
+    public Customer getCustomer(Customer c) {
+        System.out.println("from Pizza getCustomer with argument" + c);
+        // should be able to call initailize method inside ordering panel controller
+      //  fetchCustomer.Hello();
+        return c;
+    }
+
+
+
     public Customer getCustomer() {
-        System.out.println("from Pizza getCustomer " + customer);
-        return customer;
+        System.out.println("from Pizza getCustomer " + this.customer);
+        return this.customer;
     }
 
     public String getCustomerFirstName(){

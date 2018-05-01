@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Customer{
 
     private String type;     //either "guest" or "customer"
-    private String firstName;
+    public String firstName;
     private String lastName;
     private String phone;
     private String email;
@@ -26,6 +26,11 @@ public class Customer{
 
 
     public Customer() {
+
+    }
+
+    public void testCustomer(Customer c){
+        System.out.println("Calling test customer");
 
     }
 
@@ -66,7 +71,7 @@ public class Customer{
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {

@@ -1,11 +1,47 @@
+public class fetchCustomer{
+
+    public fetchCustomer(){
+
+    }
+
+    public void Hello() {
+        System.out.println("Sasd");
+    }
+    public void acceptCustomer(Customer c){
+        System.out.println("$$$$$$$$$$$$$$$" + c);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class fetchCustomer {
+public class fetchCustomer extends Pizza{
 
     Customer customer_;
 
     public fetchCustomer() {
+        System.out.println(this.customer.getFirstName());
     }
 
     public void fetchCustomerInfo(String email){
@@ -25,5 +61,9 @@ public class fetchCustomer {
         }
     }
 
+    public static void main(String  args[]){
+        fetchCustomer f = new fetchCustomer();
+    }
 
 }
+*/

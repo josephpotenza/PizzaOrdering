@@ -18,11 +18,13 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 import java.util.Scanner;
 
 import static javafx.application.Application.launch;
@@ -52,6 +54,9 @@ public class Pizza extends Application {
 
     Cart cart = new Cart();
     Customer customer = new Customer();
+    Properties prop = new Properties();
+    prop.load("")
+
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);

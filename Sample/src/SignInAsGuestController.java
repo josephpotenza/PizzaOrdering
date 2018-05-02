@@ -35,8 +35,6 @@ public class SignInAsGuestController extends Pizza{
 
     @FXML
     void signInAsGuest(ActionEvent event) {
-        Database temp = new Database();
-        temp.connect();
 
         String SQL = "Insert INTO customers(LastName, FirstName, email) VALUES ('" + lastNameInput.getText() + "','" + firstNameInput.getText() + "','" + emailInput.getText() + "')";
         if(lastNameInput.getText().trim().isEmpty() || firstNameInput.getText().trim().isEmpty()|| emailInput.getText().trim().isEmpty()){
@@ -53,7 +51,7 @@ public class SignInAsGuestController extends Pizza{
                     customer.setLastName(lastNameInput.getText());
                     customer.setEmail(emailInput.getText());
                     customer.setType("guest");
-                    temp.statement.executeUpdate(SQL);
+                    db.statement.executeUpdate(SQL);
                     switchUI("OrderingPane.fxml", goBackButton);
                 } catch (SQLException e) {
                     e.printStackTrace();

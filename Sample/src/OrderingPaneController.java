@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -96,21 +97,20 @@ public class OrderingPaneController extends Pizza{
     private Button cheesePizzaButton;
 
     @FXML
-    public void initializeCustomer(Customer c){
-        System.out.println("*************" + c.getFirstName());
-    }
+    private Label totalLabel;
+
+    @FXML
+    private AnchorPane afterCheckOutPane;
+
+    @FXML
+    private Button removeButton;
 
 
     @FXML
-    private void initialize(){    // access publicly in pizza.java & should accept a parameter Customer
+    private void initialize(){
         // initialize visible panels
-
-        System.out.println("@@@@@@@@@@@@@@@@@" + this.customer.getFirstName());
-
-        customer = getCustomer();
+        //customer = getCustomer(c);
         System.out.println("fromOrder " + customer);
-        System.out.println(this.customer.getFirstName());
-        System.out.println("-------------------------------------------");
 
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
@@ -119,6 +119,8 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(true);
         switchToPizzaPane();
         cart.getMenu();
+        removeButton.setOnAction(e-> removeButtonClicked());
+
         // adding values for choice box for cc
         ExpMonthDropBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12);
         expYearDropBox.getItems().addAll(2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028);
@@ -195,7 +197,7 @@ public class OrderingPaneController extends Pizza{
             deliveryPane.setVisible(false);
             pickupPane.setVisible(true);
             deliveryCheckBox.setSelected(false);
-            customer = getCustomer();
+           // customer = getCustomer();
             if(customer.getPhone() != null){
                 pickupPhoneTextField.setText(customer.getPhone());
 
@@ -215,8 +217,14 @@ public class OrderingPaneController extends Pizza{
                 deliveryAddressTextField.setText(customer.getAddress());
             }
             System.out.println(customer.getAddress());
-        }
+    }
 
+
+    @FXML
+    void checkoutButton(ActionEvent event) {
+        if(cart.getNumOrders()>0)
+            afterCheckOutPane.setVisible(true);
+    }
 
     @FXML
     void orderCheesePizza(){
@@ -224,7 +232,62 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
     }
 
+    @FXML
+    void orderThinCrust(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[3].getOrderName(), cart.menu[3].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderDeepDish(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[4].getOrderName(), cart.menu[4].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderWhitePizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[2].getOrderName(), cart.menu[2].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderSicilianPizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[5].getOrderName(), cart.menu[5].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderVodkaPizza(){
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[1].getOrderName(), cart.menu[1].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+    @FXML
+    void removeButtonClicked(){
+        ObservableList<Order> orderSelected, allOrders;
+        allOrders = shoppingCart.getItems();
+        orderSelected = shoppingCart.getSelectionModel().getSelectedItems();
+        Order temp = shoppingCart.getSelectionModel().getSelectedItems().get(0);
+        orderSelected.forEach(allOrders::remove);
+        cart.removeItem(temp);
+
+    }
 
 }

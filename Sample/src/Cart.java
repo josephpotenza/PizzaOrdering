@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 public class Cart extends Order {
    public int numOrders;
-   public double costPerOrder = 0;
    private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public Order menu[] = new Order[30];
@@ -40,10 +39,17 @@ public class Cart extends Order {
        public void addToCart(Order order){
             orders.add(order);
             numOrders++;
+            calcTotal();
+       }
+
+
+       public void removeItem(Order o){
+            orders.remove(o);
+            numOrders--;
+            calcTotal();
        }
         public Order getOrder(int index){
-
-        return orders.get(index);
+            return orders.get(index);
         }
 
 
@@ -56,7 +62,21 @@ public class Cart extends Order {
         }
 
 
+        public void calcTotal(){
+        totalPrice = 0;
+            for(int i = 0; i <  numOrders; i++){
+                totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
+            }
+        }
 
+        public double getTotalPrice(){
+            return totalPrice;
+        }
+
+
+    public int getNumOrders() {
+        return numOrders;
     }
+}
 
 

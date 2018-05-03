@@ -43,22 +43,32 @@ public class Cart extends Order {
             orders.add(order);
             if(existsInDbOrders(order)) {
                 dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
+                System.out.println("After add Order: " + orders.get(findIndexOfOrder(order)));
             }
-            else
-                dbOrders.add(order);
+            else {
+                Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
+                dbOrders.add(temp);
+            }
             numOrders++;
             calcTotal();
+            viewDbOrders();
        }
 
 
        public void removeItem(int index){
-            orders.remove(index);
            if(existsInDbOrders(orders.get(index))) {
-               dbOrders.get(index).minus1Quantity();
+               dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
+               if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
+                   dbOrders.remove(findIndexOfOrder(orders.get(index)));
+               System.out.println("After add Order: " + orders.get(index));
            }
-           else
-                dbOrders.remove(index);
-            numOrders--;
+           else {
+               dbOrders.remove(findIndexOfOrder(orders.get(index)));
+           }
+           orders.remove(index);
+           numOrders--;
+           calcTotal();
+           viewDbOrders();
        }
         public Order getOrder(int index){
             return orders.get(index);

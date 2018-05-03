@@ -9,6 +9,7 @@ public class Cart extends Order {
    public int numOrders;
    private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
+    public ArrayList<Order> dbOrders = new ArrayList<>();
     public Order menu[] = new Order[30];
     public DecimalFormat df;
 
@@ -41,6 +42,11 @@ public class Cart extends Order {
 
        public void addToCart(Order order){
             orders.add(order);
+            if(existsInDbOrders(order)) {
+                dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
+            }
+            else
+                dbOrders.add(order);
             numOrders++;
             calcTotal();
        }
@@ -48,8 +54,12 @@ public class Cart extends Order {
 
        public void removeItem(int index){
             orders.remove(index);
+           if(existsInDbOrders(orders.get(index))) {
+               dbOrders.get(index).minus1Quantity();
+           }
+           else
+                dbOrders.remove(index);
             numOrders--;
-            calcTotal();
        }
         public Order getOrder(int index){
             return orders.get(index);
@@ -88,14 +98,6 @@ public class Cart extends Order {
             return false;
         }
 
-        //check if order name exist in orders array
-        // if true quantity++, else do nothing
-        public void orderExist(Order order){
-            if(orders.contains(order)){
-                quantity++;
-            }
-        }
-
 
         public void calcTotal(){
         totalPrice = 0;
@@ -119,6 +121,38 @@ public class Cart extends Order {
 
     public DecimalFormat getDf() {
         return df;
+    }
+
+    public Boolean existsInDbOrders(Order order){
+        for(int i = 0; i < numOrders; i++){
+            if(order.getOrderName() == orders.get(i).getOrderName()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int findIndexOfOrder(Order order){
+        for(int i = 0; i < numOrders; i++){
+            if(dbOrders.get(i).getOrderName() == order.getOrderName()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void countQuantity(int index){
+        for(int i = 0; i < numOrders; i++){
+            if(orders.get(i).getOrderName() == orders.get(index).getOrderName()){
+                orders.get(index).plus1Quantity();
+            }
+        }
+    }
+
+    public void viewDbOrders(){
+        for(int i = 0; i < dbOrders.size(); i++){
+            System.out.println(dbOrders.get(i));
+        }
     }
 
     public int getNumOrders() {

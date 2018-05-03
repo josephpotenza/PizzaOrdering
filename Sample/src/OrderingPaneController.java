@@ -280,6 +280,7 @@ public class OrderingPaneController extends Pizza{
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
+
     @FXML
     void removeButtonClicked(){
         int index = shoppingCart.getSelectionModel().getSelectedIndex();

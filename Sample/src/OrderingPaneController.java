@@ -118,7 +118,6 @@ public class OrderingPaneController extends Pizza{
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
         switchToPizzaPane();
-        cart.getMenu();
         removeButton.setOnAction(e-> removeButtonClicked());
 
         // adding values for choice box for cc
@@ -157,6 +156,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -165,6 +165,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -173,6 +174,7 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -181,6 +183,7 @@ public class OrderingPaneController extends Pizza{
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);
         drinksPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -281,22 +284,19 @@ public class OrderingPaneController extends Pizza{
     }
     @FXML
     void removeButtonClicked(){
-        ObservableList<Order> orderSelected, allOrders;
-        allOrders = shoppingCart.getItems();
-        orderSelected = shoppingCart.getSelectionModel().getSelectedItems();
-        //Order temp = shoppingCart.getSelectionModel().getSelectedItems().get(0);
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
+        int numToppings = cart.checkIfToppingsExist(index);
+        System.out.println("NumToppings " + numToppings + "\n");
+        for(int i = numToppings; i > 0; i--){
+            cart.removeItem(index + i);
+        }
         cart.removeItem(index);
         totalLabel.setText(Double.toString(cart.getTotalPrice()));
-        orderSelected.forEach(allOrders::remove);
-        for(int i = 0; i < cart.getNumOrders(); i++)
-            System.out.println(cart.getOrder(i).getOrderName());
-
+        shoppingCart.setItems(getOrders());
     }
 
     @FXML
     void orderPepperoni(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[12].getOrderName(), cart.menu[12].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -305,7 +305,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderSausage(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[13].getOrderName(), cart.menu[13].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -314,7 +313,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderChicken(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[14].getOrderName(), cart.menu[14].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -323,7 +321,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderMeatball(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[15].getOrderName(), cart.menu[15].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -332,7 +329,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderOlives(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[16].getOrderName(), cart.menu[16].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -341,7 +337,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderAnchovies(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[17].getOrderName(), cart.menu[17].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -351,7 +346,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderCheesyBread(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[6].getOrderName(), cart.menu[6].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -360,7 +354,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderGarlicBread(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[7].getOrderName(), cart.menu[7].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -369,7 +362,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderMozzarellaSticks(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[8].getOrderName(), cart.menu[8].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -378,7 +370,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderChickenWings(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[9].getOrderName(), cart.menu[9].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -387,7 +378,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderGarlicKnots(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[10].getOrderName(), cart.menu[10].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
@@ -396,7 +386,6 @@ public class OrderingPaneController extends Pizza{
 
     @FXML
     void orderFriedCalamari(){
-        switchToToppingsPane();
         Order order = new Order(1, cart.menu[11].getOrderName(), cart.menu[11].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());

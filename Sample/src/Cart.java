@@ -14,7 +14,7 @@ public class Cart extends Order {
     public Cart() {
         for(int i = 0; i < 30; i++)
                 menu[i] = new Order();
-
+        getMenu();
 
     }
 
@@ -43,8 +43,8 @@ public class Cart extends Order {
        }
 
 
-       public void removeItem(Order o){
-            orders.remove(o);
+       public void removeItem(int index){
+            orders.remove(index);
             numOrders--;
             calcTotal();
        }
@@ -52,6 +52,38 @@ public class Cart extends Order {
             return orders.get(index);
         }
 
+
+        public int checkIfToppingsExist(int index){
+            int numToppings = 0;
+            for(int j = 1; j < 4; j++) {        //max of 3 toppings
+                if (checkIfPizza(index)) {
+                    if(index + j >= numOrders)
+                        return numToppings;
+                    else {
+                        if (checkIfPizza(index + j)) {
+                            break;
+                        } else {
+                            for (int i = 12; i < 18; i++) {
+                                if (menu[i].getOrderName() == orders.get(index + j).getOrderName()) {
+                                    numToppings++;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return numToppings;
+        }
+
+
+        public Boolean checkIfPizza(int index){
+            for(int i = 0; i < 6; i++){
+                if(menu[i].getOrderName() == orders.get(index).getOrderName()){
+                    return true;
+                }
+            }
+            return false;
+        }
 
         //check if order name exist in orders array
         // if true quantity++, else do nothing

@@ -12,11 +12,6 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderingPaneController">
    <children>
-      <ImageView fitHeight="900.0" fitWidth="938.0" opacity="0.42" pickOnBounds="true" AnchorPane.leftAnchor="333.0">
-         <image>
-            <Image url="@Images/logo.JPG" />
-         </image>
-      </ImageView>
       <AnchorPane layoutY="6.0" prefHeight="373.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="79.0" layoutY="21.0" text="Categories" textFill="WHITE" underline="true" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="21.0">
@@ -46,8 +41,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="toppingsPane" layoutX="333.0" prefHeight="900.0" prefWidth="940.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="afterCheckOutPane" layoutY="373.0" prefHeight="527.0" prefWidth="330.0">
+      <AnchorPane fx:id="afterCheckOutPane" layoutY="373.0" prefHeight="527.0" prefWidth="330.0" visible="false">
          <children>
             <CheckBox fx:id="pickupCheckBox" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onAction="#pickupSelected" text="Pickup">
                <font>
@@ -126,8 +120,76 @@
             </Button>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="toppingsPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderPepperoni" prefHeight="50.0" prefWidth="128.0" text="Pepperoni">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="28.0" layoutY="52.0" pickOnBounds="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="645.0">
+               <image>
+                  <Image url="@Images/CheesePizza.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="337.0" layoutY="52.0" pickOnBounds="true" AnchorPane.leftAnchor="340.0">
+               <image>
+                  <Image url="@Images/ThinCrust.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="602.0" layoutY="48.0" pickOnBounds="true" AnchorPane.leftAnchor="645.0" AnchorPane.rightAnchor="28.0">
+               <image>
+                  <Image url="@Images/DeepDish.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="405.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderSausage" prefHeight="50.0" prefWidth="128.0" text="Sausage">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="714.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderChicken" prefHeight="50.0" prefWidth="128.0" text="Chicken">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="29.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/CheesePizza.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="337.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/ThinCrust.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="645.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/DeepDish.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="714.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderMeatball" prefHeight="50.0" prefWidth="128.0" text="Meatball">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="406.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderOlives" prefHeight="50.0" prefWidth="128.0" text="Olives">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="98.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderAnchovies" prefHeight="50.0" prefWidth="128.0" text="Anchovies">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="249.0" layoutY="785.0" text="Max of 3 Toppings!">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="sandwichesPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane fx:id="appetizersPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="drinksPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane layoutX="1272.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -216,6 +278,70 @@
                   <Font size="24.0" />
                </font></Label>
             <TextField fx:id="pickupPhoneTextField" layoutX="14.0" layoutY="84.0" prefHeight="41.0" prefWidth="265.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="appetizersPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="94.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCheesyBread" prefHeight="50.0" prefWidth="134.0" text="Cheesy Bread">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="28.0" layoutY="52.0" pickOnBounds="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="645.0">
+               <image>
+                  <Image url="@Images/CheesePizza.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="337.0" layoutY="52.0" pickOnBounds="true" AnchorPane.leftAnchor="340.0">
+               <image>
+                  <Image url="@Images/ThinCrust.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="602.0" layoutY="48.0" pickOnBounds="true" AnchorPane.leftAnchor="645.0" AnchorPane.rightAnchor="28.0">
+               <image>
+                  <Image url="@Images/DeepDish.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="388.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderMozzarellaSticks" prefHeight="50.0" prefWidth="169.0" text="Mozzarella Sticks">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="707.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderChickenWings" prefHeight="50.0" prefWidth="143.0" text="Chicken Wings">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="29.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/CheesePizza.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="337.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/ThinCrust.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="645.0" layoutY="439.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Images/DeepDish.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="706.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderFriedCalamari" prefHeight="50.0" prefWidth="143.0" text="Fried Calamari">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="406.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderGarlicKnots" prefHeight="50.0" prefWidth="128.0" text="Garlic Knots">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="98.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderGarlicBread" prefHeight="50.0" prefWidth="128.0" text="Garlic Bread">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

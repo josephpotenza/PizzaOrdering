@@ -54,10 +54,7 @@ public class LoginPaneController extends Pizza
     /*                     working example of choiceBox
     @FXML
     private ChoiceBox choiceBox;
-
-
     ObservableList<String> numberList = FXCollections.observableArrayList("1","2" ,"3","4", "5");
-
     @FXML
     private void initialize(){
         choiceBox.setItems(numberList);
@@ -102,7 +99,8 @@ public class LoginPaneController extends Pizza
                 Media media = new Media(new File(mediaFile).toURI().toString());
                 MediaPlayer welcomeSound = new MediaPlayer(media);
                 welcomeSound.play();
-        }
+
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -68,13 +68,6 @@ public class Pizza extends Application{
         customer.setCreditCard(creditCard);
         customer.setPhone(phone);
         System.out.println("from Pizza setCustomer" + customer);
-        getCustomer(customer);
-    }
-
-    public Customer getCustomer(Customer c) {
-        System.out.println("from Pizza getCustomer " + c);
-        customer = c;
-        return c;
     }
 
 

@@ -118,7 +118,6 @@ public class OrderingPaneController extends Pizza{
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
         switchToPizzaPane();
-        cart.getMenu();
         removeButton.setOnAction(e-> removeButtonClicked());
 
         // adding values for choice box for cc
@@ -157,6 +156,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -165,6 +165,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -173,6 +174,7 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -181,6 +183,7 @@ public class OrderingPaneController extends Pizza{
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);
         drinksPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -206,7 +209,7 @@ public class OrderingPaneController extends Pizza{
 
         }
     @FXML
-    void deliverySelected(ActionEvent event){
+    void deliverySelected(){
             pickupPane.setVisible(false);
             deliveryPane.setVisible(true);
             pickupCheckBox.setSelected(false);
@@ -221,7 +224,7 @@ public class OrderingPaneController extends Pizza{
 
 
     @FXML
-    void checkoutButton(ActionEvent event) {
+    void checkoutButton() {
         if(cart.getNumOrders()>0)
             afterCheckOutPane.setVisible(true);
     }
@@ -281,14 +284,111 @@ public class OrderingPaneController extends Pizza{
     }
     @FXML
     void removeButtonClicked(){
-        ObservableList<Order> orderSelected, allOrders;
-        allOrders = shoppingCart.getItems();
-        orderSelected = shoppingCart.getSelectionModel().getSelectedItems();
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
+        int numToppings = cart.checkIfToppingsExist(index);
+        System.out.println("NumToppings " + numToppings + "\n");
+        for(int i = numToppings; i > 0; i--){
+            cart.removeItem(index + i);
+        }
         cart.removeItem(index);
         totalLabel.setText(Double.toString(cart.getTotalPrice()));
-        orderSelected.forEach(allOrders::remove);
-
+        shoppingCart.setItems(getOrders());
     }
 
+    @FXML
+    void orderPepperoni(){
+        Order order = new Order(1, cart.menu[12].getOrderName(), cart.menu[12].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderSausage(){
+        Order order = new Order(1, cart.menu[13].getOrderName(), cart.menu[13].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderChicken(){
+        Order order = new Order(1, cart.menu[14].getOrderName(), cart.menu[14].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderMeatball(){
+        Order order = new Order(1, cart.menu[15].getOrderName(), cart.menu[15].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderOlives(){
+        Order order = new Order(1, cart.menu[16].getOrderName(), cart.menu[16].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderAnchovies(){
+        Order order = new Order(1, cart.menu[17].getOrderName(), cart.menu[17].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+
+    @FXML
+    void orderCheesyBread(){
+        Order order = new Order(1, cart.menu[6].getOrderName(), cart.menu[6].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderGarlicBread(){
+        Order order = new Order(1, cart.menu[7].getOrderName(), cart.menu[7].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderMozzarellaSticks(){
+        Order order = new Order(1, cart.menu[8].getOrderName(), cart.menu[8].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderChickenWings(){
+        Order order = new Order(1, cart.menu[9].getOrderName(), cart.menu[9].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderGarlicKnots(){
+        Order order = new Order(1, cart.menu[10].getOrderName(), cart.menu[10].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
+
+    @FXML
+    void orderFriedCalamari(){
+        Order order = new Order(1, cart.menu[11].getOrderName(), cart.menu[11].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+    }
 }

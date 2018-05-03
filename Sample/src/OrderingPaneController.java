@@ -7,6 +7,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
+import java.sql.SQLException;
+
 public class OrderingPaneController extends Pizza{
 
     @FXML
@@ -423,8 +425,14 @@ public class OrderingPaneController extends Pizza{
     @FXML
     void placeOrder(ActionEvent event) {
         // check all inputs first
-        for(int i = 0; i < cart.getNumOrders(); i++)
-        {
-        String SQL = "INSERT INTO orders(customerID, menuID, quantity) VALUES ('" + customer.getcID() + "','" + cart.menu[cart.findMenuID(i)] + "'.'" +
+        for(int i = 0; i < cart.getNumOrders(); i++) {
+            int temp = 1;
+            String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+            try {
+                db.statement.executeUpdate(SQL);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

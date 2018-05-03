@@ -1,4 +1,5 @@
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +10,14 @@ public class Cart extends Order {
    private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public Order menu[] = new Order[30];
-
+    public DecimalFormat df;
 
     public Cart() {
         for(int i = 0; i < 30; i++)
                 menu[i] = new Order();
         getMenu();
+        df = new DecimalFormat("#.00");
+        df.format(totalPrice);
 
     }
 
@@ -105,6 +108,18 @@ public class Cart extends Order {
             return totalPrice;
         }
 
+        public int recentPizzaIndex(){
+            for(int i = numOrders; i > 0; i--) {
+                if(checkIfPizza(i-1)){
+                    return i-1;
+                }
+            }
+            return -1;
+        }
+
+    public DecimalFormat getDf() {
+        return df;
+    }
 
     public int getNumOrders() {
         return numOrders;

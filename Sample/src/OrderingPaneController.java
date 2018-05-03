@@ -109,9 +109,6 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private void initialize(){
         // initialize visible panels
-        //customer = getCustomer(c);
-        System.out.println("fromOrder " + customer);
-
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
@@ -123,6 +120,7 @@ public class OrderingPaneController extends Pizza{
         // adding values for choice box for cc
         ExpMonthDropBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12);
         expYearDropBox.getItems().addAll(2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028);
+
         // intializing columns for shopping cart
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
@@ -235,7 +233,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -244,7 +242,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[3].getOrderName(), cart.menu[3].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -253,7 +251,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[4].getOrderName(), cart.menu[4].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -262,7 +260,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[2].getOrderName(), cart.menu[2].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -271,7 +269,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[5].getOrderName(), cart.menu[5].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -280,18 +278,17 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[1].getOrderName(), cart.menu[1].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
     @FXML
     void removeButtonClicked(){
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
         int numToppings = cart.checkIfToppingsExist(index);
-        System.out.println("NumToppings " + numToppings + "\n");
         for(int i = numToppings; i > 0; i--){
             cart.removeItem(index + i);
         }
         cart.removeItem(index);
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         shoppingCart.setItems(getOrders());
     }
 
@@ -300,7 +297,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[12].getOrderName(), cart.menu[12].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
     @FXML
@@ -308,7 +310,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[13].getOrderName(), cart.menu[13].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
     @FXML
@@ -316,7 +323,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[14].getOrderName(), cart.menu[14].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
     @FXML
@@ -324,7 +336,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[15].getOrderName(), cart.menu[15].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
     @FXML
@@ -332,7 +349,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[16].getOrderName(), cart.menu[16].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
     @FXML
@@ -340,7 +362,12 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[17].getOrderName(), cart.menu[17].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if(cart.recentPizzaIndex() >= 0){
+            if(cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3){
+                switchToPizzaPane();
+            }
+        }
     }
 
 
@@ -349,7 +376,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[6].getOrderName(), cart.menu[6].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -357,7 +384,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[7].getOrderName(), cart.menu[7].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -365,7 +392,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[8].getOrderName(), cart.menu[8].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -373,7 +400,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[9].getOrderName(), cart.menu[9].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -381,7 +408,7 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[10].getOrderName(), cart.menu[10].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 
     @FXML
@@ -389,6 +416,6 @@ public class OrderingPaneController extends Pizza{
         Order order = new Order(1, cart.menu[11].getOrderName(), cart.menu[11].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
-        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
 }

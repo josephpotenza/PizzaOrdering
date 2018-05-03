@@ -1,7 +1,7 @@
 public class Order {
-    Integer quantity;
-    String orderName;
-    double orderPrice;
+    private Integer quantity;
+    private String orderName;
+    private double orderPrice;
 
 
 
@@ -12,6 +12,14 @@ public class Order {
         quantity = _quantity;
         orderName = _orderName;
         orderPrice = _orderPrice;
+    }
+
+    public void plus1Quantity(){
+        quantity++;
+    }
+
+    public void minus1Quantity(){
+        quantity--;
     }
 
     public Integer getQuantity() {
@@ -38,6 +46,12 @@ public class Order {
         this.orderPrice = orderPrice;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "quantity=" + quantity +
+                ", orderName='" + orderName + '\'' +
+                ", orderPrice=" + orderPrice +
+                '}';
+    }
 }

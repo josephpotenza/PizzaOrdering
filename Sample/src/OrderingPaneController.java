@@ -424,6 +424,6 @@ public class OrderingPaneController extends Pizza{
         // check all inputs first
         for(int i = 0; i < cart.getNumOrders(); i++)
         {
-        String SQL = "INSERT INTO orders(customerID, menuID, quantity) VALUES ('" + customer.getcID() + "','" + cart.menu[cart.findMenuID(i)] + "'.'" + 
+        String SQL = "INSERT INTO orders(customerID, menuID, quantity) VALUES ('" + customer.getcID() + "','" + cart.menu[cart.findMenuID(i)] + "'.'" +
     }
 }

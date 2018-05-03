@@ -19,7 +19,6 @@ public class Cart extends Order {
         getMenu();
         df = new DecimalFormat("#.00");
         df.format(totalPrice);
-
     }
 
     public void getMenu(){
@@ -141,6 +140,7 @@ public class Cart extends Order {
         return -1;
     }
 
+   /*
     public void countQuantity(int index){
         for(int i = 0; i < numOrders; i++){
             if(orders.get(i).getOrderName() == orders.get(index).getOrderName()){
@@ -148,6 +148,7 @@ public class Cart extends Order {
             }
         }
     }
+    */
 
     public void viewDbOrders(){
         for(int i = 0; i < dbOrders.size(); i++){

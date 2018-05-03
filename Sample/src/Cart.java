@@ -41,6 +41,13 @@ public class Cart extends Order {
             numOrders++;
             calcTotal();
        }
+
+
+       public void removeItem(Order o){
+            orders.remove(o);
+            numOrders--;
+            calcTotal();
+       }
         public Order getOrder(int index){
             return orders.get(index);
         }

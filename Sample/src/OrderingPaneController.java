@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -101,6 +102,9 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private AnchorPane afterCheckOutPane;
 
+    @FXML
+    private Button removeButton;
+
 
     @FXML
     private void initialize(){
@@ -115,6 +119,8 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(true);
         switchToPizzaPane();
         cart.getMenu();
+        removeButton.setOnAction(e-> removeButtonClicked());
+
         // adding values for choice box for cc
         ExpMonthDropBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12);
         expYearDropBox.getItems().addAll(2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028);
@@ -273,7 +279,20 @@ public class OrderingPaneController extends Pizza{
         shoppingCart.setItems(getOrders());
         totalLabel.setText(Double.toString(cart.getTotalPrice()));
     }
+    @FXML
+    void removeButtonClicked(){
+        ObservableList<Order> orderSelected, allOrders;
+        allOrders = shoppingCart.getItems();
+        orderSelected = shoppingCart.getSelectionModel().getSelectedItems();
+        //Order temp = shoppingCart.getSelectionModel().getSelectedItems().get(0);
+        int index = shoppingCart.getSelectionModel().getSelectedIndex();
+        cart.removeItem(index);
+        totalLabel.setText(Double.toString(cart.getTotalPrice()));
+        orderSelected.forEach(allOrders::remove);
+        for(int i = 0; i < cart.getNumOrders(); i++)
+            System.out.println(cart.getOrder(i).getOrderName());
 
+    }
 
     @FXML
     void orderPepperoni(){

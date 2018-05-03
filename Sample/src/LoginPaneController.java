@@ -78,7 +78,7 @@ public class LoginPaneController extends Pizza
                 customer.setFirstName(result.getString("firstName"));
                 customer.setLastName(result.getString("lastName"));
                 customer.setType("customer");
-                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
+                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"), result.getString("customerID"));
 
             }
             if (valid != true) { // if invalid login return error

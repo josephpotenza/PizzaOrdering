@@ -121,6 +121,15 @@ public class Cart extends Order {
         return df;
     }
 
+
+    public int findMenuID(int index){
+        for(int i = 0; i < 30; i++) {
+            if (orders.get(index).getOrderName() == menu[i].getOrderName()) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public int getNumOrders() {
         return numOrders;
     }

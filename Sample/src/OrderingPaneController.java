@@ -418,4 +418,12 @@ public class OrderingPaneController extends Pizza{
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
     }
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+        // check all inputs first
+        for(int i = 0; i < cart.getNumOrders(); i++)
+        {
+        String SQL = "INSERT INTO orders(customerID, menuID, quantity) VALUES ('" + customer.getcID() + "','" + cart.menu[cart.findMenuID(i)] + "'.'" + 
+    }
 }

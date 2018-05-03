@@ -75,8 +75,6 @@ public class LoginPaneController extends Pizza
             ResultSet result = Database.getResult(SQL);
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
-                customer.setFirstName(result.getString("firstName"));
-                customer.setLastName(result.getString("lastName"));
                 customer.setType("customer");
                 setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
 

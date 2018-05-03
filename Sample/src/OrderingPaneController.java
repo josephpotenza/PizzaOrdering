@@ -284,13 +284,10 @@ public class OrderingPaneController extends Pizza{
         ObservableList<Order> orderSelected, allOrders;
         allOrders = shoppingCart.getItems();
         orderSelected = shoppingCart.getSelectionModel().getSelectedItems();
-        //Order temp = shoppingCart.getSelectionModel().getSelectedItems().get(0);
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
         cart.removeItem(index);
         totalLabel.setText(Double.toString(cart.getTotalPrice()));
         orderSelected.forEach(allOrders::remove);
-        for(int i = 0; i < cart.getNumOrders(); i++)
-            System.out.println(cart.getOrder(i).getOrderName());
 
     }
 

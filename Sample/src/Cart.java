@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 
 public class Cart extends Order {
-   public int numOrders;
+   private int numOrders;
    private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public Order menu[] = new Order[30];
@@ -43,8 +43,8 @@ public class Cart extends Order {
        }
 
 
-       public void removeItem(Order o){
-            orders.remove(o);
+       public void removeItem(int index){
+            orders.remove(index);
             numOrders--;
             calcTotal();
        }

@@ -44,7 +44,7 @@ public class Pizza extends Application{
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
-        for(int i = 0; i < cart.numOrders; i++){
+        for(int i = 0; i < cart.getNumOrders(); i++){
             orders.add(cart.getOrder(i));
         }
         return orders;

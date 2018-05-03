@@ -140,12 +140,12 @@
             </TableView>
             <AnchorPane layoutY="873.0" prefHeight="89.0" prefWidth="334.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="811.0">
                <children>
-                  <Label layoutX="122.0" layoutY="49.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
+                  <Label layoutX="142.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalLabel" layoutX="236.0" layoutY="14.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalLabel" layoutX="224.0" layoutY="49.0" prefHeight="35.0" prefWidth="84.0">
                      <font>
                         <Font size="24.0" />
                      </font>

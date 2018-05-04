@@ -12,16 +12,17 @@ public class Cart extends Order {
     public ArrayList<Order> dbOrders = new ArrayList<>();
     public Order menu[] = new Order[30];
     public DecimalFormat df;
+    private int dbnumorders = 0;
 
     public Cart() {
-        for (int i = 0; i < 30; i++)
+        for(int i = 0; i < 30; i++)
             menu[i] = new Order();
         getMenu();
         df = new DecimalFormat("#.00");
         df.format(totalPrice);
     }
 
-    public void getMenu() {
+    public void getMenu(){
         try {
             String SQL = "SELECT * FROM menu";
             ResultSet result = Database.getResult(SQL);
@@ -31,43 +32,64 @@ public class Cart extends Order {
                 menu[temp].setOrderPrice(result.getDouble("price"));
                 temp++;
             }
-        } catch (SQLException err) {
+        }
+        catch(SQLException err){
             System.out.println(err.getMessage());
 
         }
     }
 
 
-    public void addToCart(Order order) {
+    public void addToCart(Order order){
         orders.add(order);
-        if (existsInDbOrders(order)) {
+        if(existsInDbOrders(order)) {
             dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
-        } else
-            dbOrders.add(order);
+            System.out.println("After add Order: " + orders.get(findIndexOfOrder(order)));
+        }
+        else {
+            Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
+            dbOrders.add(temp);
+        }
+        dbnumorders = dbOrders.size();
         numOrders++;
         calcTotal();
+        viewDbOrders();
+
     }
 
 
-    public void removeItem(int index) {
+    public void removeItem(int index){
+        if(existsInDbOrders(orders.get(index))) {
+            dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
+            if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
+                dbOrders.remove(findIndexOfOrder(orders.get(index)));
+            System.out.println("After add Order: " + orders.get(index));
+        }
+        else {
+            dbOrders.remove(findIndexOfOrder(orders.get(index)));
+        }
+        dbnumorders = dbOrders.size();
         orders.remove(index);
-        if (existsInDbOrders(orders.get(index))) {
-            dbOrders.get(index).minus1Quantity();
-        } else
-            dbOrders.remove(index);
         numOrders--;
+        calcTotal();
+        viewDbOrders();
     }
 
-    public Order getOrder(int index) {
+    public int getDbnumorders() {
+        return dbnumorders;
+    }
+
+    public Order getOrder(int index){
         return orders.get(index);
+
     }
 
 
-    public int checkIfToppingsExist(int index) {
+    public int checkIfToppingsExist(int index){
         int numToppings = 0;
-        for (int j = 1; j < 4; j++) {        //max of 3 toppings
+        for(int j = 1; j < 4; j++) {        //max of 3 toppings
             if (checkIfPizza(index)) {
-                if (index + j >= numOrders)
+                if(index + j >= numOrders)
                     return numToppings;
                 else {
                     if (checkIfPizza(index + j)) {
@@ -86,9 +108,9 @@ public class Cart extends Order {
     }
 
 
-    public Boolean checkIfPizza(int index) {
-        for (int i = 0; i < 6; i++) {
-            if (menu[i].getOrderName() == orders.get(index).getOrderName()) {
+    public Boolean checkIfPizza(int index){
+        for(int i = 0; i < 6; i++){
+            if(menu[i].getOrderName() == orders.get(index).getOrderName()){
                 return true;
             }
         }
@@ -96,21 +118,21 @@ public class Cart extends Order {
     }
 
 
-    public void calcTotal() {
+    public void calcTotal(){
         totalPrice = 0;
-        for (int i = 0; i < numOrders; i++) {
+        for(int i = 0; i <  numOrders; i++){
             totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
         }
     }
 
-    public double getTotalPrice() {
+    public double getTotalPrice(){
         return totalPrice;
     }
 
-    public int recentPizzaIndex() {
-        for (int i = numOrders; i > 0; i--) {
-            if (checkIfPizza(i - 1)) {
-                return i - 1;
+    public int recentPizzaIndex(){
+        for(int i = numOrders; i > 0; i--) {
+            if(checkIfPizza(i-1)){
+                return i-1;
             }
         }
         return -1;
@@ -120,18 +142,18 @@ public class Cart extends Order {
         return df;
     }
 
-    public Boolean existsInDbOrders(Order order) {
-        for (int i = 0; i < numOrders; i++) {
-            if (order.getOrderName() == orders.get(i).getOrderName()) {
+    public Boolean existsInDbOrders(Order order){
+        for(int i = 0; i < numOrders; i++){
+            if(order.getOrderName() == orders.get(i).getOrderName()){
                 return true;
             }
         }
         return false;
     }
 
-    public int findIndexOfOrder(Order order) {
-        for (int i = 0; i < numOrders; i++) {
-            if (dbOrders.get(i).getOrderName() == order.getOrderName()) {
+    public int findIndexOfOrder(Order order){
+        for(int i = 0; i < numOrders; i++){
+            if(dbOrders.get(i).getOrderName() == order.getOrderName()){
                 return i;
             }
         }
@@ -148,8 +170,8 @@ public class Cart extends Order {
     }
     */
 
-    public void viewDbOrders() {
-        for (int i = 0; i < dbOrders.size(); i++) {
+    public void viewDbOrders(){
+        for(int i = 0; i < dbOrders.size(); i++){
             System.out.println(dbOrders.get(i));
         }
     }
@@ -157,6 +179,7 @@ public class Cart extends Order {
     public int getNumOrders() {
         return numOrders;
     }
+
 
     public int findMenuID(int index) {
         for (int i = 0; i < 30; i++) {
@@ -169,6 +192,4 @@ public class Cart extends Order {
     public int getQuantityofdbOrders(int index){
         return dbOrders.get(index).getQuantity();
     }
-
-
 }

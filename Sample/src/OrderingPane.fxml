@@ -292,7 +292,7 @@
             </TableView>
             <AnchorPane layoutY="764.0" prefHeight="137.0" prefWidth="334.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="764.0">
                <children>
-                  <Label layoutX="167.0" layoutY="15.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
+                  <Label layoutX="132.0" layoutY="15.0" prefHeight="35.0" prefWidth="112.0" text="Subtotal:">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -310,7 +310,7 @@
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Label layoutX="170.0" layoutY="49.0" text="+Taxes">
+                  <Label layoutX="151.0" layoutY="49.0" text="+Taxes">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -326,6 +326,11 @@
                      </font>
                   </Label>
                   <Line endX="100.0" layoutX="162.0" layoutY="89.0" scaleX="0.75" scaleY="3.0" startX="-100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="-10.0" />
+                  <Label layoutX="153.0" layoutY="96.0" prefHeight="35.0" prefWidth="73.0" text="Total:">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

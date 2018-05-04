@@ -279,7 +279,7 @@ public class OrderingPaneController extends Pizza{
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
-        
+
     }
 
     @FXML

@@ -52,6 +52,7 @@ public class Cart extends Order {
             numOrders++;
             calcTotal();
             viewDbOrders();
+            
        }
 
 

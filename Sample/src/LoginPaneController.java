@@ -75,8 +75,6 @@ public class LoginPaneController extends Pizza
             ResultSet result = Database.getResult(SQL);
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
-                customer.setFirstName(result.getString("firstName"));
-                customer.setLastName(result.getString("lastName"));
                 customer.setType("customer");
                 setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"), result.getString("customerID"));
 
@@ -91,9 +89,7 @@ public class LoginPaneController extends Pizza
                 alert.showAndWait();
             }
             else{   //if login worked
-                //setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
                 System.out.println("fromLogin " + customer);
-                //String SQL1 = "INSERT INTO orders(menuID, ) VALUES ( "
                 switchUI("OrderingPane.fxml", signupButton);
                 String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());

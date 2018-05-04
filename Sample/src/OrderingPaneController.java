@@ -339,6 +339,8 @@ public class OrderingPaneController extends Pizza {
         }
         cart.removeItem(index);
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
         shoppingCart.setItems(getOrders());
     }
 

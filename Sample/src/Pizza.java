@@ -44,7 +44,7 @@ public class Pizza extends Application{
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
-        for(int i = 0; i < cart.numOrders; i++){
+        for(int i = 0; i < cart.getNumOrders(); i++){
             orders.add(cart.getOrder(i));
         }
         return orders;
@@ -59,7 +59,7 @@ public class Pizza extends Application{
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);
 
-    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone){
+    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone, String cID){
         customer.setFirstName(firstN);
         customer.setLastName(lastN);
         customer.setEmail(email);
@@ -67,6 +67,7 @@ public class Pizza extends Application{
         customer.setAddress(address);
         customer.setCreditCard(creditCard);
         customer.setPhone(phone);
+        customer.setcID(cID);
         System.out.println("from Pizza setCustomer" + customer);
     }
 

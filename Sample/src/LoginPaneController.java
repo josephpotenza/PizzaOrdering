@@ -76,7 +76,7 @@ public class LoginPaneController extends Pizza
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
                 customer.setType("customer");
-                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
+                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"), result.getString("customerID"));
 
             }
             if (valid != true) { // if invalid login return error

@@ -54,7 +54,7 @@
                   <Font size="24.0" />
                </font>
             </CheckBox>
-            <Button fx:id="deliverySubmitButton" layoutX="78.0" layoutY="479.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Submit" />
+            <Button fx:id="deliverySubmitButton" layoutX="78.0" layoutY="479.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="25.0" prefWidth="175.0" text="Submit" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">

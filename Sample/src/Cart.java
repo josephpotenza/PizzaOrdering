@@ -6,16 +6,17 @@ import java.sql.SQLException;
 
 
 public class Cart extends Order {
-   public int numOrders;
-   private double totalPrice = 0;
+    public int numOrders;
+    private double totalPrice = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public ArrayList<Order> dbOrders = new ArrayList<>();
     public Order menu[] = new Order[30];
     public DecimalFormat df;
+    private int dbnumorders = 0;
 
     public Cart() {
         for(int i = 0; i < 30; i++)
-                menu[i] = new Order();
+            menu[i] = new Order();
         getMenu();
         df = new DecimalFormat("#.00");
         df.format(totalPrice);
@@ -36,98 +37,106 @@ public class Cart extends Order {
             System.out.println(err.getMessage());
 
         }
-       }
+    }
 
 
-       public void addToCart(Order order){
-            orders.add(order);
-            if(existsInDbOrders(order)) {
-                dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
-                System.out.println("After add Order: " + orders.get(findIndexOfOrder(order)));
-            }
-            else {
-                Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
-                dbOrders.add(temp);
-            }
-            numOrders++;
-            calcTotal();
-            viewDbOrders();
-
-       }
-
-
-       public void removeItem(int index){
-           if(existsInDbOrders(orders.get(index))) {
-               dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
-               if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
-                   dbOrders.remove(findIndexOfOrder(orders.get(index)));
-               System.out.println("After add Order: " + orders.get(index));
-           }
-           else {
-               dbOrders.remove(findIndexOfOrder(orders.get(index)));
-           }
-           orders.remove(index);
-           numOrders--;
-           calcTotal();
-           viewDbOrders();
-       }
-        public Order getOrder(int index){
-            return orders.get(index);
+    public void addToCart(Order order){
+        orders.add(order);
+        if(existsInDbOrders(order)) {
+            dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
+            System.out.println("After add Order: " + orders.get(findIndexOfOrder(order)));
         }
+        else {
+            Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
+            dbOrders.add(temp);
+        }
+        dbnumorders = dbOrders.size();
+        numOrders++;
+        calcTotal();
+        viewDbOrders();
+
+    }
 
 
-        public int checkIfToppingsExist(int index){
-            int numToppings = 0;
-            for(int j = 1; j < 4; j++) {        //max of 3 toppings
-                if (checkIfPizza(index)) {
-                    if(index + j >= numOrders)
-                        return numToppings;
-                    else {
-                        if (checkIfPizza(index + j)) {
-                            break;
-                        } else {
-                            for (int i = 12; i < 18; i++) {
-                                if (menu[i].getOrderName() == orders.get(index + j).getOrderName()) {
-                                    numToppings++;
-                                }
+    public void removeItem(int index){
+        if(existsInDbOrders(orders.get(index))) {
+            dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
+            if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
+                dbOrders.remove(findIndexOfOrder(orders.get(index)));
+            System.out.println("After add Order: " + orders.get(index));
+        }
+        else {
+            dbOrders.remove(findIndexOfOrder(orders.get(index)));
+        }
+        dbnumorders = dbOrders.size();
+        orders.remove(index);
+        numOrders--;
+        calcTotal();
+        viewDbOrders();
+    }
+
+    public int getDbnumorders() {
+        return dbnumorders;
+    }
+
+    public Order getOrder(int index){
+        return orders.get(index);
+
+    }
+
+
+    public int checkIfToppingsExist(int index){
+        int numToppings = 0;
+        for(int j = 1; j < 4; j++) {        //max of 3 toppings
+            if (checkIfPizza(index)) {
+                if(index + j >= numOrders)
+                    return numToppings;
+                else {
+                    if (checkIfPizza(index + j)) {
+                        break;
+                    } else {
+                        for (int i = 12; i < 18; i++) {
+                            if (menu[i].getOrderName() == orders.get(index + j).getOrderName()) {
+                                numToppings++;
                             }
                         }
                     }
                 }
             }
-            return numToppings;
         }
+        return numToppings;
+    }
 
 
-        public Boolean checkIfPizza(int index){
-            for(int i = 0; i < 6; i++){
-                if(menu[i].getOrderName() == orders.get(index).getOrderName()){
-                    return true;
-                }
+    public Boolean checkIfPizza(int index){
+        for(int i = 0; i < 6; i++){
+            if(menu[i].getOrderName() == orders.get(index).getOrderName()){
+                return true;
             }
-            return false;
         }
+        return false;
+    }
 
 
-        public void calcTotal(){
+    public void calcTotal(){
         totalPrice = 0;
-            for(int i = 0; i <  numOrders; i++){
-                totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
+        for(int i = 0; i <  numOrders; i++){
+            totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
+        }
+    }
+
+    public double getTotalPrice(){
+        return totalPrice;
+    }
+
+    public int recentPizzaIndex(){
+        for(int i = numOrders; i > 0; i--) {
+            if(checkIfPizza(i-1)){
+                return i-1;
             }
         }
-
-        public double getTotalPrice(){
-            return totalPrice;
-        }
-
-        public int recentPizzaIndex(){
-            for(int i = numOrders; i > 0; i--) {
-                if(checkIfPizza(i-1)){
-                    return i-1;
-                }
-            }
-            return -1;
-        }
+        return -1;
+    }
 
     public DecimalFormat getDf() {
         return df;
@@ -170,6 +179,17 @@ public class Cart extends Order {
     public int getNumOrders() {
         return numOrders;
     }
+
+
+    public int findMenuID(int index) {
+        for (int i = 0; i < 30; i++) {
+            if (orders.get(index).getOrderName() == menu[i].getOrderName()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public int getQuantityofdbOrders(int index){
+        return dbOrders.get(index).getQuantity();
+    }
 }
-
-

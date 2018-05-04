@@ -17,6 +17,8 @@ public class Customer{
     private String creditCard;
     private String valid ="";
     private String address;
+    private String cID;
+
     //private String validCC ="";
 
     private boolean login = false;
@@ -29,21 +31,7 @@ public class Customer{
 
     }
 
-    public void testCustomer(Customer c){
-        System.out.println("Calling test customer");
 
-    }
-
-    public Customer(String type, String firstName, String lastName, String phone, String email, String pass, String creditCard, String address) {
-        this.type = type;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.email = email;
-        this.pass = pass;
-        this.creditCard = creditCard;
-        this.address = address;
-    }
 
     @Override
     public String toString() {
@@ -124,6 +112,14 @@ public class Customer{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getcID() {
+        return cID;
+    }
+
+    public void setcID(String cID) {
+        this.cID = cID;
     }
 
     public String getValid() {

@@ -57,11 +57,11 @@
             <Button fx:id="deliverySubmitButton" layoutX="78.0" layoutY="479.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="25.0" prefWidth="175.0" text="Submit" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="cheesePizzaButton" layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="50.0" prefWidth="128.0" text="Cheese Pizza" AnchorPane.topAnchor="379.0">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
             <ImageView fitHeight="210.0" fitWidth="265.0" layoutX="28.0" layoutY="52.0" pickOnBounds="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="645.0" AnchorPane.topAnchor="135.0">
@@ -205,7 +205,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="appetizersPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="appetizersPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="94.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCheesyBread" prefHeight="50.0" prefWidth="134.0" text="Cheesy Bread" AnchorPane.topAnchor="379.0">
                <font>
@@ -283,33 +283,49 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="737.0" prefWidth="334.0" AnchorPane.bottomAnchor="89.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
                <columns>
                   <TableColumn fx:id="quantColumn" prefWidth="91.0" text="Quantity" />
                   <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Item Name" />
                   <TableColumn fx:id="priceColumn" prefWidth="64.0" text="Price" />
                </columns>
             </TableView>
-            <AnchorPane layoutY="873.0" prefHeight="89.0" prefWidth="334.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="811.0">
+            <AnchorPane layoutY="764.0" prefHeight="137.0" prefWidth="334.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="764.0">
                <children>
-                  <Label layoutX="136.0" layoutY="4.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
+                  <Label layoutX="167.0" layoutY="15.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalLabel" layoutX="214.0" layoutY="4.0" prefHeight="35.0" prefWidth="112.0">
+                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="199.0" layoutY="40.0" mnemonicParsing="false" onAction="#checkoutButton" prefHeight="25.0" prefWidth="128.0" text="Checkout!">
+                  <Button layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#checkoutButton" prefHeight="25.0" prefWidth="128.0" text="Checkout!">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button fx:id="removeButton" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Remove">
+                  <Button fx:id="removeButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Remove">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
+                  <Label layoutX="170.0" layoutY="49.0" text="+Taxes">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Line endX="100.0" layoutX="162.0" layoutY="89.0" scaleX="0.75" scaleY="3.0" startX="-100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="-10.0" />
                </children>
             </AnchorPane>
          </children>

@@ -102,6 +102,12 @@ public class OrderingPaneController extends Pizza {
     private Label totalLabel;
 
     @FXML
+    private Label taxesLabel;
+
+    @FXML
+    private Label totalPlusTaxes;
+
+    @FXML
     private AnchorPane afterCheckOutPane;
 
     @FXML
@@ -237,6 +243,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -246,6 +254,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -255,6 +265,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -264,6 +276,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -273,6 +287,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -282,6 +298,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
 
     }
 
@@ -308,6 +326,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -321,6 +341,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -334,6 +356,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -347,6 +371,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -360,6 +386,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -373,6 +401,8 @@ public class OrderingPaneController extends Pizza {
                 switchToPizzaPane();
             }
         }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
 
@@ -382,6 +412,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -390,6 +422,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -398,6 +432,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -406,6 +442,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -414,6 +452,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -422,6 +462,8 @@ public class OrderingPaneController extends Pizza {
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
 
     @FXML
@@ -430,6 +472,7 @@ public class OrderingPaneController extends Pizza {
         for (int i = 0; i < cart.getDbnumorders(); i++) {
             int temp = 1;
             String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+            System.out.println(SQL + "\n");
             try {
                 db.statement.executeUpdate(SQL);
             } catch (SQLException e) {

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 public class Cart extends Order {
     public int numOrders;
     private double totalPrice = 0;
+    private double tax = 0;
     public ArrayList<Order> orders = new ArrayList<>();
     public ArrayList<Order> dbOrders = new ArrayList<>();
     public Order menu[] = new Order[30];
@@ -44,7 +45,6 @@ public class Cart extends Order {
         orders.add(order);
         if(existsInDbOrders(order)) {
             dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
-            System.out.println("After add Order: " + orders.get(findIndexOfOrder(order)));
         }
         else {
             Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
@@ -53,7 +53,7 @@ public class Cart extends Order {
         dbnumorders = dbOrders.size();
         numOrders++;
         calcTotal();
-        viewDbOrders();
+        //viewDbOrders();
 
     }
 
@@ -63,7 +63,6 @@ public class Cart extends Order {
             dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
             if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
                 dbOrders.remove(findIndexOfOrder(orders.get(index)));
-            System.out.println("After add Order: " + orders.get(index));
         }
         else {
             dbOrders.remove(findIndexOfOrder(orders.get(index)));
@@ -72,7 +71,7 @@ public class Cart extends Order {
         orders.remove(index);
         numOrders--;
         calcTotal();
-        viewDbOrders();
+        //viewDbOrders();
     }
 
     public int getDbnumorders() {
@@ -118,11 +117,25 @@ public class Cart extends Order {
     }
 
 
-    public void calcTotal(){
+    private void calcTotal(){
         totalPrice = 0;
         for(int i = 0; i <  numOrders; i++){
             totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
         }
+        calcTax();
+    }
+
+    private void calcTax(){
+        tax = totalPrice * .08875;
+    }
+
+    public double calcTotalPlusTax(){
+        double total = totalPrice + tax;
+        return total;
+    }
+
+    public double getTax(){
+        return tax;
     }
 
     public double getTotalPrice(){
@@ -143,8 +156,8 @@ public class Cart extends Order {
     }
 
     public Boolean existsInDbOrders(Order order){
-        for(int i = 0; i < numOrders; i++){
-            if(order.getOrderName() == orders.get(i).getOrderName()){
+        for(int i = 0; i < dbOrders.size(); i++){
+            if(order.getOrderName() == dbOrders.get(i).getOrderName()){
                 return true;
             }
         }
@@ -183,7 +196,7 @@ public class Cart extends Order {
 
     public int findMenuID(int index) {
         for (int i = 0; i < 30; i++) {
-            if (orders.get(index).getOrderName() == menu[i].getOrderName()) {
+            if (dbOrders.get(index).getOrderName() == menu[i].getOrderName()) {
                 return i;
             }
         }

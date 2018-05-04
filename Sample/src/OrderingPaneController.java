@@ -1,12 +1,17 @@
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebEvent;
+import javafx.scene.web.WebView;
 
+import java.net.URL;
 import java.sql.SQLException;
 
 public class OrderingPaneController extends Pizza {
@@ -200,6 +205,28 @@ public class OrderingPaneController extends Pizza {
         drinksPane.setVisible(false);
         toppingsPane.setVisible(true);
     }
+
+
+    /*
+    @FXML
+    void goToLocation(){
+        WebView webView = new WebView();
+        WebEngine webEngine = webView.getEngine();
+
+        final URL urlGoogleMaps = getClass().getResource("demo.html");
+        webEngine.load(urlGoogleMaps.toExternalForm());
+        webEngine.setOnAlert(new EventHandler<WebEvent<String>>() {
+            @Override
+            public void handle(WebEvent<String> e) {
+                System.out.println(e.toString());
+            }
+        });
+
+        getChildren()
+
+    }
+
+    */
 
     @FXML
     void pickupSelected(ActionEvent event) {
@@ -480,4 +507,18 @@ public class OrderingPaneController extends Pizza {
             }
         }
     }
+
+    /*
+    @FXML
+    void changeColorEnter(ActionEvent event) {
+
+    }
+
+    @FXML
+    void changeColorExit(ActionEvent event) {
+
+    }
+    */
+
+
 }

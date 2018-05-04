@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
@@ -12,7 +13,7 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderingPaneController">
    <children>
-      <AnchorPane layoutY="6.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="6.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #e31837;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="79.0" layoutY="21.0" text="Categories" textFill="WHITE" underline="true" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="21.0">
                <font>
@@ -39,10 +40,14 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Line endX="100.0" layoutX="115.0" layoutY="360.0" scaleX="2.0" scaleY="7.0" startX="-100.0" stroke="WHITE" AnchorPane.rightAnchor="75.0" />
+            <Label layoutX="98.0" layoutY="319.0" onMouseClicked="#goToLocation" text="Our Location" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="afterCheckOutPane" layoutY="373.0" prefHeight="527.0" prefWidth="330.0" visible="false">
+      <AnchorPane fx:id="afterCheckOutPane" layoutY="373.0" prefHeight="527.0" prefWidth="330.0" style="-fx-background-color: #006491;" visible="false">
          <children>
             <CheckBox fx:id="pickupCheckBox" layoutX="22.0" layoutY="16.0" mnemonicParsing="false" onAction="#pickupSelected" text="Pickup" textFill="WHITE">
                <font>
@@ -54,12 +59,15 @@
                   <Font size="24.0" />
                </font>
             </CheckBox>
-            <Button fx:id="deliverySubmitButton" layoutX="78.0" layoutY="479.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="25.0" prefWidth="175.0" text="Submit" />
+            <Button fx:id="deliverySubmitButton" layoutX="78.0" layoutY="479.0" mnemonicParsing="false" onAction="#placeOrder" prefHeight="25.0" prefWidth="175.0" style="-fx-background-color: #e31837;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="pizzaPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" style="-fx-background-color: #006491;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="cheesePizzaButton" layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="50.0" prefWidth="128.0" text="Cheese Pizza" AnchorPane.topAnchor="379.0">
+            <Button fx:id="cheesePizzaButton" layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCheesePizza" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Cheese Pizza" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -79,12 +87,12 @@
                   <Image url="@Images/DeepDish.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="405.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderThinCrust" prefHeight="50.0" prefWidth="128.0" text="Thin Crust" AnchorPane.topAnchor="379.0">
+            <Button layoutX="405.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderThinCrust" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Thin Crust" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="714.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderDeepDish" prefHeight="50.0" prefWidth="128.0" text="Deep Dish" AnchorPane.topAnchor="379.0">
+            <Button layoutX="714.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderDeepDish" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Deep Dish" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -104,22 +112,22 @@
                   <Image url="@Images/DeepDish.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="714.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderSicilianPizza" prefHeight="50.0" prefWidth="128.0" text="Sicilian Pizza" AnchorPane.topAnchor="732.0">
+            <Button layoutX="714.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderSicilianPizza" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Sicilian Pizza" textFill="WHITE" AnchorPane.topAnchor="732.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="406.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderWhitePizza" prefHeight="50.0" prefWidth="128.0" text="White Pizza" AnchorPane.topAnchor="732.0">
+            <Button layoutX="406.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderWhitePizza" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="White Pizza" textFill="WHITE" AnchorPane.topAnchor="732.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="98.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderVodkaPizza" prefHeight="50.0" prefWidth="128.0" text="Vodka Pizza" AnchorPane.topAnchor="732.0">
+            <Button layoutX="98.0" layoutY="682.0" mnemonicParsing="false" onAction="#orderVodkaPizza" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Vodka Pizza" textFill="WHITE" AnchorPane.topAnchor="732.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="385.0" layoutY="29.0" text="Pizza!" AnchorPane.topAnchor="29.0">
+            <Label layoutX="385.0" layoutY="29.0" text="Pizza!" textFill="WHITE" AnchorPane.topAnchor="29.0">
                <font>
                   <Font name="Comic Sans MS Bold" size="64.0" />
                </font>
@@ -276,7 +284,7 @@
       </AnchorPane>
       <AnchorPane fx:id="sandwichesPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="drinksPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="1272.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="1272.0" prefHeight="900.0" prefWidth="330.0" style="-fx-background-color: #006491;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1270.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Shopping Cart" textFill="WHITE" underline="true">
                <font>
@@ -285,47 +293,52 @@
             </Label>
             <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
                <columns>
-                  <TableColumn fx:id="quantColumn" prefWidth="91.0" text="Quantity" />
+                  <TableColumn fx:id="quantColumn" prefWidth="91.0" style="-: #e31837;" text="Quantity" />
                   <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Item Name" />
                   <TableColumn fx:id="priceColumn" prefWidth="64.0" text="Price" />
                </columns>
             </TableView>
-            <AnchorPane layoutY="764.0" prefHeight="137.0" prefWidth="334.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="764.0">
+            <AnchorPane layoutY="764.0" prefHeight="137.0" prefWidth="334.0" style="-fx-background-color: #006491;" AnchorPane.bottomAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="764.0">
                <children>
-                  <Label layoutX="167.0" layoutY="15.0" prefHeight="35.0" prefWidth="63.0" text="Total:">
+                  <Label layoutX="167.0" layoutY="91.0" prefHeight="35.0" prefWidth="63.0" text="Total:" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#checkoutButton" prefHeight="25.0" prefWidth="128.0" text="Checkout!">
+                  <Button layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#checkoutButton" prefHeight="25.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Checkout!" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Button fx:id="removeButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Remove">
+                  <Button fx:id="removeButton" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" style="-fx-background-color: #e31837;" text="Remove" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font></Button>
-                  <Label layoutX="170.0" layoutY="49.0" text="+Taxes">
+                  <Label layoutX="170.0" layoutY="49.0" text="+Taxes" textFill="#e31837">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0">
+                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0" textFill="#e31837">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                   <Line endX="100.0" layoutX="162.0" layoutY="89.0" scaleX="0.75" scaleY="3.0" startX="-100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="-10.0" />
+                  <Label layoutX="170.0" layoutY="15.0" text="Price:" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

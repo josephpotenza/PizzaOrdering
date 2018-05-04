@@ -12,13 +12,13 @@
 
 <AnchorPane fx:id="stage" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPaneController">
     <children>
-        <Pane layoutY="-6.0" prefHeight="327.0" prefWidth="462.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="577.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1138.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutY="-6.0" prefHeight="327.0" prefWidth="462.0" style="-fx-background-color: #006491;" AnchorPane.bottomAnchor="577.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1138.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox layoutX="187.0" layoutY="-1.0" prefHeight="268.0" prefWidth="275.0" spacing="35.0">
                     <children>
                         <TextField fx:id="loginEmail" alignment="TOP_LEFT" />
                   <PasswordField fx:id="loginPassword" />
-                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="240.0" text="Login">
+                        <Button fx:id="loginButton" mnemonicParsing="false" onAction="#submitLogin" prefHeight="31.0" prefWidth="240.0" style="-fx-background-color: #e31837;" text="Login" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font></Button>
@@ -64,12 +64,21 @@
             </Label>
             </children>
         </Pane>
-        <ImageView fitHeight="581.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1138.0" AnchorPane.topAnchor="323.0">
+        <ImageView fitHeight="617.0" fitWidth="748.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-36.0" AnchorPane.leftAnchor="-70.0" AnchorPane.rightAnchor="852.0" AnchorPane.topAnchor="329.0">
             <image>
-                <Image url="@Images/cokeAd.jpg" />
+                <Image url="@Images/front%20page.jpg" />
             </image>
         </ImageView>
-        <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
-        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="WHITE" />
+      <AnchorPane layoutX="459.0" prefHeight="910.0" prefWidth="1141.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="904.0" fitWidth="1141.0" layoutX="119.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/2000px-Dominos_pizza_logo.svg.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+        <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="#e31837" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
+        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="#e31837" />
     </children>
 </AnchorPane>

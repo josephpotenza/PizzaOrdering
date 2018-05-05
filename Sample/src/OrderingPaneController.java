@@ -640,6 +640,9 @@ public class OrderingPaneController extends Pizza {
                 Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
                 alert.setTitle("Error");
                 alert.setContentText("Invalid Field.");
+                alert.setContentText("Invalid Field.");String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
                 alert.showAndWait();
             }
             else  if (deliveryCCbox.isSelected() == true){
@@ -648,15 +651,20 @@ public class OrderingPaneController extends Pizza {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setContentText("Invalid Field.");
+                    alert.setContentText("Invalid Field.");String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+                    errorSound.setVolume(errorSound.getVolume()+ 50000);
+                    errorSound.play();
                     alert.showAndWait();
                 }
                 else {
 
                     String SQL1 = "UPDATE customers set phone = '" + deliveryPhoneNumberTextField.getText() + "' WHERE customerID = " + customer.getcID();
                     String SQL2 = "UPDATE customers set address = '" + deliveryAddressTextField.getText() + "'WHERE customerID =" + customer.getcID();
+                    String SQL3 = "UPDATE customers set creditCard = '" + deliveryCCnumTextField.getText() + "' WHERE customerID = " + customer.getcID();
                     try {
                         db.statement.executeUpdate(SQL1);
                         db.statement.executeUpdate(SQL2);
+                        db.statement.executeUpdate(SQL3);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -692,6 +700,9 @@ public class OrderingPaneController extends Pizza {
                 Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
                 alert.setTitle("Error");
                 alert.setContentText("Invalid Field.");
+                alert.setContentText("Invalid Field.");String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
+                errorSound.setVolume(errorSound.getVolume()+ 50000);
+                errorSound.play();
                 alert.showAndWait();
 
             } else {

@@ -620,18 +620,32 @@ public class OrderingPaneController extends Pizza {
     @FXML
     void placeOrder(ActionEvent event) {
         // check all inputs first
-        for (int i = 0; i < cart.getDbnumorders(); i++) {
-            int temp = 1;
-            String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
-            System.out.println(SQL + "\n");
-            try {
-                db.statement.executeUpdate(SQL);
-            } catch (SQLException e) {
-                e.printStackTrace();
+        if (deliveryPhoneNumberTextField.getText().trim().isEmpty() || deliveryPhoneNumberTextField.getText().length() > 14 || deliveryPhoneNumberTextField.getText().length() < 9 || deliveryAddressTextField.getText().trim().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
+            alert.setTitle("Error");
+            alert.setContentText("Invalid Field.");
+            alert.showAndWait();
+        } else {
+            String SQL1 = "UPDATE customers set phone = '" + deliveryPhoneNumberTextField.getText() + "' WHERE customerID = " + customer.getcID();
+            String SQL2 = "UPDATE customers set address = '" + deliveryAddressTextField.getText() + "'WHERE customerID =" + customer.getcID();
+                try{
+                    db.statement.executeUpdate(SQL1);
+                    db.statement.executeUpdate(SQL2);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            for (int i = 0; i < cart.getDbnumorders(); i++) {
+                int temp = 1;
+                String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+                System.out.println(SQL + "\n");
+                try {
+                    db.statement.executeUpdate(SQL);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+
     }
-
-
-
 }

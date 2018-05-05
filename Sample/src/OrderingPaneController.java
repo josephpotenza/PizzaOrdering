@@ -14,6 +14,10 @@ import javafx.scene.web.WebView;
 import java.net.URL;
 import java.sql.SQLException;
 
+
+//#006491			//domin blue
+//#e31837 		//domin red
+
 public class OrderingPaneController extends Pizza {
 
     @FXML

@@ -42,16 +42,37 @@ public class Cart extends Order {
 
 
     public void addToCart(Order order){
-        orders.add(order);
+        if(checkIfPizza(order)){
+            orders.add(order);
+            numOrders++;
+        }
+        else{
+            if(checkIfTopping(order)){
+                orders.add(order);
+                numOrders++;
+            }
+            else{
+                if(existsInOrders(order)){      //if not pizza or toppings, and order does exist
+                    int index = findIndexOfOrder(order);
+                    orders.get(index).plus1Quantity();
+                    orders.get(index).calcTotalPrice();
+                }
+                else{
+                    orders.add(order);
+                    numOrders++;
+                }
+            }
+        }
+
         if(existsInDbOrders(order)) {
             dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
+            dbOrders.get(findIndexOfOrder(order)).calcTotalPrice();
         }
         else {
             Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
             dbOrders.add(temp);
         }
         dbnumorders = dbOrders.size();
-        numOrders++;
         calcTotal();
         //viewDbOrders();
 
@@ -60,12 +81,12 @@ public class Cart extends Order {
 
     public void removeItem(int index){
         if(existsInDbOrders(orders.get(index))) {
-            dbOrders.get(findIndexOfOrder(orders.get(index))).minus1Quantity();
-            if(dbOrders.get(findIndexOfOrder(orders.get(index))).getQuantity() == 0)
-                dbOrders.remove(findIndexOfOrder(orders.get(index)));
+            dbOrders.get(findIndexOfOrderDB(orders.get(index))).minus1Quantity();
+            if(dbOrders.get(findIndexOfOrderDB(orders.get(index))).getQuantity() == 0)
+                dbOrders.remove(findIndexOfOrderDB(orders.get(index)));
         }
         else {
-            dbOrders.remove(findIndexOfOrder(orders.get(index)));
+            dbOrders.remove(findIndexOfOrderDB(orders.get(index)));
         }
         dbnumorders = dbOrders.size();
         orders.remove(index);
@@ -116,11 +137,30 @@ public class Cart extends Order {
         return false;
     }
 
+    public Boolean checkIfPizza(Order order){
+        for(int i = 0; i < 6; i++){
+            if(menu[i].getOrderName() == order.getOrderName()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public Boolean checkIfTopping(Order order){
+        for(int i = 12; i < 18; i++){
+            if(menu[i].getOrderName() == order.getOrderName()){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private void calcTotal(){
         totalPrice = 0;
         for(int i = 0; i <  numOrders; i++){
-            totalPrice = totalPrice + orders.get(i).getOrderPrice() * orders.get(i).getQuantity();
+            totalPrice = totalPrice + orders.get(i).getTotalPrice();
         }
         calcTax();
     }
@@ -164,9 +204,28 @@ public class Cart extends Order {
         return false;
     }
 
+    public Boolean existsInOrders(Order order){
+        for(int i = 0; i < dbOrders.size(); i++){
+            if(order.getOrderName() == dbOrders.get(i).getOrderName()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int findIndexOfOrderDB(Order order){
+        for(int i = 0; i < dbnumorders; i++){
+            if(dbOrders.get(i).getOrderName() == order.getOrderName()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     public int findIndexOfOrder(Order order){
         for(int i = 0; i < numOrders; i++){
-            if(dbOrders.get(i).getOrderName() == order.getOrderName()){
+            if(orders.get(i).getOrderName() == order.getOrderName()){
                 return i;
             }
         }

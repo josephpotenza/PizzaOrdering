@@ -141,7 +141,7 @@ public class OrderingPaneController extends Pizza {
         // intializing columns for shopping cart
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("orderPrice"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         shoppingCart.setItems(getOrders());
 
 

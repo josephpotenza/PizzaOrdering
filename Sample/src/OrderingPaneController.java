@@ -99,10 +99,8 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private void initialize(){
         // initialize visible panels
-        customer = getCustomer();
-        System.out.println("fromOrder " + customer);
-        System.out.println(getCustomerFirstName());
-
+        //System.out.println("fromOrder " + customer);
+        System.out.println("\n\nFrom OrderingPane Retrieval from File:" + prop.getProperty("firstName"));
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
@@ -186,7 +184,6 @@ public class OrderingPaneController extends Pizza{
             deliveryPane.setVisible(false);
             pickupPane.setVisible(true);
             deliveryCheckBox.setSelected(false);
-            customer = getCustomer();
             if(customer.getPhone() != null){
                 pickupPhoneTextField.setText(customer.getPhone());
 

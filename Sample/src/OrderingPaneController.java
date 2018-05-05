@@ -242,7 +242,6 @@ public class OrderingPaneController extends Pizza {
             pickupPhoneTextField.setText(customer.getPhone());
 
         }
-        System.out.println("From Pickup" + customer);
 
     }
 
@@ -257,7 +256,6 @@ public class OrderingPaneController extends Pizza {
         if (customer.getAddress() != null) {
             deliveryAddressTextField.setText(customer.getAddress());
         }
-        System.out.println(customer.getAddress());
     }
 
 
@@ -500,6 +498,126 @@ public class OrderingPaneController extends Pizza {
     }
 
     @FXML
+    void orderChickenParmHero() {
+        Order order = new Order(1, cart.menu[18].getOrderName(), cart.menu[18].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderChickenCutletHero() {
+        Order order = new Order(1, cart.menu[19].getOrderName(), cart.menu[19].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderMeatballParmHero() {
+        Order order = new Order(1, cart.menu[20].getOrderName(), cart.menu[20].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderChickenRoll() {
+        Order order = new Order(1, cart.menu[21].getOrderName(), cart.menu[21].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderSausageRoll() {
+        Order order = new Order(1, cart.menu[22].getOrderName(), cart.menu[22].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderVegetableRoll() {
+        Order order = new Order(1, cart.menu[23].getOrderName(), cart.menu[23].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderCoke() {
+        Order order = new Order(1, cart.menu[24].getOrderName(), cart.menu[24].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderSprite() {
+        Order order = new Order(1, cart.menu[25].getOrderName(), cart.menu[25].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderLemonade() {
+        Order order = new Order(1, cart.menu[26].getOrderName(), cart.menu[26].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderIcedTea() {
+        Order order = new Order(1, cart.menu[27].getOrderName(), cart.menu[27].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderWater() {
+        Order order = new Order(1, cart.menu[28].getOrderName(), cart.menu[28].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderRootBeer() {
+        Order order = new Order(1, cart.menu[29].getOrderName(), cart.menu[29].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
     void placeOrder(ActionEvent event) {
         // check all inputs first
         for (int i = 0; i < cart.getDbnumorders(); i++) {
@@ -514,17 +632,6 @@ public class OrderingPaneController extends Pizza {
         }
     }
 
-    /*
-    @FXML
-    void changeColorEnter(ActionEvent event) {
-
-    }
-
-    @FXML
-    void changeColorExit(ActionEvent event) {
-
-    }
-    */
 
 
 }

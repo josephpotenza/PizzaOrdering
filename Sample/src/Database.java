@@ -10,6 +10,9 @@ public class Database {
     static Statement statement = null;
     static boolean connected = false;
 
+    public Database() {
+        this.connect();
+    }
 
     public static void connect() {
         try {

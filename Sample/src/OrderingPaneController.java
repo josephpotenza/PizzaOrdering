@@ -1,12 +1,24 @@
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebEvent;
+import javafx.scene.web.WebView;
 
-public class OrderingPaneController extends Pizza{
+import java.net.URL;
+import java.sql.SQLException;
+
+
+//#006491			//domin blue
+//#e31837 		//domin red
+
+public class OrderingPaneController extends Pizza {
 
     @FXML
     private AnchorPane appetizersPane;
@@ -95,22 +107,37 @@ public class OrderingPaneController extends Pizza{
     @FXML
     private Button cheesePizzaButton;
 
+    @FXML
+    private Label totalLabel;
 
     @FXML
-    private void initialize(){
+    private Label taxesLabel;
+
+    @FXML
+    private Label totalPlusTaxes;
+
+    @FXML
+    private AnchorPane afterCheckOutPane;
+
+    @FXML
+    private Button removeButton;
+
+
+    @FXML
+    private void initialize() {
         // initialize visible panels
-        //System.out.println("fromOrder " + customer);
-        System.out.println("\n\nFrom OrderingPane Retrieval from File:" + prop.getProperty("firstName"));
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
         switchToPizzaPane();
-        cart.getMenu();
+        removeButton.setOnAction(e -> removeButtonClicked());
+
         // adding values for choice box for cc
-        ExpMonthDropBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12);
-        expYearDropBox.getItems().addAll(2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028);
+        ExpMonthDropBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+        expYearDropBox.getItems().addAll(2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028);
+
         // intializing columns for shopping cart
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
@@ -131,7 +158,7 @@ public class OrderingPaneController extends Pizza{
     void CreditCardBoxSelected(ActionEvent event) {
         deliveryCashbox.setSelected(false);
         ccPane.setVisible(true);
-        if(customer.getCreditCard() != null){
+        if (customer.getCreditCard() != null) {
             String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
             deliveryCCnumTextField.setText("****-****-****-" + substr);
         }
@@ -144,6 +171,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -152,6 +180,7 @@ public class OrderingPaneController extends Pizza{
         appetizersPane.setVisible(false);
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -160,6 +189,7 @@ public class OrderingPaneController extends Pizza{
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
@@ -168,10 +198,11 @@ public class OrderingPaneController extends Pizza{
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);
         drinksPane.setVisible(true);
+        toppingsPane.setVisible(false);
     }
 
     @FXML
-    void switchToToppingsPane(){
+    void switchToToppingsPane() {
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);
@@ -179,40 +210,321 @@ public class OrderingPaneController extends Pizza{
         toppingsPane.setVisible(true);
     }
 
+
+    /*
+    @FXML
+    void goToLocation(){
+        WebView webView = new WebView();
+        WebEngine webEngine = webView.getEngine();
+
+        final URL urlGoogleMaps = getClass().getResource("demo.html");
+        webEngine.load(urlGoogleMaps.toExternalForm());
+        webEngine.setOnAlert(new EventHandler<WebEvent<String>>() {
+            @Override
+            public void handle(WebEvent<String> e) {
+                System.out.println(e.toString());
+            }
+        });
+
+        getChildren()
+
+    }
+
+    */
+
     @FXML
     void pickupSelected(ActionEvent event) {
-            deliveryPane.setVisible(false);
-            pickupPane.setVisible(true);
-            deliveryCheckBox.setSelected(false);
-            if(customer.getPhone() != null){
-                pickupPhoneTextField.setText(customer.getPhone());
-
-            }
-            System.out.println("From Pickup" + customer);
+        deliveryPane.setVisible(false);
+        pickupPane.setVisible(true);
+        deliveryCheckBox.setSelected(false);
+        // customer = getCustomer();
+        if (customer.getPhone() != null) {
+            pickupPhoneTextField.setText(customer.getPhone());
 
         }
+        System.out.println("From Pickup" + customer);
+
+    }
+
     @FXML
-    void deliverySelected(ActionEvent event){
-            pickupPane.setVisible(false);
-            deliveryPane.setVisible(true);
-            pickupCheckBox.setSelected(false);
-            if(customer.getPhone() != null){
-                deliveryPhoneNumberTextField.setText(customer.getPhone());
-            }
-            if(customer.getAddress() != null){
-                deliveryAddressTextField.setText(customer.getAddress());
-            }
-            System.out.println(customer.getAddress());
+    void deliverySelected() {
+        pickupPane.setVisible(false);
+        deliveryPane.setVisible(true);
+        pickupCheckBox.setSelected(false);
+        if (customer.getPhone() != null) {
+            deliveryPhoneNumberTextField.setText(customer.getPhone());
         }
+        if (customer.getAddress() != null) {
+            deliveryAddressTextField.setText(customer.getAddress());
+        }
+        System.out.println(customer.getAddress());
+    }
 
 
     @FXML
-    void orderCheesePizza(){
+    void checkoutButton() {
+        if (cart.getNumOrders() > 0)
+            afterCheckOutPane.setVisible(true);
+    }
+
+    @FXML
+    void orderCheesePizza() {
         switchToToppingsPane();
         Order order = new Order(1, cart.menu[0].getOrderName(), cart.menu[0].getOrderPrice());
         cart.addToCart(order);
         shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
     }
+
+    @FXML
+    void orderThinCrust() {
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[3].getOrderName(), cart.menu[3].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderDeepDish() {
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[4].getOrderName(), cart.menu[4].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderWhitePizza() {
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[2].getOrderName(), cart.menu[2].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderSicilianPizza() {
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[5].getOrderName(), cart.menu[5].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderVodkaPizza() {
+        switchToToppingsPane();
+        Order order = new Order(1, cart.menu[1].getOrderName(), cart.menu[1].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+
+    }
+
+    @FXML
+    void removeButtonClicked() {
+        int index = shoppingCart.getSelectionModel().getSelectedIndex();
+        int numToppings = cart.checkIfToppingsExist(index);
+        for (int i = numToppings; i > 0; i--) {
+            cart.removeItem(index + i);
+        }
+        cart.removeItem(index);
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+        shoppingCart.setItems(getOrders());
+    }
+
+    @FXML
+    void orderPepperoni() {
+        Order order = new Order(1, cart.menu[12].getOrderName(), cart.menu[12].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderSausage() {
+        Order order = new Order(1, cart.menu[13].getOrderName(), cart.menu[13].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderChicken() {
+        Order order = new Order(1, cart.menu[14].getOrderName(), cart.menu[14].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderMeatball() {
+        Order order = new Order(1, cart.menu[15].getOrderName(), cart.menu[15].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderOlives() {
+        Order order = new Order(1, cart.menu[16].getOrderName(), cart.menu[16].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderAnchovies() {
+        Order order = new Order(1, cart.menu[17].getOrderName(), cart.menu[17].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        if (cart.recentPizzaIndex() >= 0) {
+            if (cart.checkIfToppingsExist(cart.recentPizzaIndex()) == 3) {
+                switchToPizzaPane();
+            }
+        }
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+
+    @FXML
+    void orderCheesyBread() {
+        Order order = new Order(1, cart.menu[6].getOrderName(), cart.menu[6].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderGarlicBread() {
+        Order order = new Order(1, cart.menu[7].getOrderName(), cart.menu[7].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderMozzarellaSticks() {
+        Order order = new Order(1, cart.menu[8].getOrderName(), cart.menu[8].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderChickenWings() {
+        Order order = new Order(1, cart.menu[9].getOrderName(), cart.menu[9].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderGarlicKnots() {
+        Order order = new Order(1, cart.menu[10].getOrderName(), cart.menu[10].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void orderFriedCalamari() {
+        Order order = new Order(1, cart.menu[11].getOrderName(), cart.menu[11].getOrderPrice());
+        cart.addToCart(order);
+        shoppingCart.setItems(getOrders());
+        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+        taxesLabel.setText(cart.getDf().format(cart.getTax()));
+        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+    }
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+        // check all inputs first
+        for (int i = 0; i < cart.getDbnumorders(); i++) {
+            int temp = 1;
+            String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+            System.out.println(SQL + "\n");
+            try {
+                db.statement.executeUpdate(SQL);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /*
+    @FXML
+    void changeColorEnter(ActionEvent event) {
+
+    }
+
+    @FXML
+    void changeColorExit(ActionEvent event) {
+
+    }
+    */
 
 
 }

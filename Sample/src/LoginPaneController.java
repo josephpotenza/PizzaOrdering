@@ -14,13 +14,12 @@ import javafx.scene.media.MediaPlayer;
 
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginPaneController extends Pizza
 {
+
 
     @FXML
     private TextField loginEmail;
@@ -56,10 +55,7 @@ public class LoginPaneController extends Pizza
     /*                     working example of choiceBox
     @FXML
     private ChoiceBox choiceBox;
-
-
     ObservableList<String> numberList = FXCollections.observableArrayList("1","2" ,"3","4", "5");
-
     @FXML
     private void initialize(){
         choiceBox.setItems(numberList);
@@ -80,14 +76,9 @@ public class LoginPaneController extends Pizza
             ResultSet result = Database.getResult(SQL);
             while (result.next()) {
                 valid = true; // if valid login store user first / last name
-                prop.setProperty("type", "customer");
-                prop.setProperty("firstName",  result.getString("firstName"));
-                prop.setProperty("lastName",  result.getString("lastName"));
-                prop.setProperty("email",  result.getString("email"));
-                prop.setProperty("phone",  result.getString("address"));
-                prop.setProperty("pass",  result.getString("password"));
-                prop.setProperty("creditCard",  result.getString("creditCard"));
-                prop.setProperty("address", result.getString("address"));
+                customer.setType("customer");
+                setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"), result.getString("customerID"));
+
             }
             if (valid != true) { // if invalid login return error
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -99,22 +90,14 @@ public class LoginPaneController extends Pizza
                 alert.showAndWait();
             }
             else{   //if login worked
-                //setCustomerInfo(result.getString("firstName"), result.getString("lastName"), email, result.getString("password"), result.getString("address"), result.getString("creditCard"), result.getString("phone"));
-                //System.out.println("fromLogin " + customer);
-                System.out.println("\n\nFrom Login Retrieval from File: " + prop.getProperty("firstName"));
-                try {
-                    prop.store(inputStream, null);
-                    System.out.println("Save Successful!\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                System.out.println("fromLogin " + customer);
                 switchUI("OrderingPane.fxml", signupButton);
                 String mediaFile = "Sample/src/Sounds/WelcomeSound.wav";
                 Media media = new Media(new File(mediaFile).toURI().toString());
                 MediaPlayer welcomeSound = new MediaPlayer(media);
                 welcomeSound.play();
 
-        }
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

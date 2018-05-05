@@ -3,15 +3,31 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebEvent;
+import javafx.scene.web.WebView;
 
-import java.io.*;
-import java.util.Properties;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+import java.net.URL;
 
 import static javafx.application.Application.launch;
 
@@ -32,48 +48,32 @@ public class Pizza extends Application{
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
-        for(int i = 0; i < cart.numOrders; i++){
+        for(int i = 0; i < cart.getNumOrders(); i++){
             orders.add(cart.getOrder(i));
         }
         return orders;
     }
 
     Cart cart = new Cart();
-    Customer customer = new Customer();
+    Database db = new Database();
+
+    public static Customer customer = new Customer();
+
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);
 
-
-    public Properties prop = new Properties();
-    public FileOutputStream output = null;		//file Management
-    public InputStream input = null;
-    Writer inputStream;
-
-    {
-        try {
-            inputStream = new FileWriter("customerInfo.properties");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone, String cID){
+        customer.setFirstName(firstN);
+        customer.setLastName(lastN);
+        customer.setEmail(email);
+        customer.setPass(pass);
+        customer.setAddress(address);
+        customer.setCreditCard(creditCard);
+        customer.setPhone(phone);
+        customer.setcID(cID);
+        System.out.println("from Pizza setCustomer" + customer);
     }
-
-
-    public Pizza(){
-
-    }
-
-    public void loadProperties() {
-        try {
-            input = this.getClass().getClassLoader().getResourceAsStream("customerInfo.properties");
-            prop.load(input);
-            output = new FileOutputStream("customerInfo.properties");
-        }
-        catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
 
 
     public void start(Stage primaryStage) {
@@ -93,8 +93,6 @@ public class Pizza extends Application{
 
 
     public static void main(String[] args) {
-        Pizza pizza = new Pizza();
-        pizza.loadProperties();
         launch(args);
         /*reader = new Scanner(System.in);
         int choice = 0;

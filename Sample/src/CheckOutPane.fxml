@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CheckOutPaneController">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1600.0" opacity="0.25" pickOnBounds="true">
+         <image>
+            <Image url="@Images/yesWeDid.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="406.0" layoutY="147.0" text="Thank You for Choosing Domino's!" textFill="#006491">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="521.0" layoutY="246.0" text="Grand Total:" textFill="#006491">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="grandTotalLabel" layoutX="855.0" layoutY="246.0" prefHeight="70.0" prefWidth="179.0" textFill="#006491">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <VBox alignment="TOP_CENTER" layoutX="617.0" layoutY="372.0" prefHeight="383.0" prefWidth="368.0" spacing="20.0">
+         <children>
+            <Label text="Project Complete By:" textFill="#006491">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="10.0" text="Vittorio Russo" textFill="#006491">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="63.0" text="Joseph Potenza" textFill="#006491">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="116.0" text="Christian " textFill="#006491">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="169.0" text="Miguel" textFill="#006491">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Button layoutX="665.0" layoutY="755.0" mnemonicParsing="false" onAction="#backToLoginPane" style="-fx-background-color: #006491;" text="Place Another Order!" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

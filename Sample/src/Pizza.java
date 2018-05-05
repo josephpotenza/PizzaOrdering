@@ -47,23 +47,27 @@ public class Pizza extends Application{
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
+        orders.removeAll(orders);
         for(int i = 0; i < cart.getNumOrders(); i++){
             orders.add(cart.getOrder(i));
-            System.out.println(cart.getOrder(i));
-            System.out.println(orders.toString());
         }
         return orders;
     }
 
-    Cart cart = new Cart();
+    public static Cart cart = new Cart();
 
     Database db = new Database();
 
     public static Customer customer = new Customer();
 
+
+    //audio files
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);
+    String mediaFile2 = "Sample/src/Sounds/WelcomeSound.wav";
+    Media media2 = new Media(new File(mediaFile2).toURI().toString());
+    MediaPlayer welcomeSound = new MediaPlayer(media2);
 
     public Pizza(){
 

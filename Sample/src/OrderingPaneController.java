@@ -7,10 +7,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 
@@ -125,6 +128,7 @@ public class OrderingPaneController extends Pizza {
 
     @FXML
     private void initialize() {
+        welcomeSound.play();
         // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
@@ -521,6 +525,7 @@ public class OrderingPaneController extends Pizza {
     void orderMeatballParmHero() {
         Order order = new Order(1, cart.menu[20].getOrderName(), cart.menu[20].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -531,6 +536,7 @@ public class OrderingPaneController extends Pizza {
     void orderChickenRoll() {
         Order order = new Order(1, cart.menu[21].getOrderName(), cart.menu[21].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -541,6 +547,7 @@ public class OrderingPaneController extends Pizza {
     void orderSausageRoll() {
         Order order = new Order(1, cart.menu[22].getOrderName(), cart.menu[22].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -551,6 +558,7 @@ public class OrderingPaneController extends Pizza {
     void orderVegetableRoll() {
         Order order = new Order(1, cart.menu[23].getOrderName(), cart.menu[23].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -561,6 +569,7 @@ public class OrderingPaneController extends Pizza {
     void orderCoke() {
         Order order = new Order(1, cart.menu[24].getOrderName(), cart.menu[24].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -571,6 +580,7 @@ public class OrderingPaneController extends Pizza {
     void orderSprite() {
         Order order = new Order(1, cart.menu[25].getOrderName(), cart.menu[25].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -581,6 +591,7 @@ public class OrderingPaneController extends Pizza {
     void orderLemonade() {
         Order order = new Order(1, cart.menu[26].getOrderName(), cart.menu[26].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -591,6 +602,7 @@ public class OrderingPaneController extends Pizza {
     void orderIcedTea() {
         Order order = new Order(1, cart.menu[27].getOrderName(), cart.menu[27].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -601,6 +613,7 @@ public class OrderingPaneController extends Pizza {
     void orderWater() {
         Order order = new Order(1, cart.menu[28].getOrderName(), cart.menu[28].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
@@ -611,6 +624,7 @@ public class OrderingPaneController extends Pizza {
     void orderRootBeer() {
         Order order = new Order(1, cart.menu[29].getOrderName(), cart.menu[29].getOrderPrice());
         cart.addToCart(order);
+        shoppingCart.getItems().removeAll(getOrders());
         shoppingCart.setItems(getOrders());
         totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
         taxesLabel.setText(cart.getDf().format(cart.getTax()));

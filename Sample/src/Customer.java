@@ -254,4 +254,17 @@ public class Customer{
         }
     }
 
+    public void clearCustomer(){
+        type = null;
+        firstName = null;
+        lastName = null;
+        phone = null;
+        email = null;
+        pass = null;
+        creditCard = null;
+        valid ="";
+        address= null;
+        cID = null;
+    }
+
 }

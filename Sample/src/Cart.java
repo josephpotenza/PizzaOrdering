@@ -95,6 +95,15 @@ public class Cart extends Order {
         //viewDbOrders();
     }
 
+    public void removeAll(){
+        orders.clear();
+        dbOrders.clear();
+        numOrders = 0;
+        dbnumorders = 0;
+        totalPrice = 0;
+        tax = 0;
+    }
+
     public int getDbnumorders() {
         return dbnumorders;
     }

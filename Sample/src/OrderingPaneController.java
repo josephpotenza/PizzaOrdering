@@ -620,32 +620,87 @@ public class OrderingPaneController extends Pizza {
     @FXML
     void placeOrder(ActionEvent event) {
         // check all inputs first
-        if (deliveryPhoneNumberTextField.getText().trim().isEmpty() || deliveryPhoneNumberTextField.getText().length() > 14 || deliveryPhoneNumberTextField.getText().length() < 9 || deliveryAddressTextField.getText().trim().isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
-            alert.setTitle("Error");
-            alert.setContentText("Invalid Field.");
-            alert.showAndWait();
-        } else {
-            String SQL1 = "UPDATE customers set phone = '" + deliveryPhoneNumberTextField.getText() + "' WHERE customerID = " + customer.getcID();
-            String SQL2 = "UPDATE customers set address = '" + deliveryAddressTextField.getText() + "'WHERE customerID =" + customer.getcID();
-                try{
-                    db.statement.executeUpdate(SQL1);
-                    db.statement.executeUpdate(SQL2);
+        if(deliveryCheckBox.isSelected() == true) {
+            if (deliveryPhoneNumberTextField.getText().trim().isEmpty() || deliveryPhoneNumberTextField.getText().length() > 14 || deliveryPhoneNumberTextField.getText().length() < 9 || deliveryAddressTextField.getText().trim().isEmpty()
+                    || deliveryCCbox.isSelected() == false && deliveryCashbox.isSelected() == false) {
+                Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Field.");
+                alert.showAndWait();
+            }
+            else  if (deliveryCCbox.isSelected() == true){
+                if(deliveryCCnumTextField.getText().trim().isEmpty() || deliveryCCnumTextField.getText().length() < 16 || deliveryCCnumTextField.getText().length() > 20 || deliveryCVVTextField.getText().trim().isEmpty()
+                        || expYearDropBox.getSelectionModel().isEmpty() || ExpMonthDropBox.getSelectionModel().isEmpty()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Invalid Field.");
+                    alert.showAndWait();
+                }
+                else {
+
+                    String SQL1 = "UPDATE customers set phone = '" + deliveryPhoneNumberTextField.getText() + "' WHERE customerID = " + customer.getcID();
+                    String SQL2 = "UPDATE customers set address = '" + deliveryAddressTextField.getText() + "'WHERE customerID =" + customer.getcID();
+                    try {
+                        db.statement.executeUpdate(SQL1);
+                        db.statement.executeUpdate(SQL2);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    for (int i = 0; i < cart.getDbnumorders(); i++) {
+                        int temp = 1;
+                        String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+                        System.out.println(SQL + "\n");
+                        try {
+                            db.statement.executeUpdate(SQL);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+            else if (deliveryCashbox.isSelected() == true){
+                for (int i = 0; i < cart.getDbnumorders(); i++) {
+                    int temp = 1;
+                    String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+                    System.out.println(SQL + "\n");
+                    try {
+                        db.statement.executeUpdate(SQL);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }
+
+        else if (pickupCheckBox.isSelected() == true) {
+            if (pickupPhoneTextField.getText().trim().isEmpty() || pickupPhoneTextField.getText().length() > 14 || pickupPhoneTextField.getText().length() < 9) {
+                Alert alert = new Alert(Alert.AlertType.ERROR); // alert box if blank fields
+                alert.setTitle("Error");
+                alert.setContentText("Invalid Field.");
+                alert.showAndWait();
+
+            } else {
+                String SQL3 = "UPDATE customers set phone = '" + pickupPhoneTextField.getText() + "' WHERE customerID = " + customer.getcID();
+                try {
+                    db.statement.executeUpdate(SQL3);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            for (int i = 0; i < cart.getDbnumorders(); i++) {
-                int temp = 1;
-                String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
-                System.out.println(SQL + "\n");
-                try {
-                    db.statement.executeUpdate(SQL);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                for (int i = 0; i < cart.getDbnumorders(); i++) {
+                    int temp = 1;
+                    String SQL = "INSERT INTO orders(orderID, customerID, menuID, quantity) VALUES ('" + temp + "','" + customer.getcID() + "','" + (cart.findMenuID(i) + 1) + "','" + cart.getQuantityofdbOrders(i) + "')";
+                    System.out.println(SQL + "\n");
+                    try {
+                        db.statement.executeUpdate(SQL);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
 
+        }
+
 
     }
-}

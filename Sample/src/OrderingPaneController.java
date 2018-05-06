@@ -678,6 +678,7 @@ public class OrderingPaneController extends Pizza {
                             e.printStackTrace();
                         }
                     }
+                    switchUI("CheckOutPane.fxml", totalPlusTaxes);
                 }
             }
             else if (deliveryCashbox.isSelected() == true){
@@ -691,6 +692,7 @@ public class OrderingPaneController extends Pizza {
                         e.printStackTrace();
                     }
                 }
+                switchUI("CheckOutPane.fxml", totalPlusTaxes);
 
             }
         }
@@ -722,6 +724,7 @@ public class OrderingPaneController extends Pizza {
                         e.printStackTrace();
                     }
                 }
+                switchUI("CheckOutPane.fxml", totalPlusTaxes);
             }
         }
 

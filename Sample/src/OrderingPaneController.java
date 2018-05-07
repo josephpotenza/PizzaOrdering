@@ -129,6 +129,7 @@ public class OrderingPaneController extends Pizza {
     @FXML
     private void initialize() {
         welcomeSound.play();
+        inCaseOfClose(totalPlusTaxes);
         // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);

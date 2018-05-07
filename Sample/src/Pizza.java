@@ -44,6 +44,32 @@ public class Pizza extends Application{
         }
     }
 
+    public void inCaseOfClose(Label locator){
+        try {
+            Stage stage = (Stage) locator.getScene().getWindow();
+            stage.setOnCloseRequest(e -> closeProgram(stage));
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void closeProgram(Stage stage){
+        if(customer.getcID() == null){
+            stage.close();
+        }
+        else{
+            if (customer.getType().equals("guest")){
+                String SQL = "DELETE FROM customers where customerID = " + customer.getcID();
+                try {
+                    db.statement.executeUpdate(SQL);
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
@@ -98,7 +124,6 @@ public class Pizza extends Application{
         }
         primaryStage.setResizable(false);
     }
-
 
     public static void main(String[] args) {
         launch(args);

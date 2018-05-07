@@ -2,7 +2,6 @@
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,27 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebEvent;
-import javafx.scene.web.WebView;
-import javafx.stage.WindowEvent;
+
 
 import java.io.*;
-import java.util.Properties;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
-import java.net.URL;
-
-
-import static javafx.application.Application.launch;
 
 public class Pizza extends Application{
 
@@ -46,18 +28,10 @@ public class Pizza extends Application{
         }
     }
 
-   /* public void inCaseOfClose(){
-        try {
-            currentStage.setOnCloseRequest(e -> closeProgram());
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void closeProgram(){
+    /*
+    public void closeProgram(Stage stage){
         if(customer.getcID() == null){
-            currentStage.close();
+            stage.close();
         }
         else{
             if (customer.getType().equals("guest")){
@@ -69,9 +43,11 @@ public class Pizza extends Application{
                     e.printStackTrace();
                 }
             }
+            stage.close();
         }
     }
-*/
+    */
+
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
         orders.removeAll(orders);
@@ -86,7 +62,6 @@ public class Pizza extends Application{
     Database db = new Database();
 
     public static Customer customer = new Customer();
-    private Stage currentStage;
 
 
     //audio files
@@ -110,10 +85,6 @@ public class Pizza extends Application{
         customer.setCreditCard(creditCard);
         customer.setPhone(phone);
         customer.setcID(cID);
-    }
-
-    public void setCurrentStage(Stage currentStage) {
-        this.currentStage = currentStage;
     }
 
     public void start(Stage primaryStage) {

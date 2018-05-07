@@ -143,7 +143,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="toppingsPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="toppingsPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="97.0" layoutY="379.0" mnemonicParsing="false" onAction="#orderPepperoni" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Pepperoni" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
@@ -215,14 +215,14 @@
                   <Font name="Comic Sans MS Bold" size="64.0" />
                </font>
             </Label>
-            <Button layoutX="693.0" layoutY="824.0" mnemonicParsing="false" onAction="#switchToPizzaPane" style="-fx-background-color: #e31837;" text="No Toppings" textFill="WHITE">
+            <Button layoutX="730.0" layoutY="824.0" mnemonicParsing="false" onAction="#switchToPizzaPane" style="-fx-background-color: #e31837;" text="Done!" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sandwichesPane" layoutX="333.0" layoutY="3.0" prefHeight="900.0" prefWidth="934.0">
+      <AnchorPane fx:id="sandwichesPane" layoutX="333.0" layoutY="3.0" prefHeight="900.0" prefWidth="934.0" visible="false">
          <children>
             <Button layoutX="65.0" layoutY="379.0" mnemonicParsing="false" onAction="#orderChickenParmHero" prefHeight="50.0" prefWidth="191.0" style="-fx-background-color: #e31837;" text="Chicken Parm Hero" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>

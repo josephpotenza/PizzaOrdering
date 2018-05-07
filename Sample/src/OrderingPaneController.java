@@ -153,6 +153,7 @@ public class OrderingPaneController extends Pizza {
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        quantColumn.setStyle("-fx-alignment: CENTER;");
         shoppingCart.setItems(getOrders());
 
 

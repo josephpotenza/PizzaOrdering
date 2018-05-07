@@ -222,7 +222,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="sandwichesPane" layoutX="333.0" layoutY="3.0" prefHeight="900.0" prefWidth="934.0" visible="false">
+      <AnchorPane fx:id="sandwichesPane" layoutX="333.0" layoutY="3.0" prefHeight="900.0" prefWidth="934.0">
          <children>
             <Button layoutX="65.0" layoutY="379.0" mnemonicParsing="false" onAction="#orderChickenParmHero" prefHeight="50.0" prefWidth="191.0" style="-fx-background-color: #e31837;" text="Chicken Parm Hero" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
@@ -360,7 +360,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="drinksPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0">
+      <AnchorPane fx:id="drinksPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false">
          <children>
             <Button layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCoke" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Coke" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
@@ -436,7 +436,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" style="-fx-alignment: CENTER;" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
                <columns>
                   <TableColumn fx:id="quantColumn" prefWidth="91.0" text="Quantity" />
                   <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Item Name" />

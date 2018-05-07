@@ -12,6 +12,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
@@ -132,7 +133,8 @@ public class OrderingPaneController extends Pizza {
     @FXML
     private void initialize() {
         welcomeSound.play();
-        inCaseOfClose(totalPlusTaxes);
+        setCurrentStage((Stage) pictureAnchor.getScene().getWindow());
+        inCaseOfClose();
         // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);

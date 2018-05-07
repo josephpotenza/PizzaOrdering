@@ -2,6 +2,7 @@
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.util.Properties;
@@ -44,19 +46,18 @@ public class Pizza extends Application{
         }
     }
 
-    public void inCaseOfClose(Label locator){
+    public void inCaseOfClose(){
         try {
-            Stage stage = (Stage) locator.getScene().getWindow();
-            stage.setOnCloseRequest(e -> closeProgram(stage));
+            currentStage.setOnCloseRequest(e -> closeProgram());
         }
         catch(Exception e){
             e.printStackTrace();
         }
     }
 
-    public void closeProgram(Stage stage){
+    public void closeProgram(){
         if(customer.getcID() == null){
-            stage.close();
+            currentStage.close();
         }
         else{
             if (customer.getType().equals("guest")){
@@ -85,6 +86,7 @@ public class Pizza extends Application{
     Database db = new Database();
 
     public static Customer customer = new Customer();
+    private Stage currentStage;
 
 
     //audio files
@@ -110,6 +112,9 @@ public class Pizza extends Application{
         customer.setcID(cID);
     }
 
+    public void setCurrentStage(Stage currentStage) {
+        this.currentStage = currentStage;
+    }
 
     public void start(Stage primaryStage) {
         try {

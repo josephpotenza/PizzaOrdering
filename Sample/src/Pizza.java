@@ -46,7 +46,7 @@ public class Pizza extends Application{
         }
     }
 
-    public void inCaseOfClose(){
+   /* public void inCaseOfClose(){
         try {
             currentStage.setOnCloseRequest(e -> closeProgram());
         }
@@ -71,7 +71,7 @@ public class Pizza extends Application{
             }
         }
     }
-
+*/
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
         orders.removeAll(orders);

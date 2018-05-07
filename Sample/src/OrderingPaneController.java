@@ -133,8 +133,8 @@ public class OrderingPaneController extends Pizza {
     @FXML
     private void initialize() {
         welcomeSound.play();
-        setCurrentStage((Stage) pictureAnchor.getScene().getWindow());
-        inCaseOfClose();
+        //setCurrentStage((Stage) pictureAnchor.getScene().getWindow());
+        //inCaseOfClose();
         // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);

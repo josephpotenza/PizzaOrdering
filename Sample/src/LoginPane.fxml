@@ -79,6 +79,6 @@
          </children>
       </AnchorPane>
         <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="#e31837" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
-        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="#e31837" />
+        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="#e31837" AnchorPane.topAnchor="325.0" />
     </children>
 </AnchorPane>

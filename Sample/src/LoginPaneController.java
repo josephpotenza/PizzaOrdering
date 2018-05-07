@@ -33,9 +33,6 @@ public class LoginPaneController extends Pizza
     @FXML
     private Label failedLoginLabel;
 
-    @FXML
-    private Button loginButton;
-
 
     @FXML
     private void initialize(){

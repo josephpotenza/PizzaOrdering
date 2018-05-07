@@ -123,6 +123,9 @@ public class OrderingPaneController extends Pizza {
     private AnchorPane afterCheckOutPane;
 
     @FXML
+    private AnchorPane pictureAnchor;
+
+    @FXML
     private Button removeButton;
 
 
@@ -136,6 +139,7 @@ public class OrderingPaneController extends Pizza {
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
         pizzaPane.setVisible(true);
+        pictureAnchor.setVisible(true);
         switchToPizzaPane();
         removeButton.setOnAction(e -> removeButtonClicked());
 
@@ -154,18 +158,22 @@ public class OrderingPaneController extends Pizza {
 
     @FXML
     void CashBoxSelected(ActionEvent event) {
-        deliveryCCbox.setSelected(false);
-        ccPane.setVisible(false);
-
+            deliveryCCbox.setSelected(false);
+            ccPane.setVisible(false);
     }
 
     @FXML
     void CreditCardBoxSelected(ActionEvent event) {
-        deliveryCashbox.setSelected(false);
-        ccPane.setVisible(true);
-        if (customer.getCreditCard() != null) {
-            String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
-            deliveryCCnumTextField.setText("****-****-****-" + substr);
+        if(deliveryCCbox.isSelected()) {
+            deliveryCashbox.setSelected(false);
+            ccPane.setVisible(true);
+            if (customer.getCreditCard() != null) {
+                String substr = customer.getCreditCard().substring(customer.getCreditCard().length() - 4);
+                deliveryCCnumTextField.setText("****-****-****-" + substr);
+            }
+        }
+        else{
+            ccPane.setVisible(false);
         }
 
     }
@@ -239,35 +247,53 @@ public class OrderingPaneController extends Pizza {
 
     @FXML
     void pickupSelected(ActionEvent event) {
-        deliveryPane.setVisible(false);
-        pickupPane.setVisible(true);
-        deliveryCheckBox.setSelected(false);
-        // customer = getCustomer();
-        if (customer.getPhone() != null) {
-            pickupPhoneTextField.setText(customer.getPhone());
-
+        if(pickupCheckBox.isSelected()) {
+            deliveryPane.setVisible(false);
+            pickupPane.setVisible(true);
+            deliveryCheckBox.setSelected(false);
+            // customer = getCustomer();
+            if (customer.getPhone() != null) {
+                pickupPhoneTextField.setText(customer.getPhone());
+            }
         }
-
+        else{
+            pickupPane.setVisible(false);
+        }
     }
 
     @FXML
     void deliverySelected() {
-        pickupPane.setVisible(false);
-        deliveryPane.setVisible(true);
-        pickupCheckBox.setSelected(false);
-        if (customer.getPhone() != null) {
-            deliveryPhoneNumberTextField.setText(customer.getPhone());
+        if(deliveryCheckBox.isSelected()) {
+            pickupPane.setVisible(false);
+            deliveryPane.setVisible(true);
+            pickupCheckBox.setSelected(false);
+            if (customer.getPhone() != null) {
+                deliveryPhoneNumberTextField.setText(customer.getPhone());
+            }
+            if (customer.getAddress() != null) {
+                deliveryAddressTextField.setText(customer.getAddress());
+            }
         }
-        if (customer.getAddress() != null) {
-            deliveryAddressTextField.setText(customer.getAddress());
+        else{
+            deliveryPane.setVisible(false);
         }
     }
 
 
     @FXML
     void checkoutButton() {
+        pictureAnchor.setVisible(false);
         if (cart.getNumOrders() > 0)
             afterCheckOutPane.setVisible(true);
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Please Place an Order before Checking Out.");
+            errorSound.setVolume(errorSound.getVolume()+ 50000);
+            errorSound.play();
+
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -355,6 +381,15 @@ public class OrderingPaneController extends Pizza {
         taxesLabel.setText(cart.getDf().format(cart.getTax()));
         totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
         shoppingCart.setItems(getOrders());
+        if(cart.getNumOrders() == 0){
+            afterCheckOutPane.setVisible(false);
+            pictureAnchor.setVisible(true);
+            ccPane.setVisible(false);
+            deliveryPane.setVisible(false);
+            pickupPane.setVisible(false);
+            deliveryCheckBox.setSelected(false);
+            pickupCheckBox.setSelected(false);
+        }
     }
 
     @FXML

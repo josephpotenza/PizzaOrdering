@@ -783,6 +783,8 @@ public class OrderingPaneController extends Pizza {
                     }
                 }
                 switchUI("CheckOutPane.fxml", totalPlusTaxes);
+
+
             }
         }
 

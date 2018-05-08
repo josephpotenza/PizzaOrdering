@@ -38,6 +38,9 @@ public class Order {
         this.orderPrice = orderPrice;
     }
 
+    @Override
+    public String toString() {
+        return quantity + "  " + orderName + "   Price: " +  orderPrice;
 
-
+    }
 }

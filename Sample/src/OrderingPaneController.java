@@ -341,24 +341,26 @@ public class OrderingPaneController extends Pizza {
     @FXML
     void removeButtonClicked() {
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
-        int numToppings = cart.checkIfToppingsExist(index);
-        for (int i = numToppings; i > 0; i--) {
-            cart.removeItem(index + i);
-        }
-        cart.removeItem(index);
-        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
-        taxesLabel.setText(cart.getDf().format(cart.getTax()));
-        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
-        shoppingCart.getItems().removeAll(getOrders());
-        shoppingCart.setItems(getOrders());
-        if(cart.getNumOrders() == 0){
-            afterCheckOutPane.setVisible(false);
-            pictureAnchor.setVisible(true);
-            ccPane.setVisible(false);
-            deliveryPane.setVisible(false);
-            pickupPane.setVisible(false);
-            deliveryCheckBox.setSelected(false);
-            pickupCheckBox.setSelected(false);
+        if(index >= 0) {
+            int numToppings = cart.checkIfToppingsExist(index);
+            for (int i = numToppings; i > 0; i--) {
+                cart.removeItem(index + i);
+            }
+            cart.removeItem(index);
+            totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+            taxesLabel.setText(cart.getDf().format(cart.getTax()));
+            totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+            shoppingCart.getItems().removeAll(getOrders());
+            shoppingCart.setItems(getOrders());
+            if (cart.getNumOrders() == 0) {
+                afterCheckOutPane.setVisible(false);
+                pictureAnchor.setVisible(true);
+                ccPane.setVisible(false);
+                deliveryPane.setVisible(false);
+                pickupPane.setVisible(false);
+                deliveryCheckBox.setSelected(false);
+                pickupCheckBox.setSelected(false);
+            }
         }
     }
 

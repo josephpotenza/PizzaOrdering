@@ -450,7 +450,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -468,12 +468,12 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0">
+                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

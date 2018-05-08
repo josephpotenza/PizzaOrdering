@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Customer{
 
     private String type;     //either "guest" or "customer"
-    private String firstName;
+    public String firstName;
     private String lastName;
     private String phone;
     private String email;
@@ -17,6 +17,8 @@ public class Customer{
     private String creditCard;
     private String valid ="";
     private String address;
+    private String cID;
+
     //private String validCC ="";
 
     private boolean login = false;
@@ -29,16 +31,7 @@ public class Customer{
 
     }
 
-    public Customer(String type, String firstName, String lastName, String phone, String email, String pass, String creditCard, String address) {
-        this.type = type;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.email = email;
-        this.pass = pass;
-        this.creditCard = creditCard;
-        this.address = address;
-    }
+
 
     @Override
     public String toString() {
@@ -66,7 +59,7 @@ public class Customer{
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -119,6 +112,14 @@ public class Customer{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getcID() {
+        return cID;
+    }
+
+    public void setcID(String cID) {
+        this.cID = cID;
     }
 
     public String getValid() {
@@ -251,6 +252,19 @@ public class Customer{
             System.out.println(e.getMessage());
 
         }
+    }
+
+    public void clearCustomer(){
+        type = null;
+        firstName = null;
+        lastName = null;
+        phone = null;
+        email = null;
+        pass = null;
+        creditCard = null;
+        valid ="";
+        address= null;
+        cID = null;
     }
 
 }

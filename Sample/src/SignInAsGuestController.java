@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SignInAsGuestController extends Pizza{
@@ -52,6 +53,11 @@ public class SignInAsGuestController extends Pizza{
                     customer.setEmail(emailInput.getText());
                     customer.setType("guest");
                     db.statement.executeUpdate(SQL);
+                    String SQL1 = "SELECT * FROM customers WHERE email = '" + emailInput.getText() + "'" + "and FirstName = '" + firstNameInput.getText() + "'";
+                    ResultSet result = Database.getResult(SQL1);
+                    while (result.next()){
+                        customer.setcID(result.getString("customerID"));
+                    }
                     switchUI("OrderingPane.fxml", goBackButton);
                 } catch (SQLException e) {
                     e.printStackTrace();

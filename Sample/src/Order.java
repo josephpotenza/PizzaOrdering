@@ -1,7 +1,8 @@
 public class Order {
-    Integer quantity;
-    String orderName;
-    double orderPrice;
+    private Integer quantity;
+    private String orderName;
+    private double orderPrice;
+    private double totalPrice;
 
 
 
@@ -12,6 +13,15 @@ public class Order {
         quantity = _quantity;
         orderName = _orderName;
         orderPrice = _orderPrice;
+        totalPrice = _orderPrice;
+    }
+
+    public void plus1Quantity(){
+        quantity++;
+    }
+
+    public void minus1Quantity(){
+        quantity--;
     }
 
     public Integer getQuantity() {
@@ -38,9 +48,21 @@ public class Order {
         this.orderPrice = orderPrice;
     }
 
+    public void calcTotalPrice(){
+        totalPrice = orderPrice * quantity;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
     @Override
     public String toString() {
-        return quantity + "  " + orderName + "   Price: " +  orderPrice;
-
+        return "Order{" +
+                "quantity=" + quantity +
+                ", orderName='" + orderName + '\'' +
+                ", orderPrice=" + orderPrice +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 }

@@ -3,29 +3,16 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 
-import static javafx.application.Application.launch;
+import java.io.*;
+
 
 public class Pizza extends Application{
 
@@ -41,26 +28,56 @@ public class Pizza extends Application{
         }
     }
 
+    /*
+    public void closeProgram(Stage stage){
+        if(customer.getcID() == null){
+            stage.close();
+        }
+        else{
+            if (customer.getType().equals("guest")){
+                String SQL = "DELETE FROM customers where customerID = " + customer.getcID();
+                try {
+                    db.statement.executeUpdate(SQL);
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            stage.close();
+        }
+    }
+    */
 
     public ObservableList<Order> getOrders(){
         ObservableList<Order> orders = FXCollections.observableArrayList();
-        for(int i = 0; i < cart.numOrders; i++){
+        orders.removeAll(orders);
+        for(int i = 0; i < cart.getNumOrders(); i++){
             orders.add(cart.getOrder(i));
         }
         return orders;
     }
 
-    Cart cart = new Cart();
+    public static Cart cart = new Cart();
+
     Database db = new Database();
     SendMailTLS mail = new SendMailTLS();
 
     public static Customer customer = new Customer();
 
+
+    //audio files
     String mediaFile = "Sample/src/Sounds/ErrorSound.wav";
     Media media = new Media(new File(mediaFile).toURI().toString());
     MediaPlayer errorSound = new MediaPlayer(media);
+    String mediaFile2 = "Sample/src/Sounds/WelcomeSound.wav";
+    Media media2 = new Media(new File(mediaFile2).toURI().toString());
+    MediaPlayer welcomeSound = new MediaPlayer(media2);
 
-    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone){
+    public Pizza(){
+
+    }
+
+    public void setCustomerInfo(String firstN, String lastN, String email, String pass, String address, String creditCard, String phone, String cID){
         customer.setFirstName(firstN);
         customer.setLastName(lastN);
         customer.setEmail(email);
@@ -68,16 +85,8 @@ public class Pizza extends Application{
         customer.setAddress(address);
         customer.setCreditCard(creditCard);
         customer.setPhone(phone);
-        System.out.println("from Pizza setCustomer" + customer);
-        getCustomer(customer);
+        customer.setcID(cID);
     }
-
-    public Customer getCustomer(Customer c) {
-        System.out.println("from Pizza getCustomer " + c);
-        customer = c;
-        return c;
-    }
-
 
     public void start(Stage primaryStage) {
         try {
@@ -86,14 +95,12 @@ public class Pizza extends Application{
             primaryStage.setScene(scene);
             primaryStage.setTitle("Pizza Ordering");
             primaryStage.show();
-            System.out.println("from Pizza" + this.customer);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
         primaryStage.setResizable(false);
     }
-
 
     public static void main(String[] args) {
         launch(args);

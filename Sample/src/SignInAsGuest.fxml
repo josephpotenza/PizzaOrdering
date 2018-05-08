@@ -12,14 +12,17 @@
 
 <AnchorPane fx:id="stage" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignInAsGuestController">
     <children>
-        <Pane layoutY="-2.0" prefHeight="326.0" prefWidth="462.0" style="-fx-background-color: #a70000;" AnchorPane.bottomAnchor="574.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane layoutY="-2.0" prefHeight="324.0" prefWidth="462.0" style="-fx-background-color: #006491;" AnchorPane.bottomAnchor="583.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox layoutX="207.0" layoutY="-1.0" prefHeight="300.0" prefWidth="255.0" spacing="35.0">
                     <children>
                         <TextField fx:id="firstNameInput" alignment="TOP_LEFT" />
                         <TextField fx:id="lastNameInput" />
                         <TextField fx:id="emailInput" />
-                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInAsGuest" prefHeight="31.0" prefWidth="240.0" text="Sign In!" />
+                        <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInAsGuest" prefHeight="31.0" prefWidth="240.0" style="-fx-background-color: #e31837;" text="Sign In!" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
                     </children>
                     <padding>
                         <Insets right="35.0" top="57.0" />
@@ -45,24 +48,33 @@
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Label>
-                      <Label fx:id="goBackButton" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
-                          <font>
-                              <Font size="20.0" />
-                          </font>
-                      </Label>
                     </children>
                     <padding>
                         <Insets left="25.0" top="47.0" />
                     </padding>
                 </VBox>
+                <Label fx:id="goBackButton" layoutX="23.0" layoutY="285.0" onMouseClicked="#backToLoginPane" text="Go Back" textFill="WHITE" underline="true">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
-        <ImageView fitHeight="582.0" fitWidth="462.0" layoutY="326.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="323.0">
+        <ImageView fitHeight="582.0" fitWidth="462.0" layoutX="-1.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="329.0">
             <image>
-                <Image url="@Images/cokeAd.jpg" />
+                <Image url="@Images/front%20page.jpg" />
             </image>
         </ImageView>
-        <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="WHITE" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
-        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="WHITE" />
+        <Line endX="100.0" layoutX="462.0" layoutY="323.0" rotate="90.0" scaleX="6.0" scaleY="2.0" startX="-100.0" stroke="#e31837" strokeWidth="3.0" AnchorPane.bottomAnchor="486.5" />
+        <Line endX="100.0" layoutX="230.0" layoutY="326.0" scaleX="2.3" scaleY="5.0" startX="-100.0" stroke="#e31837" AnchorPane.topAnchor="324.0" />
+      <AnchorPane layoutX="465.0" prefHeight="900.0" prefWidth="1136.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+             <ImageView fitHeight="904.0" fitWidth="1141.0" layoutX="119.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="118.0">
+                 <image>
+                     <Image url="@Images/2000px-Dominos_pizza_logo.svg.png" />
+                 </image>
+             </ImageView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

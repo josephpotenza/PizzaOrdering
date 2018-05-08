@@ -65,8 +65,8 @@ public class Cart extends Order {
         }
 
         if(existsInDbOrders(order)) {
-            dbOrders.get(findIndexOfOrder(order)).plus1Quantity();
-            dbOrders.get(findIndexOfOrder(order)).calcTotalPrice();
+            dbOrders.get(findIndexOfOrderDB(order)).plus1Quantity();
+            dbOrders.get(findIndexOfOrderDB(order)).calcTotalPrice();
         }
         else {
             Order temp = new Order(1, order.getOrderName(), order.getOrderPrice());
@@ -89,8 +89,29 @@ public class Cart extends Order {
             dbOrders.remove(findIndexOfOrderDB(orders.get(index)));
         }
         dbnumorders = dbOrders.size();
-        orders.remove(index);
-        numOrders--;
+
+        if(checkIfPizza(index)){
+            orders.remove(index);
+            numOrders--;
+        }
+        else{
+            if(checkIfTopping(index)){
+                orders.remove(index);
+                numOrders--;
+            }
+            else{
+                if(orders.get(index).getQuantity() > 1){      //if not pizza or toppings, and order does exist
+                    orders.get(index).minus1Quantity();
+                    orders.get(index).calcTotalPrice();
+                }
+                else{
+                    orders.remove(index);
+                    numOrders--;
+                }
+            }
+        }
+        //orders.remove(index);
+        //numOrders--;
         calcTotal();
         //viewDbOrders();
     }
@@ -165,6 +186,15 @@ public class Cart extends Order {
         return false;
     }
 
+    public Boolean checkIfTopping(int index){
+        for(int i = 12; i < 18; i++){
+            if(menu[i].getOrderName() == orders.get(index).getOrderName()){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private void calcTotal(){
         totalPrice = 0;
@@ -214,8 +244,8 @@ public class Cart extends Order {
     }
 
     public Boolean existsInOrders(Order order){
-        for(int i = 0; i < dbOrders.size(); i++){
-            if(order.getOrderName() == dbOrders.get(i).getOrderName()){
+        for(int i = 0; i < orders.size(); i++){
+            if(order.getOrderName() == orders.get(i).getOrderName()){
                 return true;
             }
         }

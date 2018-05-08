@@ -1,23 +1,10 @@
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebEvent;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 
-import java.io.File;
-import java.net.URL;
 import java.sql.SQLException;
-
 
 //#006491			//domin blue
 //#e31837 		//domin red
@@ -28,28 +15,13 @@ public class OrderingPaneController extends Pizza {
     private AnchorPane appetizersPane;
 
     @FXML
-    private Button deliverySubmitButton;
-
-    @FXML
-    private Label sandwichesCategory;
-
-    @FXML
     private ChoiceBox<Integer> ExpMonthDropBox;
-
-    @FXML
-    private Label appetizersCategory;
 
     @FXML
     private CheckBox deliveryCheckBox;
 
     @FXML
     private TableColumn<Order, Integer> quantColumn;
-
-    @FXML
-    private Label pizzaCategory;
-
-    @FXML
-    private Label drinksCategory;
 
     @FXML
     private AnchorPane toppingsPane;
@@ -109,9 +81,6 @@ public class OrderingPaneController extends Pizza {
     private AnchorPane pickupPane;
 
     @FXML
-    private Button cheesePizzaButton;
-
-    @FXML
     private Label totalLabel;
 
     @FXML
@@ -133,8 +102,6 @@ public class OrderingPaneController extends Pizza {
     @FXML
     private void initialize() {
         welcomeSound.play();
-        //setCurrentStage((Stage) pictureAnchor.getScene().getWindow());
-        //inCaseOfClose();
         // initialize visible panels
         toppingsPane.setVisible(false);
         drinksPane.setVisible(false);
@@ -153,19 +120,19 @@ public class OrderingPaneController extends Pizza {
         quantColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("orderName"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
+        quantColumn.setStyle("-fx-alignment: CENTER;");
         shoppingCart.setItems(getOrders());
-
 
     }
 
     @FXML
-    void CashBoxSelected(ActionEvent event) {
+    void CashBoxSelected() {
             deliveryCCbox.setSelected(false);
             ccPane.setVisible(false);
     }
 
     @FXML
-    void CreditCardBoxSelected(ActionEvent event) {
+    void CreditCardBoxSelected() {
         if(deliveryCCbox.isSelected()) {
             deliveryCashbox.setSelected(false);
             ccPane.setVisible(true);
@@ -185,12 +152,12 @@ public class OrderingPaneController extends Pizza {
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         sandwichesPane.setVisible(false);
-        pizzaPane.setVisible(true);
         toppingsPane.setVisible(false);
+        pizzaPane.setVisible(true);
     }
 
     @FXML
-    void switchToSandwichesPane(MouseEvent event) {
+    void switchToSandwichesPane() {
         drinksPane.setVisible(false);
         appetizersPane.setVisible(false);
         pizzaPane.setVisible(false);
@@ -199,7 +166,7 @@ public class OrderingPaneController extends Pizza {
     }
 
     @FXML
-    void switchToAppetizersPane(MouseEvent event) {
+    void switchToAppetizersPane() {
         drinksPane.setVisible(false);
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
@@ -208,7 +175,7 @@ public class OrderingPaneController extends Pizza {
     }
 
     @FXML
-    void switchToDrinksPane(MouseEvent event) {
+    void switchToDrinksPane() {
         pizzaPane.setVisible(false);
         sandwichesPane.setVisible(false);
         appetizersPane.setVisible(false);
@@ -374,23 +341,26 @@ public class OrderingPaneController extends Pizza {
     @FXML
     void removeButtonClicked() {
         int index = shoppingCart.getSelectionModel().getSelectedIndex();
-        int numToppings = cart.checkIfToppingsExist(index);
-        for (int i = numToppings; i > 0; i--) {
-            cart.removeItem(index + i);
-        }
-        cart.removeItem(index);
-        totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
-        taxesLabel.setText(cart.getDf().format(cart.getTax()));
-        totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
-        shoppingCart.setItems(getOrders());
-        if(cart.getNumOrders() == 0){
-            afterCheckOutPane.setVisible(false);
-            pictureAnchor.setVisible(true);
-            ccPane.setVisible(false);
-            deliveryPane.setVisible(false);
-            pickupPane.setVisible(false);
-            deliveryCheckBox.setSelected(false);
-            pickupCheckBox.setSelected(false);
+        if(index >= 0) {
+            int numToppings = cart.checkIfToppingsExist(index);
+            for (int i = numToppings; i > 0; i--) {
+                cart.removeItem(index + i);
+            }
+            cart.removeItem(index);
+            totalLabel.setText(cart.getDf().format(cart.getTotalPrice()));
+            taxesLabel.setText(cart.getDf().format(cart.getTax()));
+            totalPlusTaxes.setText(cart.getDf().format(cart.calcTotalPlusTax()));
+            shoppingCart.getItems().removeAll(getOrders());
+            shoppingCart.setItems(getOrders());
+            if (cart.getNumOrders() == 0) {
+                afterCheckOutPane.setVisible(false);
+                pictureAnchor.setVisible(true);
+                ccPane.setVisible(false);
+                deliveryPane.setVisible(false);
+                pickupPane.setVisible(false);
+                deliveryCheckBox.setSelected(false);
+                pickupCheckBox.setSelected(false);
+            }
         }
     }
 

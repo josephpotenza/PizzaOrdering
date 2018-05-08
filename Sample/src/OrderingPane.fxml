@@ -143,7 +143,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="toppingsPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="toppingsPane" layoutX="343.0" layoutY="10.0" prefHeight="900.0" prefWidth="934.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="333.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="97.0" layoutY="379.0" mnemonicParsing="false" onAction="#orderPepperoni" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Pepperoni" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
@@ -215,7 +215,7 @@
                   <Font name="Comic Sans MS Bold" size="64.0" />
                </font>
             </Label>
-            <Button layoutX="693.0" layoutY="824.0" mnemonicParsing="false" onAction="#switchToPizzaPane" style="-fx-background-color: #e31837;" text="No Toppings" textFill="WHITE">
+            <Button layoutX="730.0" layoutY="824.0" mnemonicParsing="false" onAction="#switchToPizzaPane" style="-fx-background-color: #e31837;" text="Done!" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -360,7 +360,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="drinksPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0">
+      <AnchorPane fx:id="drinksPane" layoutX="333.0" layoutY="1.0" prefHeight="900.0" prefWidth="934.0" visible="false">
          <children>
             <Button layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderCoke" prefHeight="50.0" prefWidth="128.0" style="-fx-background-color: #e31837;" text="Coke" textFill="WHITE" AnchorPane.topAnchor="379.0">
                <font>
@@ -436,7 +436,7 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
+            <TableView fx:id="shoppingCart" layoutY="97.0" prefHeight="693.0" prefWidth="334.0" style="-fx-alignment: CENTER;" AnchorPane.bottomAnchor="133.0" AnchorPane.rightAnchor="0.0">
                <columns>
                   <TableColumn fx:id="quantColumn" prefWidth="91.0" text="Quantity" />
                   <TableColumn fx:id="nameColumn" prefWidth="178.0" text="Item Name" />
@@ -450,7 +450,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalLabel" layoutX="237.0" layoutY="18.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -468,12 +468,12 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0">
+                  <Label fx:id="taxesLabel" layoutX="243.0" layoutY="49.0" prefHeight="27.0" prefWidth="73.0" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0">
+                  <Label fx:id="totalPlusTaxes" layoutX="237.0" layoutY="91.0" prefHeight="35.0" prefWidth="84.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

@@ -60,7 +60,6 @@ public class Pizza extends Application{
     public static Cart cart = new Cart();
 
     Database db = new Database();
-    SendMailTLS mail = new SendMailTLS();
 
     public static Customer customer = new Customer();
 

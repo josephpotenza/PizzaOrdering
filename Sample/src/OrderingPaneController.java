@@ -706,7 +706,6 @@ public class OrderingPaneController extends Pizza {
                             e.printStackTrace();
                         }
                     }
-                    mail.sendEmail();
                     switchUI("CheckOutPane.fxml", totalPlusTaxes);
                 }
             }
@@ -721,7 +720,6 @@ public class OrderingPaneController extends Pizza {
                         e.printStackTrace();
                     }
                 }
-                mail.sendEmail();
                 switchUI("CheckOutPane.fxml", totalPlusTaxes);
 
             }
@@ -754,7 +752,6 @@ public class OrderingPaneController extends Pizza {
                         e.printStackTrace();
                     }
                 }
-                mail.sendEmail();
                 switchUI("CheckOutPane.fxml", totalPlusTaxes);
 
 
